@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/dto/user_request.dart';
@@ -21,6 +22,7 @@ class UserRepository {
   }
 
   Future<ResponseDTO> fetchLogin(LoginReqDTO requestDTO) async {
+    Logger().d("찐 통신코드로 넘어왔어요!");
     try {
       Response<dynamic> response = await dio.post<dynamic>("/login", data: requestDTO.toJson());
 
@@ -34,7 +36,7 @@ class UserRepository {
       if (jwt != null) {
         responseDTO.token = jwt.first;
       }
-
+      //
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감

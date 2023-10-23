@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/data/dto/response_dto.dart';
@@ -34,27 +35,33 @@ class SessionStore extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
+    Logger().d("창고 코드로 넘어왔어요!");
     // 1. 통신 코드
-    ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
+    // ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
+
+    Logger().d("통신코드를 넘어왔어요!");
 
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
-      // 1. 세션값 갱신
-      this.user = responseDTO.data as User;
-      this.jwt = responseDTO.token;
-      this.isLogin = true;
+    // if (responseDTO.code == 1) {
+    //   // 1. 세션값 갱신
+    //   this.user = responseDTO.data as User;
+    //   this.jwt = responseDTO.token;
+    this.isLogin = true;
 
-      // 2. 디바이스에 JWT 저장 (자동 로그인)
-      await secureStorage.write(key: "jwt", value: responseDTO.token);
+    // 2. 디바이스에 JWT 저장 (자동 로그인)
+    // await secureStorage.write(key: "jwt", value: responseDTO.token);
+    Logger().d("고지가 눈앞이에요!");
 
-      // 3. 페이지 이동
-      // Navigator.pushNamed(mContext!, Move.postListPage);
-    } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
-    }
+    // 3. 페이지 이동
+    Navigator.pushNamed(mContext!, Move.mainScreens);
+
+    Logger().d("뭔가 문제가 있어요!");
+    // } else {
+    //   ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
+    // }
   }
 
-  // JWT는 로그아웃할 때 서버측으로 요청할 필요가 없음.
+// JWT는 로그아웃할 때 서버측으로 요청할 필요가 없음.
   Future<void> logout() async {
     this.jwt = null;
     this.isLogin = false;
