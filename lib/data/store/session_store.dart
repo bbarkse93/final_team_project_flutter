@@ -53,7 +53,7 @@ class SessionStore extends SessionUser {
     Logger().d("고지가 눈앞이에요!");
 
     // 3. 페이지 이동
-    Navigator.pushNamed(mContext!, Move.mainScreens);
+    Navigator.pushNamed(mContext!, Move.mainPage);
 
     Logger().d("뭔가 문제가 있어요!");
     // } else {

@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project/ui/pages/post/list_page/post_list_page.dart';
 
-class MainScreens extends StatefulWidget {
+class MainPage extends StatefulWidget {
   @override
-  _MainScreensState createState() => _MainScreensState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MainScreensState extends State<MainScreens> {
+class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   @override
@@ -15,13 +15,16 @@ class _MainScreensState extends State<MainScreens> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: [PostListPage()],
+        children: [
+          // 이쪽에 각각의 페이지를 추가하면됌 - 바텀네비게이션바의 아이콘과 동일한 페이지
+          PostListPage(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Color(0xFFFF7E00),
         unselectedItemColor: Colors.black54,
         onTap: (index) {
           setState(() {
@@ -35,6 +38,8 @@ class _MainScreensState extends State<MainScreens> {
           const BottomNavigationBarItem(label: '채팅', icon: Icon(CupertinoIcons.chat_bubble_2)),
           const BottomNavigationBarItem(label: '나의 당근', icon: Icon(CupertinoIcons.person)),
         ],
+        unselectedLabelStyle: TextStyle(fontSize: 14), // 선택되지 않은 라벨의 스타일
+        selectedLabelStyle: TextStyle(fontSize: 14), // 선택된 라벨의 스타일
       ),
     );
   }
