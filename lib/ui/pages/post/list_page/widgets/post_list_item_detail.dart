@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:team_project/data/model/post.dart';
+import 'package:team_project/data/mock/post.dart';
 import 'package:team_project/ui/pages/post/list_page/widgets/post_build_icons.dart';
 
 class PostListItemDetail extends StatelessWidget {
@@ -15,7 +15,7 @@ class PostListItemDetail extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(post.title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0, color: Colors.black)),
+          Text("${post.productName}", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0, color: Colors.black)),
           const SizedBox(height: 4.0),
           Text("${post.content}"),
           const SizedBox(height: 4.0),

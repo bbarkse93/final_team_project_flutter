@@ -1,4 +1,4 @@
-class MockUser {
+class User {
   int? id;
   String? username;
   int? password;
@@ -6,7 +6,7 @@ class MockUser {
   String? location;
   String? created;
 
-  MockUser({
+  User({
     required this.id,
     required this.username,
     required this.password,

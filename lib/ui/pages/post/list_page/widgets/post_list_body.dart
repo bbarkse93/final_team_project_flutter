@@ -1,114 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:team_project/data/model/post.dart';
-import 'package:team_project/data/model/user.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/data/mock/post.dart';
+import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
 import 'package:team_project/ui/pages/post/list_page/widgets/post_list_item.dart';
 
-class PostListBody extends StatelessWidget {
-  const PostListBody({Key? key}) : super(key: key);
+class PostListBody extends ConsumerWidget {
+  const PostListBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // PostListModel? model = ref.watch(postListProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    // WidgetRef - 통신을하겠다라는 의미임, 정확히는 창고관리자에게 접근하겠다.
+    PostListModel? model = ref.watch(postListProvider);
+    List<Post> postList = [];
+    if (model == null) {
+      return Center(child: CircularProgressIndicator());
+    }
 
-    List<Post> posts = [
-      Post(
-        id: 1,
-        title: "요기여기",
-        content: "dkdn...",
-        created: "wpqkf",
-        price: 100000,
-        updated: "wpqkfwkd..",
-        commentCount: 3,
-        heartCount: 5,
-        user: User(
-          id: 1,
-          username: "ssar",
-          password: "1234",
-          userPicUrl: "ssar.jpg",
-          location: "vikiniCity",
-          created: "2023-10-23",
-        ),
-      ),
-      Post(
-        id: 1,
-        title: "요기여기",
-        content: "dkdn...",
-        price: 100000,
-        created: "wpqkf",
-        updated: "wpqkfwkd..",
-        commentCount: 4,
-        heartCount: 5,
-        user: User(
-          id: 1,
-          username: "ssar",
-          password: "1234",
-          userPicUrl: "ssar.jpg",
-          location: "vikiniCity",
-          created: "2023-10-23",
-        ),
-      ),
-      Post(
-        id: 1,
-        title: "요기여기",
-        content: "dkdn...",
-        price: 100000,
-        created: "wpqkf",
-        updated: "wpqkfwkd..",
-        commentCount: 3,
-        heartCount: 5,
-        user: User(
-          id: 1,
-          username: "ssar",
-          password: "1234",
-          userPicUrl: "ssar.jpg",
-          location: "vikiniCity",
-          created: "2023-10-23",
-        ),
-      ),
-      Post(
-        id: 1,
-        title: "요기여기",
-        content: "dkdn...",
-        price: 100000,
-        created: "wpqkf",
-        updated: "wpqkfwkd..",
-        commentCount: 3,
-        heartCount: 5,
-        user: User(
-          id: 1,
-          username: "ssar",
-          password: "1234",
-          userPicUrl: "ssar.jpg",
-          location: "vikiniCity",
-          created: "2023-10-23",
-        ),
-      ),
-      Post(
-        id: 1,
-        title: "요기여기",
-        content: "dkdn...",
-        price: 100000,
-        created: "wpqkf",
-        updated: "wpqkfwkd..",
-        commentCount: 3,
-        heartCount: 5,
-        user: User(
-          id: 1,
-          username: "ssar",
-          password: "1234",
-          userPicUrl: "ssar.jpg",
-          location: "vikiniCity",
-          created: "2023-10-23",
-        ),
-      ),
-    ];
-
-    // if (model != null) {
-    //   posts = model.posts;
-    // }
+    if (model != null) {
+      postList = model.postList;
+    }
 
     return ListView.separated(
-      itemCount: posts.length,
+      itemCount: postList.length,
       itemBuilder: (context, index) {
         return InkWell(
             onTap: () {
@@ -119,7 +32,7 @@ class PostListBody extends StatelessWidget {
               // 2. 화면 이동
               // Navigator.push(context, MaterialPageRoute(builder: (_) => PostDetailPage()));
             },
-            child: PostListItem(posts[index]));
+            child: PostListItem(postList[index]));
       },
       separatorBuilder: (context, index) {
         return const Divider();

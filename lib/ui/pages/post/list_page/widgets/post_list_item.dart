@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:team_project/data/model/post.dart';
 import 'package:team_project/ui/pages/post/list_page/widgets/post_list_item_detail.dart';
+
+import '../../../../../data/mock/post.dart';
 
 class PostListItem extends StatelessWidget {
   final Post post;
