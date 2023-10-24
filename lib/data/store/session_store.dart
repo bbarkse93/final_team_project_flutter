@@ -3,10 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/move.dart';
-import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/dto/user_request.dart';
 import 'package:team_project/data/model/user.dart';
-import 'package:team_project/data/repository/user_repository.dart';
 import 'package:team_project/main.dart';
 
 // 1. 창고 데이터
@@ -24,14 +22,14 @@ class SessionStore extends SessionUser {
 
   Future<void> join(JoinReqDTO joinReqDTO) async {
     // 1. 통신 코드
-    ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
+    // ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
 
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
-      Navigator.pushNamed(mContext!, Move.loginPage);
-    } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
-    }
+    // if (responseDTO.code == 1) {
+    Navigator.pushNamed(mContext!, Move.loginPage);
+    // } else {
+    //   ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
+    // }
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {

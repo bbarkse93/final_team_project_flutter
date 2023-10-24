@@ -41,7 +41,7 @@ class JoinForm extends ConsumerWidget {
             funValidator: validatePassword(),
             controller: _password,
           ),
-          const SizedBox(height: largeGap),
+          const SizedBox(height: mediumGap),
           CustomElevatedButton(
               text: "회원가입",
               funPageRoute: () {
