@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_bottom_button.dart';
-import 'package:team_project/ui/pages/post/detail_page/post_detail_body.dart';
-
+import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_post_body.dart';
 
 class PostDetailPage extends StatelessWidget {
   const PostDetailPage({super.key});
@@ -9,7 +8,7 @@ class PostDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PostDetailBody(),
+      body: DetailPostBody(),
       bottomNavigationBar: DetailBottomButton(),
     );
   }

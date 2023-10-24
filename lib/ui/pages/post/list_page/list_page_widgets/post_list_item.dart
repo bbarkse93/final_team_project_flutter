@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team_project/ui/pages/post/list_page/widgets/post_list_item_detail.dart';
+import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_item_detail.dart';
 
 import '../../../../../data/mock/post.dart';
 

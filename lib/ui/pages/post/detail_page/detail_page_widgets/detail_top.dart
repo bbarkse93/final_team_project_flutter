@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/mock/post.dart';
 import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_more_button.dart';
+import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
 
-
-class DetailTop extends StatelessWidget {
+class DetailTop extends ConsumerWidget {
   const DetailTop({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    PostModel? model = ref.watch(postDetailProvider);
+    if (model == null) {
+      return Center(child: CircularProgressIndicator());
+    }
     return SliverAppBar(
-
       backgroundColor: Colors.transparent,
       leading: Icon(Icons.arrow_back_ios_new),
       actions: [
@@ -23,9 +28,7 @@ class DetailTop extends StatelessWidget {
       ],
       expandedHeight: 300,
       flexibleSpace: Container(
-        // ToDo : 제품 이미지 넣기
-        child: Image.network("https://picsum.photos/id/100/100",
-            fit: BoxFit.cover),
+        child: Image.network("${post.productPicUrl}", fit: BoxFit.cover),
       ),
     );
   }

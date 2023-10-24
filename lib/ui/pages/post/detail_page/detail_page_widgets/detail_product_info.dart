@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/mock/post.dart';
+import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
 
-class DetailProductInfo extends StatelessWidget {
+class DetailProductInfo extends ConsumerWidget {
   const DetailProductInfo({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    PostModel? model = ref.watch(postDetailProvider);
+    if (model == null) {
+      return Center(child: CircularProgressIndicator());
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _productName(productName: "제품명"),
+        _productName(productName: "${post.productName}"),
         SizedBox(height: smallGap),
-        _productCategory(categoty: "제품카테고리", time: "몇시간전"),
+        _productCategory(categoty: "${post.category}", time: "${post.created}"),
         SizedBox(height: smallGap),
         _productDescription(
-            productDescription:
-                "이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야이 제품은 이런 제품이야"),
+          productDescription: post.content,
+        ),
       ],
     );
   }
