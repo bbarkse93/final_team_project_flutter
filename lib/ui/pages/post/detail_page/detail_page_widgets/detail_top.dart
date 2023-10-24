@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_more_button.dart';
+
 
 class DetailTop extends StatelessWidget {
   const DetailTop({
@@ -9,26 +13,20 @@ class DetailTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      //ToDo : 제품사진 받으면 주석 풀기
-      // backgroundColor: Colors.transparent,
+
+      backgroundColor: Colors.transparent,
       leading: Icon(Icons.arrow_back_ios_new),
       actions: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Icon(Icons.ios_share),
-              SizedBox(width: smallGap),
-              Icon(Icons.more_vert),
-            ],
-          ),
-        ),
+        IconButton(icon: Icon(Icons.ios_share), onPressed: () {}),
+        SizedBox(width: smallGap),
+        DetailMoreButton(),
       ],
       expandedHeight: 300,
       flexibleSpace: Container(
-          // ToDo : 제품 이미지 넣기
-          // child: Image.network(),
-          ),
+        // ToDo : 제품 이미지 넣기
+        child: Image.network("https://picsum.photos/id/100/100",
+            fit: BoxFit.cover),
+      ),
     );
   }
 }
