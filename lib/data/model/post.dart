@@ -8,6 +8,8 @@ class Post {
   int price;
   String created;
   String updated;
+  int heartCount;
+  int commentCount;
 
   Post({
     required this.id,
@@ -17,6 +19,8 @@ class Post {
     required this.price,
     required this.created,
     required this.updated,
+    required this.heartCount,
+    required this.commentCount,
   });
 
   // Dart 객체를 통신을 위한 Map 형태로 변환
@@ -26,6 +30,10 @@ class Post {
         "content": content,
         "user": user,
         "price": price,
+        "created": created,
+        "updated": updated,
+        "heartCount": heartCount,
+        "commentCount": commentCount,
         "String": created,
         "String": updated,
       };
@@ -38,7 +46,9 @@ class Post {
         price = json["price"],
         user = User.fromJson(json["user"]),
         created = json["created"],
-        updated = json["updated"];
+        updated = json["updated"],
+        heartCount = json["heartCount"],
+        commentCount = json["commentCount"];
 
   // String getUpdated() {
   //   // 출력시 -> 값을 Oct 23 이렇게 만든다.

@@ -18,6 +18,8 @@ class PostListBody extends StatelessWidget {
         created: "wpqkf",
         price: 100000,
         updated: "wpqkfwkd..",
+        commentCount: 3,
+        heartCount: 5,
         user: User(
           id: 1,
           username: "ssar",
@@ -34,6 +36,8 @@ class PostListBody extends StatelessWidget {
         price: 100000,
         created: "wpqkf",
         updated: "wpqkfwkd..",
+        commentCount: 4,
+        heartCount: 5,
         user: User(
           id: 1,
           username: "ssar",
@@ -50,6 +54,8 @@ class PostListBody extends StatelessWidget {
         price: 100000,
         created: "wpqkf",
         updated: "wpqkfwkd..",
+        commentCount: 3,
+        heartCount: 5,
         user: User(
           id: 1,
           username: "ssar",
@@ -66,6 +72,8 @@ class PostListBody extends StatelessWidget {
         price: 100000,
         created: "wpqkf",
         updated: "wpqkfwkd..",
+        commentCount: 3,
+        heartCount: 5,
         user: User(
           id: 1,
           username: "ssar",
@@ -82,6 +90,8 @@ class PostListBody extends StatelessWidget {
         price: 100000,
         created: "wpqkf",
         updated: "wpqkfwkd..",
+        commentCount: 3,
+        heartCount: 5,
         user: User(
           id: 1,
           username: "ssar",
