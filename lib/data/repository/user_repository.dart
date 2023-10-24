@@ -12,12 +12,12 @@ class UserRepository {
       // dynamic -> http body
       Response<dynamic> response = await dio.post("/join", data: requestDTO.toJson());
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      //responseDTO.data = User.fromJson(responseDTO.data);
+      responseDTO.response = User.fromJson(responseDTO.response);
 
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return ResponseDTO(-1, "중복되는 유저명입니다", null);
+      return ResponseDTO(false, "중복되는 유저명입니다", null);
     }
   }
 
@@ -25,22 +25,24 @@ class UserRepository {
     Logger().d("찐 통신코드로 넘어왔어요!");
     try {
       Response<dynamic> response = await dio.post<dynamic>("/login", data: requestDTO.toJson());
-
-      print(response.data);
+      Logger().d("테스팅 1 : ${response.data}");
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      responseDTO.data = User.fromJson(responseDTO.data);
+      Logger().d("테스팅 2 : ${responseDTO.response}");
 
-      final jwt = response.headers["Authorization"];
+      responseDTO.response = User.fromJson(responseDTO.response);
+      Logger().d("테스팅 3 : ${response}");
 
-      if (jwt != null) {
-        responseDTO.token = jwt.first;
-      }
+      // final jwt = response.headers["Authorization"];
       //
+      // if (jwt != null) {
+      //   responseDTO.token = jwt.first;
+      // }
+      // //
       return responseDTO;
     } catch (e) {
       // 200이 아니면 catch로 감
-      return ResponseDTO(-1, "유저네임 혹은 비번이 틀렸습니다", null);
+      return ResponseDTO(false, "유저네임 혹은 비번이 틀렸습니다", null);
     }
   }
 }

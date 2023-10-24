@@ -18,15 +18,15 @@ class PostRepository {
       ResponseDTO responseDTO = ResponseDTO.fromJson(repsonse.data);
 
       // 3. ResponseDTO의 data 파싱
-      List<dynamic> mapList = responseDTO.data as List<dynamic>;
+      List<dynamic> mapList = responseDTO.response as List<dynamic>;
       List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
 
       // 4. 파싱된 데이터를 다시 공통 DTO 로 덮어 씌우기
-      responseDTO.data = postList;
+      responseDTO.response = postList;
 
       return responseDTO;
     } catch (e) {
-      return ResponseDTO(-1, "게시글 목록 불러오기 실패", null);
+      return ResponseDTO(false, "게시글 목록 불러오기 실패", null);
     }
   }
 }

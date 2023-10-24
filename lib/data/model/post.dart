@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:team_project/data/model/user.dart';
 
 class Post {
@@ -6,6 +5,7 @@ class Post {
   String title;
   String content;
   User user;
+  int price;
   String created;
   String updated;
 
@@ -14,6 +14,7 @@ class Post {
     required this.title,
     required this.content,
     required this.user,
+    required this.price,
     required this.created,
     required this.updated,
   });
@@ -24,6 +25,7 @@ class Post {
         "title": title,
         "content": content,
         "user": user,
+        "price": price,
         "String": created,
         "String": updated,
       };
@@ -33,6 +35,7 @@ class Post {
       : id = json["id"],
         title = json["title"],
         content = json["content"],
+        price = json["price"],
         user = User.fromJson(json["user"]),
         created = json["created"],
         updated = json["updated"];

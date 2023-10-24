@@ -1,9 +1,7 @@
-import 'package:intl/intl.dart';
-
 class User {
   int? id;
   String? username;
-  int? password;
+  String? password;
   String? userPicUrl;
   String? location;
   String? created;
@@ -34,7 +32,7 @@ class User {
         password = json["password"],
         userPicUrl = json["userPicUrl"],
         location = json["location"],
-        created = json["created"]; // 3
+        created = json["created"]; //
 
   @override
   String toString() {

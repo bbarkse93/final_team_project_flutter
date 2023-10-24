@@ -24,7 +24,7 @@ class PostListViewModel extends StateNotifier<PostListModel?> {
 
     ResponseDTO responseDTO = await PostRepository().fetchPostList(sessionStore.jwt!);
 
-    state = PostListModel(responseDTO.data);
+    state = PostListModel(responseDTO.response);
   }
 }
 
