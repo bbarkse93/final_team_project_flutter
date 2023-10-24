@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_product_info.dart';
 import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_top.dart';
-import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/user_profile.dart';
+import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_user_profile.dart';
 
 class PostDetailBody extends StatelessWidget {
   const PostDetailBody({super.key});

@@ -1,8 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DetailBottomButton extends StatelessWidget {
+class DetailBottomButton extends StatefulWidget {
   const DetailBottomButton({super.key});
+
+  @override
+  State<DetailBottomButton> createState() => _DetailBottomButtonState();
+}
+
+class _DetailBottomButtonState extends State<DetailBottomButton> {
+  bool isHearted = false;
+
+  void toggleHeart() {
+    setState(() {
+      isHearted = !isHearted;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +24,12 @@ class DetailBottomButton extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(CupertinoIcons.heart),
-            onPressed: () {},
+            icon: Icon(
+                isHearted ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+                color: isHearted ? Colors.red : null),
+            onPressed: () {
+              toggleHeart();
+            },
           ),
           Expanded(
             child: Container(
