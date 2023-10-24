@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/auth/join_page/widgets/join_form.dart';
+import 'package:team_project/ui/pages/auth/join_page/join_page_widgets/join_form.dart';
 import 'package:team_project/widgets/custom_logo.dart';
 import 'package:team_project/widgets/custom_text_button.dart';
 
