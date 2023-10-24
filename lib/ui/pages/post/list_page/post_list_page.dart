@@ -21,6 +21,7 @@ class PostListPage extends ConsumerWidget {
 
       drawer: CustomNavigation(scaffoldKey),
       appBar: PostBuildAppBar("부전"),
+
       body: RefreshIndicator(
         key: refreshKey,
         onRefresh: () async {

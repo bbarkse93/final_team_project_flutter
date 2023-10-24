@@ -34,6 +34,8 @@ class Post {
         "updated": updated,
         "heartCount": heartCount,
         "commentCount": commentCount,
+        "String": created,
+        "String": updated,
       };
 
   // Map 형태로 받아서 Dart 객체로 변환
