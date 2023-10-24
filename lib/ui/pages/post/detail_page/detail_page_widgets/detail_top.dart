@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_more_button.dart';
+
 
 class DetailTop extends StatelessWidget {
   const DetailTop({
@@ -11,6 +13,7 @@ class DetailTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+
       backgroundColor: Colors.transparent,
       leading: Icon(Icons.arrow_back_ios_new),
       actions: [
