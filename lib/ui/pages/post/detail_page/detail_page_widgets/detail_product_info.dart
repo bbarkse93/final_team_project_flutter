@@ -15,17 +15,21 @@ class DetailProductInfo extends ConsumerWidget {
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _productName(productName: "${post.productName}"),
-        SizedBox(height: smallGap),
-        _productCategory(categoty: "${post.category}", time: "${post.created}"),
-        SizedBox(height: smallGap),
-        _productDescription(
-          productDescription: post.content,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(13.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _productName(productName: "${post.productName}"),
+          SizedBox(height: smallGap),
+          _productCategory(
+              categoty: "${post.category}", time: "${post.created}"),
+          SizedBox(height: smallGap),
+          _productDescription(
+            productDescription: post.content,
+          ),
+        ],
+      ),
     );
   }
 }
