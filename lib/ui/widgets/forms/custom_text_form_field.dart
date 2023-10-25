@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hint;
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: "Enter $hint",
+        hintStyle: TextStyle(color: kCarrotColor),
         enabledBorder: OutlineInputBorder(
           // 3. 기본 TextFormField 디자인
           borderRadius: BorderRadius.circular(20),

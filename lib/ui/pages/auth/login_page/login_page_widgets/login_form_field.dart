@@ -5,8 +5,8 @@ import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/user_request.dart';
 import 'package:team_project/data/store/session_store.dart';
-import 'package:team_project/ui/widgets/custom_auth_text_form_field.dart';
-import 'package:team_project/ui/widgets/custom_elavated_button.dart';
+import 'package:team_project/ui/widgets/buttons/custom_elavated_button.dart';
+import 'package:team_project/ui/widgets/forms/custom_auth_text_form_field.dart';
 
 class LoginFormField extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>(); // 바텀네비게이션바
@@ -46,8 +46,7 @@ class LoginFormField extends ConsumerWidget {
                 funPageRoute: () {
                   Logger().d("로그인 버튼이 클릭됬습니다.");
                   if (_formKey.currentState!.validate()) {
-                    LoginReqDTO loginReqDTO = LoginReqDTO(
-                        username: _username.text, password: _password.text);
+                    LoginReqDTO loginReqDTO = LoginReqDTO(username: _username.text, password: _password.text);
                     ref.read(sessionProvider).login(loginReqDTO);
                   }
                 })
