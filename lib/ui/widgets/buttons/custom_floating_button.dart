@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:team_project/_core/constants/size.dart';
 
 class CustomFloationButton extends StatelessWidget {
   const CustomFloationButton({super.key});
@@ -15,7 +16,10 @@ class CustomFloationButton extends StatelessWidget {
         SpeedDialChild(
             child: const Icon(Icons.settings_sharp, color: Colors.white),
             label: "설정",
-            labelStyle: const TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 13.0),
+            labelStyle: const TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+                fontSize: fontSmall),
             backgroundColor: Colors.indigo.shade900,
             labelBackgroundColor: Colors.indigo.shade900,
             onTap: () {}),
@@ -27,7 +31,10 @@ class CustomFloationButton extends StatelessWidget {
           label: "내 기록",
           backgroundColor: Colors.indigo.shade900,
           labelBackgroundColor: Colors.indigo.shade900,
-          labelStyle: const TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 13.0),
+          labelStyle: const TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+              fontSize: fontSmall),
           onTap: () {},
         )
       ],

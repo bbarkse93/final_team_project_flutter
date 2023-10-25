@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class UserProfile extends StatelessWidget {
@@ -23,18 +24,17 @@ class UserProfile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "${username}",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+                  Text("${username}",
+                      style: TextStyle(
+                          fontSize: fontMedium, fontWeight: FontWeight.bold)),
                   Text("${location}",
-                      style: TextStyle(color: Colors.grey, fontSize: 12)),
+                      style: TextStyle(fontSize: fontSmall, color: kHintColor)),
                 ],
               ),
             ),
           ],
         ),
-        Divider(thickness: 1, color: Colors.grey),
+        Divider(thickness: 1, color: kHintColor),
       ],
     );
   }

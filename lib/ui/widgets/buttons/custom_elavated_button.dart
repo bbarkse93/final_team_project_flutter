@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
@@ -14,7 +15,7 @@ class CustomElevatedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        backgroundColor: Color(0xFFFF7E00),
+        backgroundColor: kCarrotColor,
       ),
       onPressed: funPageRoute,
       child: Text("$text"),

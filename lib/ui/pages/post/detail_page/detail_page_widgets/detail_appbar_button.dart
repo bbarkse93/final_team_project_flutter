@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class DetailAppbarButton extends StatelessWidget {
@@ -19,13 +20,13 @@ class DetailAppbarButton extends StatelessWidget {
                   children: [
                     TextButton(
                         child: Text("수정하기",
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black)),
+                            style: TextStyle(
+                                fontSize: fontMedium, color: kDarkColor)),
                         onPressed: () {}),
                     TextButton(
                         child: Text("삭제하기",
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black)),
+                            style: TextStyle(
+                                fontSize: fontMedium, color: kDarkColor)),
                         onPressed: () {}),
                   ],
                 ),

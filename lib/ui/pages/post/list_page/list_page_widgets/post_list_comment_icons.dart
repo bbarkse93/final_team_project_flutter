@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/size.dart';
 
 class PostListCommentIcons extends StatelessWidget {
   final IconData iconData;
@@ -10,7 +11,7 @@ class PostListCommentIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(iconData, size: 14.0),
+        Icon(iconData, size: fontMedium),
         const SizedBox(width: 4.0),
         Text('$count'),
       ],

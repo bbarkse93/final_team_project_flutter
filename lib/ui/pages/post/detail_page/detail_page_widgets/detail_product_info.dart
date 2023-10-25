@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/mock/post.dart';
 import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
@@ -46,7 +47,7 @@ class _productName extends StatelessWidget {
     return Container(
       child: Text(
         "${productName}",
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: fontLarge, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -63,7 +64,7 @@ class _productCategory extends StatelessWidget {
     return Container(
       child: Text(
         "${categoty} • ${time}",
-        style: TextStyle(fontSize: 12, color: Colors.grey),
+        style: TextStyle(fontSize: fontSmall, color: kHintColor),
       ),
     );
   }

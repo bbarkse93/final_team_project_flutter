@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
+import 'package:team_project/_core/constants/size.dart';
 
 class DetailBottomButton extends StatefulWidget {
   const DetailBottomButton({super.key});
@@ -34,12 +36,12 @@ class _DetailBottomButtonState extends State<DetailBottomButton> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 126, 00, 1),
+                color: kCarrotColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextButton(
                 child: Text("채팅 하기",
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
+                    style: TextStyle(fontSize: fontLarge, color: Colors.white)),
                 onPressed: () {},
               ),
             ),

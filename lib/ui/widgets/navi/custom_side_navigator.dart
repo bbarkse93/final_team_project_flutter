@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/store/session_store.dart';
 
-class CustomNavigation extends ConsumerWidget {
+class CustomSideNavigator extends ConsumerWidget {
   final scaffoldKey;
-  const CustomNavigation(this.scaffoldKey, {Key? key}) : super(key: key);
+  const CustomSideNavigator(this.scaffoldKey, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,9 +28,9 @@ class CustomNavigation extends ConsumerWidget {
                 child: const Text(
                   "글쓰기",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: fontLarge,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54,
+                    color: kDarkColor,
                   ),
                 ),
               ),
@@ -42,9 +43,9 @@ class CustomNavigation extends ConsumerWidget {
                 child: const Text(
                   "로그아웃",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: fontLarge,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54,
+                    color: kDarkColor,
                   ),
                 ),
               ),
