@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PostPopupMenuButton extends StatelessWidget {
+class PostListAppBarButton extends StatelessWidget {
   final IconData iconName;
 
-  PostPopupMenuButton(this.iconName);
+  PostListAppBarButton(this.iconName);
 
   @override
   Widget build(BuildContext context) {
