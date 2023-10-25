@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class DetailBottomButton extends StatefulWidget {
   const DetailBottomButton({super.key});
 
@@ -25,14 +24,12 @@ class _DetailBottomButtonState extends State<DetailBottomButton> {
       child: Row(
         children: [
           IconButton(
-
             icon: Icon(
                 isHearted ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
                 color: isHearted ? Colors.red : null),
             onPressed: () {
               toggleHeart();
             },
-
           ),
           Expanded(
             child: Container(
