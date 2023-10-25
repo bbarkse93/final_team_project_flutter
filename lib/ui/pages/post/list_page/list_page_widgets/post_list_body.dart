@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/mock/post.dart';
+import 'package:team_project/data/store/param_store.dart';
+import 'package:team_project/ui/pages/post/detail_page/post_detail_page.dart';
 import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_item.dart';
 import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
 
@@ -26,11 +28,11 @@ class PostListBody extends ConsumerWidget {
         return InkWell(
             onTap: () {
               // 1. postId를 paramStore 에 저장
-              // ParamStore paramStore = ref.read(paramProvider);
-              // paramStore.postDetailId = posts[index].id;
+              ParamStore paramStore = ref.read(paramProvider);
+              paramStore.postDetailId = postList[index].id;
 
               // 2. 화면 이동
-              // Navigator.push(context, MaterialPageRoute(builder: (_) => PostDetailPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) => PostDetailPage()));
             },
             child: PostListItem(postList[index]));
       },
