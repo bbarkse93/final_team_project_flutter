@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:team_project/ui/pages/post/list_page/widgets/post_popup_menu_button.dart';
+import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_popup_menu_button.dart';
 
 class PostBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String location;

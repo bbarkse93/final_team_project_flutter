@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/mock/post.dart';
+import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_item.dart';
 import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
-import 'package:team_project/ui/pages/post/list_page/widgets/post_list_item.dart';
 
 class PostListBody extends ConsumerWidget {
   const PostListBody({super.key});

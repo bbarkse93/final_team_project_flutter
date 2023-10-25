@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_build_appbar.dart';
+import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_body.dart';
 import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
-import 'package:team_project/ui/pages/post/list_page/widgets/post_build_appbar.dart';
-import 'package:team_project/ui/pages/post/list_page/widgets/post_list_body.dart';
 import 'package:team_project/ui/widgets/custom_navigator.dart';
 
 class PostListPage extends ConsumerWidget {
