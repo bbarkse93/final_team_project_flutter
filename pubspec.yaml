@@ -45,6 +45,7 @@ dependencies:
   logger: ^2.0.2+1 # 콘솔창에서 결과물을 쉽게 확인할 수 있도록 하는 Log 라이브러리입니다.
   flutter_secure_storage: ^9.0.0 # 어플리케이션 Secure Storage를 쉽게 사용할 수 있도록 도와주는 라이브러리입니다.
   animated_splash_screen: ^1.0.1+2 # 어플 실행시 로딩화면 설정하는 라이브러리입니다.
+  flutter_speed_dial: ^7.0.0
 
 
 
