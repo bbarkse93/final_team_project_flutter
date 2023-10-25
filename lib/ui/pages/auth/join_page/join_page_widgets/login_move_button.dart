@@ -7,11 +7,8 @@ class LoginMoveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextButton(
-      "로그인 페이지로 이동",
-      () {
-        Navigator.pushNamed(context, Move.loginPage);
-      },
-    );
+    return CustomTextButton("로그인 페이지로 이동", () {
+      Navigator.pushNamed(context, Move.loginPage);
+    });
   }
 }

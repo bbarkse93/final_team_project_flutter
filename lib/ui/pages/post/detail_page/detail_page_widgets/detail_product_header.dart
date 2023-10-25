@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:logger/logger.dart';
-import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/data/mock/post.dart';
-import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_more_button.dart';
+import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_appbar_button.dart';
 import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
 
-class DetailTop extends ConsumerWidget {
-  const DetailTop({
+class DetailProductHeader extends ConsumerWidget {
+  const DetailProductHeader({
     super.key,
   });
 
@@ -20,15 +16,18 @@ class DetailTop extends ConsumerWidget {
     }
     return SliverAppBar(
       backgroundColor: Colors.transparent,
-      leading: Icon(Icons.arrow_back_ios_new),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios_new),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       actions: [
-        IconButton(icon: Icon(Icons.ios_share), onPressed: () {}),
-        SizedBox(width: smallGap),
-        DetailMoreButton(),
+        DetailAppbarButton(),
       ],
       expandedHeight: 300,
       flexibleSpace: Container(
-        child: Image.network("${post.productPicUrl}", fit: BoxFit.cover),
+        child: Image.asset("assets/carrot_image.png", fit: BoxFit.cover),
       ),
     );
   }
