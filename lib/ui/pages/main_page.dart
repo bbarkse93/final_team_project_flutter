@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project/ui/pages/post/list_page/post_list_page.dart';
-import 'package:team_project/ui/widgets/custom_floating_button.dart';
+import 'package:team_project/ui/widgets/buttons/custom_floating_button.dart';
 
 class MainPage extends StatefulWidget {
   @override

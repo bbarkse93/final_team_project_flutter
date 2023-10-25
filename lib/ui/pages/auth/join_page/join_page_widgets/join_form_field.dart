@@ -4,8 +4,8 @@ import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/user_request.dart';
 import 'package:team_project/data/store/session_store.dart';
-import 'package:team_project/ui/widgets/custom_auth_text_form_field.dart';
-import 'package:team_project/ui/widgets/custom_elavated_button.dart';
+import 'package:team_project/ui/widgets/buttons/custom_elavated_button.dart';
+import 'package:team_project/ui/widgets/forms/custom_auth_text_form_field.dart';
 
 class JoinFormField extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
