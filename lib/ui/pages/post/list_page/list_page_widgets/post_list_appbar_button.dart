@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/size.dart';
 
 class PostListAppBarButton extends StatelessWidget {
   final IconData iconName;
@@ -10,7 +11,7 @@ class PostListAppBarButton extends StatelessWidget {
     return PopupMenuButton(
       icon: Icon(
         iconName,
-        size: 15.0,
+        size: fontMedium,
       ),
       position: PopupMenuPosition.over,
       itemBuilder: (BuildContext context) {

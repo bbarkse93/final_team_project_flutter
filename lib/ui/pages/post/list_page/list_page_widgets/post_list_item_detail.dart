@@ -18,12 +18,15 @@ class PostListItemDetail extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${post.productName}", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0, color: kDarkColor)),
-          const SizedBox(height: 4.0),
           Text(
-            "${post.content}",
-            style: TextStyle(color: kHintColor),
+            "${post.productName}",
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: fontMedium,
+                color: kDarkColor),
           ),
+          const SizedBox(height: 4.0),
+          Text("${post.content}", style: TextStyle(color: kHintColor)),
           const SizedBox(height: 4.0),
           Text(
             "${numberFormat(post.price)}원",

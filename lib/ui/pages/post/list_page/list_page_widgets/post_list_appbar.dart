@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_appbar_button.dart';
 
 class PostListAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -27,7 +28,7 @@ class PostListAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(0.5),
-        child: Divider(thickness: 0.5, height: 0.5, color: Colors.grey),
+        child: Divider(thickness: 0.5, height: 0.5, color: kHintColor),
       ),
     );
   }
