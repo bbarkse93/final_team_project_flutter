@@ -27,38 +27,38 @@ class SessionStore extends SessionUser {
     ResponseDTO responseDTO = await UserRepository().fetchJoin(joinReqDTO);
 
     // 2. 비지니스 로직
-    if (responseDTO.code == 1) {
+    if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.loginPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
     Logger().d("창고 코드로 넘어왔어요!");
     // 1. 통신 코드
-    // ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
+    ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
 
     Logger().d("통신코드를 넘어왔어요!");
 
     // 2. 비지니스 로직
-    // if (responseDTO.code == 1) {
-    //   // 1. 세션값 갱신
-    //   this.user = responseDTO.data as User;
-    //   this.jwt = responseDTO.token;
-    this.isLogin = true;
+    if (responseDTO.success == true) {
+      //   // 1. 세션값 갱신
+      this.user = responseDTO.response as User;
+      this.jwt = responseDTO.token;
+      this.isLogin = true;
 
-    // 2. 디바이스에 JWT 저장 (자동 로그인)
-    // await secureStorage.write(key: "jwt", value: responseDTO.token);
-    Logger().d("고지가 눈앞이에요!");
+      // 2. 디바이스에 JWT 저장 (자동 로그인)
+      await secureStorage.write(key: "jwt", value: responseDTO.token);
+      Logger().d("고지가 눈앞이에요!");
 
-    // 3. 페이지 이동
-    Navigator.pushNamed(mContext!, Move.mainPage);
+      // 3. 페이지 이동
+      Navigator.pushNamed(mContext!, Move.mainPage);
 
-    Logger().d("뭔가 문제가 있어요!");
-    // } else {
-    //   ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.msg)));
-    // }
+      Logger().d("뭔가 문제가 있어요!");
+    } else {
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+    }
   }
 
 // JWT는 로그아웃할 때 서버측으로 요청할 필요가 없음.

@@ -17,15 +17,13 @@ MaterialColor primaryWhite = MaterialColor(
 );
 
 ThemeData theme() {
-  return ThemeData(
-    primarySwatch: primaryWhite,
-    appBarTheme: appBarTheme(),
-  );
+  return ThemeData(appBarTheme: appBarTheme(), fontFamily: 'carrot');
 }
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+    titleTextStyle:
+        TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'carrot'),
     centerTitle: true,
     backgroundColor: Color.fromRGBO(255, 255, 255, 1),
     elevation: 1,
