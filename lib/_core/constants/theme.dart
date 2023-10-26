@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
+import 'package:team_project/_core/constants/size.dart';
 
 MaterialColor primaryWhite = MaterialColor(
   0xFFFFFFFF,
@@ -22,10 +24,10 @@ ThemeData theme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    titleTextStyle:
-        TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'carrot'),
+    titleTextStyle: TextStyle(
+        color: Colors.white, fontSize: fontLarge, fontFamily: 'carrot'),
     centerTitle: true,
-    backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+    backgroundColor: kCarrotColor,
     elevation: 1,
   );
 }
