@@ -4,11 +4,14 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class PictureAddForm extends StatefulWidget {
-  const PictureAddForm({
+  final int maxImages;
+  PictureAddForm({
     super.key,
+    this.maxImages = 10,
   });
 
   @override
@@ -17,6 +20,12 @@ class PictureAddForm extends StatefulWidget {
 
 class _PictureAddFormState extends State<PictureAddForm> {
   File? _selectedImage;
+  List<Widget> images = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,25 +58,105 @@ class _PictureAddFormState extends State<PictureAddForm> {
               ),
               onPressed: () {
                 _pickImageFromGallery();
+                // 추가 버튼 누르면 새로운 버튼 추가
+                setState(() {});
               }),
         ),
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 75,
-                  width: 75,
-                  child: _selectedImage != null
-                      ? Image.file(
-                          _selectedImage!,
-                          fit: BoxFit.cover,
-                        )
-                      : Text(""),
-                ),
-              ],
+            child: GestureDetector(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                  SizedBox(width: smallGap),
+                  SizedBox(
+                    height: 75,
+                    width: 75,
+                    child: _selectedImage != null
+                        ? Image.file(
+                            _selectedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Text(""),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -92,7 +181,7 @@ class _PictureAddFormState extends State<PictureAddForm> {
         // 디코딩화 코드
         List<int> base64Decode(String encoded) {
           List<int> decode = base64.decode(encoded);
-          print(decode);
+          Logger().d(decode);
 
           // print(utf8.decode(decode)); //
 
