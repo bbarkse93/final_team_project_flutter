@@ -52,7 +52,7 @@ class _PictureAddFormState extends State<PictureAddForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "/10",
+                          "${allImage.length}/10",
                           style: TextStyle(color: Colors.black54),
                         ),
                         Icon(
@@ -75,12 +75,18 @@ class _PictureAddFormState extends State<PictureAddForm> {
             scrollDirection: Axis.horizontal,
             itemCount: allImage.length,
             itemBuilder: (context, index) {
-              return SizedBox(
-                height: 75,
-                width: 75,
-                child: Image.file(
-                  allImage[index],
-                  fit: BoxFit.cover,
+              return Padding(
+                padding: const EdgeInsets.only(right: smallGap),
+                child: SizedBox(
+                  height: 75,
+                  width: 75,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(
+                      allImage[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               );
             },

@@ -23,7 +23,8 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
       child: ListView(
         children: [
           //PictureAddForm(),
-          SizedBox(
+          Container(
+            padding: EdgeInsets.only(right: smallGap),
             height: 75,
             child: PictureAddForm(),
           ),
@@ -84,8 +85,7 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
           TextFormFieldTitle(),
           TextFormField(
             decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 100, horizontal: 16),
+              contentPadding: EdgeInsets.symmetric(horizontal: 16),
               hintText: "올릴 게시글 내용을 작성해주세요.",
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.black26),
