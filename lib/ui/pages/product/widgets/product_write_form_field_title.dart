@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class TextFormFieldTitle extends StatelessWidget {
+  final text;
   const TextFormFieldTitle({
     super.key,
+    required this.text,
   });
 
   @override
@@ -11,7 +13,7 @@ class TextFormFieldTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: smallGap),
       child: Text(
-        "제목",
+        "$text",
         style: TextStyle(fontSize: 18),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class WriteTextFormField extends StatelessWidget {
+  final hintText;
   const WriteTextFormField({
     super.key,
+    required this.hintText,
   });
 
   @override
@@ -16,7 +18,9 @@ class WriteTextFormField extends StatelessWidget {
           //ref.read(productFromPrivder.notifier).setTitle(value);
         },
         decoration: InputDecoration(
-          hintText: "제목",
+          hintText: "$hintText",
+          hintStyle: TextStyle(fontSize: 15),
+          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black26),
             borderRadius: BorderRadius.circular(5),

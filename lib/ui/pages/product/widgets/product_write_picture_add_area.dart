@@ -8,18 +8,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:team_project/_core/constants/size.dart';
 
-class PictureAddForm extends StatefulWidget {
+class PictureAddArea extends StatefulWidget {
   final int maxImages;
-  PictureAddForm({
+  PictureAddArea({
     super.key,
     this.maxImages = 10,
   });
 
   @override
-  State<PictureAddForm> createState() => _PictureAddFormState();
+  State<PictureAddArea> createState() => _PictureAddFormState();
 }
 
-class _PictureAddFormState extends State<PictureAddForm> {
+class _PictureAddFormState extends State<PictureAddArea> {
   File? _selectedImage;
   List<File> allImage = [];
   List<String> encodedAllImage = [];

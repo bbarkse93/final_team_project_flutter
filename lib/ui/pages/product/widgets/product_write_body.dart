@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/product/widgets/picture_add_form.dart';
-import 'package:team_project/ui/pages/product/widgets/text_form_field_title.dart';
-import 'package:team_project/ui/pages/product/widgets/write_text_form_field.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_choice_button.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_description_text_form_field.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_form_field_title.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_picture_add_area.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_suggest_ckeck_box.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_text_form_field.dart';
 
 class ProductWriteBody extends StatefulWidget {
   ProductWriteBody({super.key});
@@ -14,7 +17,7 @@ class ProductWriteBody extends StatefulWidget {
 class _ProductWriteBodyState extends State<ProductWriteBody> {
   bool isChecked = true;
   final _productName = TextEditingController();
-
+  final _productPrice = TextEditingController();
   final _productDescription = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -26,85 +29,19 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
           Container(
             padding: EdgeInsets.only(right: smallGap),
             height: 75,
-            child: PictureAddForm(),
-          ),
-
-          SizedBox(height: mediumGap),
-          TextFormFieldTitle(),
-          WriteTextFormField(),
-          SizedBox(height: mediumGap),
-          TextFormFieldTitle(),
-          Row(
-            children: [
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25))),
-                child: Text(
-                  "판매하기",
-                  style: TextStyle(color: Colors.black),
-                ),
-                onPressed: () {},
-              ),
-              SizedBox(width: xsmallGap),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25))),
-                child: Text(
-                  "나눔하기",
-                  style: TextStyle(color: Colors.black),
-                ),
-                onPressed: () {},
-              ),
-              SizedBox()
-            ],
-          ),
-          WriteTextFormField(),
-          Row(
-            children: [
-              Checkbox(
-                  fillColor: MaterialStateProperty.resolveWith((states) {
-                    if (states.contains(MaterialState.selected)) {
-                      return Color.fromRGBO(255, 126, 0, 1);
-                    }
-                    return null;
-                  }),
-                  value: isChecked,
-                  onChanged: (value) {}),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "가격 제안하기",
-                  style: TextStyle(fontSize: 18, color: Colors.black),
-                ),
-              ),
-            ],
+            child: PictureAddArea(),
           ),
           SizedBox(height: mediumGap),
-          TextFormFieldTitle(),
-          TextFormField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 16),
-              hintText: "올릴 게시글 내용을 작성해주세요.",
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black26),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black26),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black26),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black26),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
+          TextFormFieldTitle(text: "제목"),
+          WriteTextFormField(hintText: "제목"),
+          SizedBox(height: mediumGap),
+          TextFormFieldTitle(text: "가격"),
+          ChoiceButton(),
+          WriteTextFormField(hintText: "￦ 가격을 입력해주세요."),
+          SuggestCheckBox(isChecked: isChecked),
+          SizedBox(height: mediumGap),
+          TextFormFieldTitle(text: "상품 설명"),
+          DescriptionTextFormField(),
         ],
       ),
     );
