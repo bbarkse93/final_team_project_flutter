@@ -10,6 +10,11 @@ class WriteTextFormField extends StatelessWidget {
     return Container(
       height: 45,
       child: TextFormField(
+        // TODO: Controller말고 onChanged로 입력값 받는 연습
+        onChanged: (value) {
+          print(value);
+          //ref.read(productFromPrivder.notifier).setTitle(value);
+        },
         decoration: InputDecoration(
           hintText: "제목",
           enabledBorder: OutlineInputBorder(

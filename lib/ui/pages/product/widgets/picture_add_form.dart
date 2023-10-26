@@ -2,13 +2,17 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class PictureAddForm extends StatefulWidget {
-  const PictureAddForm({
+  final int maxImages;
+  PictureAddForm({
     super.key,
+    this.maxImages = 10,
   });
 
   @override
@@ -17,6 +21,13 @@ class PictureAddForm extends StatefulWidget {
 
 class _PictureAddFormState extends State<PictureAddForm> {
   File? _selectedImage;
+  List<File> allImage = [];
+  List<String> encodedAllImage = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,80 +35,82 @@ class _PictureAddFormState extends State<PictureAddForm> {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: smallGap),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 75,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "/10",
-                      style: TextStyle(color: Colors.black54),
+          child: Consumer(
+            builder: (context, ref, child) {
+              //TODO : ref접근
+              return OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Icon(
-                      CupertinoIcons.photo_camera_solid,
-                      color: Colors.black54,
+                  ),
+                  child: SizedBox(
+                    width: 50,
+                    height: 75,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${allImage.length}/10",
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                        Icon(
+                          CupertinoIcons.photo_camera_solid,
+                          color: Colors.black54,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              onPressed: () {
-                _pickImageFromGallery();
-              }),
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 75,
-                  width: 75,
-                  child: _selectedImage != null
-                      ? Image.file(
-                          _selectedImage!,
-                          fit: BoxFit.cover,
-                        )
-                      : Text(""),
-                ),
-              ],
-            ),
+                  ),
+                  onPressed: () {
+                    _pickImageFromGallery();
+                    // 추가 버튼 누르면 새로운 버튼 추가
+                    setState(() {});
+                  });
+            },
           ),
         ),
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: allImage.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: smallGap),
+                child: SizedBox(
+                  height: 75,
+                  width: 75,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(
+                      allImage[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        )
       ],
     );
   }
 
   void _pickImageFromGallery() async {
-    final pickedImage =
+    XFile? pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
+      Uint8List temp = await pickedImage.readAsBytes();
+      List<int> real = temp.toList();
+      String dd = base64Encode(real);
+
       setState(() {
         _selectedImage = File(pickedImage.path);
-        // 인코딩화
-        String base64Encode(String pickImage) {
-          String encode = base64.encode(utf8.encode(pickImage));
-          print(encode); //bWVzc2FnZSDsnoXri4jri6QuLUJBU0U2NA==
 
-          return encode;
-        }
+        List<File> temp = allImage;
+        temp.add(_selectedImage!);
 
-        // 디코딩화 코드
-        List<int> base64Decode(String encoded) {
-          List<int> decode = base64.decode(encoded);
-          print(decode);
-
-          // print(utf8.decode(decode)); //
-
-          return decode;
-        }
+        encodedAllImage.add(dd);
+        allImage = temp;
       });
     }
   }
