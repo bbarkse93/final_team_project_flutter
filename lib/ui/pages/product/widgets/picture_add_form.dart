@@ -37,8 +37,7 @@ class _PictureAddFormState extends State<PictureAddForm> {
           padding: const EdgeInsets.only(right: smallGap),
           child: Consumer(
             builder: (context, ref, child) {
-              //
-
+              //TODO : ref접근
               return OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -115,6 +114,4 @@ class _PictureAddFormState extends State<PictureAddForm> {
       });
     }
   }
-
-  // 인코딩화
 }
