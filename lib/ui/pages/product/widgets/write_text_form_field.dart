@@ -10,6 +10,10 @@ class WriteTextFormField extends StatelessWidget {
     return Container(
       height: 45,
       child: TextFormField(
+        onChanged: (value) {
+          print(value);
+          //ref.read(productFromPrivder.notifier).setTitle(value);
+        },
         decoration: InputDecoration(
           hintText: "제목",
           enabledBorder: OutlineInputBorder(
