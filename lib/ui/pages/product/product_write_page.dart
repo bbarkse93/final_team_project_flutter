@@ -26,25 +26,6 @@ class ProductWritePage extends StatelessWidget {
         ],
       ),
       body: ProductWriteBody(),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(20),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              backgroundColor: Color.fromRGBO(255, 126, 0, 1)),
-          child: Text(
-            '작성완료',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          onPressed: () {},
-        ),
-      ),
     );
   }
 }

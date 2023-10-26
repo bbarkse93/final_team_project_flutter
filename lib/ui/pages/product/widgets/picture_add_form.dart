@@ -1,10 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/_core/utils/my_base64_util.dart';
 
 class PictureAddForm extends StatefulWidget {
   const PictureAddForm({
@@ -76,29 +76,15 @@ class _PictureAddFormState extends State<PictureAddForm> {
   }
 
   void _pickImageFromGallery() async {
-    final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       setState(() {
         _selectedImage = File(pickedImage.path);
-        // 인코딩화
-        String base64Encode(String pickImage) {
-          String encode = base64.encode(utf8.encode(pickImage));
-          print(encode); //bWVzc2FnZSDsnoXri4jri6QuLUJBU0U2NA==
-
-          return encode;
-        }
-
-        // 디코딩화 코드
-        List<int> base64Decode(String encoded) {
-          List<int> decode = base64.decode(encoded);
-          print(decode);
-
-          // print(utf8.decode(decode)); //
-
-          return decode;
-        }
       });
+
+      // 인코딩 진행 코드
+      String encodeImagePath = base64Encode(pickedImage.path);
+      print("갤러리에서 들고오는 겁니다 : ${encodeImagePath}");
     }
   }
 }

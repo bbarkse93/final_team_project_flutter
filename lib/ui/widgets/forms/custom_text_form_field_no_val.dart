@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormFieldNoVal extends StatelessWidget {
   final String hint;
-  final bool obscureText;
-  final funValidator;
   final TextEditingController controller;
-  final String? initValue;
+  final String? initValue; // 초기값 설정 할수 있음, 값이 없다면 공백을 처리 한다.
 
-  const CustomTextFormField({
+  const CustomTextFormFieldNoVal({
     Key? key,
     required this.hint,
-    this.obscureText = false,
-    required this.funValidator,
     required this.controller,
     this.initValue = "",
   }) : super(key: key);
@@ -24,8 +20,6 @@ class CustomTextFormField extends StatelessWidget {
     }
     return TextFormField(
       controller: controller,
-      validator: funValidator,
-      obscureText: obscureText,
       decoration: InputDecoration(
         hintText: "Enter $hint",
         hintStyle: TextStyle(color: kHintColor),
