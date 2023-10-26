@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/ui/pages/product/widgets/picture_add_form.dart';
+import 'package:team_project/ui/pages/product/widgets/text_form_field_title.dart';
+import 'package:team_project/ui/pages/product/widgets/write_text_form_field.dart';
 
 class ProductWriteBody extends StatefulWidget {
-  const ProductWriteBody({super.key});
+  ProductWriteBody({super.key});
 
   @override
   State<ProductWriteBody> createState() => _ProductWriteBodyState();
@@ -11,6 +13,9 @@ class ProductWriteBody extends StatefulWidget {
 
 class _ProductWriteBodyState extends State<ProductWriteBody> {
   bool isChecked = true;
+  final _productName = TextEditingController();
+
+  final _productDescription = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -20,7 +25,7 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProductPictureButton(),
+              PictureAddForm(),
               SizedBox(height: mediumGap),
               TextFormFieldTitle(),
               WriteTextFormField(),
@@ -102,92 +107,6 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class TextFormFieldTitle extends StatelessWidget {
-  const TextFormFieldTitle({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: smallGap),
-      child: Text(
-        "제목",
-        style: TextStyle(fontSize: 18),
-      ),
-    );
-  }
-}
-
-class WriteTextFormField extends StatelessWidget {
-  const WriteTextFormField({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      child: TextFormField(
-        decoration: InputDecoration(
-          hintText: "제목",
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(5),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ProductPictureButton extends StatelessWidget {
-  const ProductPictureButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      child: SizedBox(
-        width: 50,
-        height: 75,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              CupertinoIcons.photo_camera_solid,
-              color: Colors.black54,
-            ),
-            Text(
-              "/10",
-              style: TextStyle(color: Colors.black54),
-            ),
-          ],
-        ),
-      ),
-      onPressed: () {},
     );
   }
 }
