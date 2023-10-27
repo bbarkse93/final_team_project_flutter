@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/data/dto/product_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
-import 'package:team_project/data/repository/post_repository.dart';
+import 'package:team_project/data/repository/product_repository.dart';
 import 'package:team_project/main.dart';
 
 class ProductWriteModel {
@@ -28,13 +28,15 @@ class ProductWriteStore extends ProductWriteModel {
 
   Future<void> save(ProductWriteDTO productWriteDTO) async {
     // 1. 통신 코드
-    ResponseDTO responseDTO = await PostRepository().fetchSave(productWriteDTO);
+    ResponseDTO responseDTO =
+        await ProductRepository().fetchSave(productWriteDTO);
 
     // 2. 비지니스 로직
     if (responseDTO.success == true) {
-      Navigator.pushNamed(mContext!, Move.postListPage);
+      Navigator.pushNamed(mContext!, Move.productListPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/data/mock/post.dart';
-import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
+import 'package:team_project/ui/pages/product/detail_page/post_detail_view_model.dart';
 
 class DetailProductInfo extends ConsumerWidget {
   const DetailProductInfo({
@@ -12,7 +11,7 @@ class DetailProductInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    PostModel? model = ref.watch(postDetailProvider);
+    ProductModel? model = ref.watch(productDetailProvider);
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     }
@@ -21,13 +20,14 @@ class DetailProductInfo extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _productName(productName: "${post.productName}"),
+          _productName(productName: "${model.product.productName}"),
           SizedBox(height: smallGap),
           _productCategory(
-              categoty: "${post.category}", time: "${post.created}"),
+              categoty: "${model.product.category}",
+              time: "${model.product.created}"),
           SizedBox(height: smallGap),
           _productDescription(
-            productDescription: post.content,
+            productDescription: model.product.content,
           ),
         ],
       ),

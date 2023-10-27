@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_item_detail.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item_detail.dart';
 
-import '../../../../../data/mock/post.dart';
+import '../../../../../data/mock/product.dart';
 
-class PostListItem extends StatelessWidget {
-  final Post post;
+class ProductListItem extends StatelessWidget {
+  final Product product;
 
-  const PostListItem(this.post, {Key? key}) : super(key: key);
+  const ProductListItem(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class PostListItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16.0),
-            PostListItemDetail(post)
+            ProductListItemDetail(product)
           ],
         ),
       ),

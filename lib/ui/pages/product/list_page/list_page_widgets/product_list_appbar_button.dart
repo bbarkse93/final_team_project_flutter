@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 
-class PostListAppBarButton extends StatelessWidget {
+class ProductListAppBarButton extends StatelessWidget {
   final IconData iconName;
 
-  PostListAppBarButton(this.iconName);
+  ProductListAppBarButton(this.iconName);
 
   @override
   Widget build(BuildContext context) {

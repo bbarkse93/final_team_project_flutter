@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:team_project/_core/constants/color.dart';
-import 'package:team_project/data/mock/post.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_comment_icons.dart';
+import 'package:team_project/data/mock/product.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_comment_icons.dart';
 
 import '../../../../../_core/constants/size.dart';
 
-class PostListItemDetail extends StatelessWidget {
-  final Post post;
+class ProductListItemDetail extends StatelessWidget {
+  final Product product;
 
-  const PostListItemDetail(this.post, {Key? key}) : super(key: key);
+  const ProductListItemDetail(this.product, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,17 @@ class PostListItemDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${post.productName}",
+            "${product.productName}",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: fontMedium,
                 color: kDarkColor),
           ),
           const SizedBox(height: 4.0),
-          Text("${post.content}", style: TextStyle(color: kHintColor)),
+          Text("${product.content}", style: TextStyle(color: kHintColor)),
           const SizedBox(height: 4.0),
           Text(
-            "${numberFormat(post.price)}원",
+            "${numberFormat(product.price)}원",
             style: TextStyle(fontSize: fontXlarge, color: Colors.black),
           ),
           const Spacer(),
@@ -37,18 +37,18 @@ class PostListItemDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Visibility(
-                visible: post.commentCount > 0,
-                child: PostListCommentIcons(
+                visible: product.commentCount > 0,
+                child: ProductListCommentIcons(
                   CupertinoIcons.chat_bubble_2,
-                  post.commentCount,
+                  product.commentCount,
                 ),
               ),
               const SizedBox(width: 8.0),
               Visibility(
-                visible: post.heartCount > 0,
-                child: PostListCommentIcons(
+                visible: product.heartCount > 0,
+                child: ProductListCommentIcons(
                   CupertinoIcons.heart_fill,
-                  post.commentCount,
+                  product.commentCount,
                 ),
               )
             ],

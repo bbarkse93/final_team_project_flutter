@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_appbar.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_body.dart';
-import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/post_list_body.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_appbar.dart';
+import 'package:team_project/ui/pages/product/list_page/post_list_view_model.dart';
 import 'package:team_project/ui/widgets/navi/custom_side_navigator.dart';
 
-class PostListPage extends ConsumerWidget {
+class ProductListPage extends ConsumerWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final refreshKey = GlobalKey<RefreshIndicatorState>();
 
-  PostListPage({Key? key}) : super(key: key);
+  ProductListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,14 +19,14 @@ class PostListPage extends ConsumerWidget {
       //Scaffold는 앱의 기본 레이아웃 구조를 나타내는 위젯
       key: scaffoldKey,
       drawer: CustomSideNavigator(scaffoldKey),
-      appBar: PostListAppBar("부전"),
+      appBar: ProductListAppBar("부전"),
 
       body: RefreshIndicator(
         key: refreshKey,
-        child: PostListBody(),
+        child: ProductListBody(),
         onRefresh: () async {
           Logger().d("리플래시됨!");
-          ref.read(postListProvider.notifier).notifyInit();
+          ref.read(productListProvider.notifier).notifyInit();
         },
       ),
     );

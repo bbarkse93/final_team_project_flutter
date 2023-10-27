@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/data/mock/post.dart';
-import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_product_info.dart';
-import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_user_profile.dart';
-import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
+import 'package:team_project/data/mock/product.dart';
+import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_product_info.dart';
+import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_user_profile.dart';
+import 'package:team_project/ui/pages/product/detail_page/post_detail_view_model.dart';
 
-class DetailProductBody extends ConsumerWidget {
-  const DetailProductBody({super.key});
+class DetailProductCore extends ConsumerWidget {
+  const DetailProductCore({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    PostModel? model = ref.watch(postDetailProvider);
+    ProductModel? model = ref.watch(productDetailProvider);
 
-    Post post;
+    Product product;
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
       return SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            post = model.post;
+            product = model.product;
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   UserProfile(
-                    username: "${post.user.username}",
-                    location: "${post.user.location}",
+                    username: "${product.user.username}",
+                    location: "${product.user.location}",
                   ),
                   DetailProductInfo(),
                 ],

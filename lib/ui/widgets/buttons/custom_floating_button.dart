@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/product/product_write_page.dart';
+import 'package:team_project/ui/pages/product/write_page/product_write_page.dart';
 
 class CustomFloationButton extends StatelessWidget {
   const CustomFloationButton({super.key});

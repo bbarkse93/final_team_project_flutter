@@ -3,22 +3,23 @@ import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/dto/product_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 
-import '../mock/post.dart';
+import '../mock/product.dart';
 
-class PostRepository {
-  Future<List<Post>> fetchProductList() {
-    return Future.delayed(Duration(seconds: 3), () => postList);
+class ProductRepository {
+  Future<List<Product>> fetchProductList() {
+    return Future.delayed(Duration(seconds: 3), () => productList);
   }
 
-  Future<Post> fetchProductDetail() {
-    return Future.delayed(Duration(seconds: 3), () => post);
+  Future<Product> fetchProductDetail() {
+    return Future.delayed(Duration(seconds: 3), () => product);
   }
 
   // 통신
   Future<ResponseDTO> fetchSave(ProductWriteDTO productWriteDTO) async {
     try {
       // TODO 요청하는 주소값 확인해야해요!
-      Response<dynamic> response = await dio.post("/TODO", data: productWriteDTO.toJson());
+      Response<dynamic> response =
+          await dio.post("/TODO", data: productWriteDTO.toJson());
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
       return responseDTO;
@@ -32,7 +33,7 @@ class PostRepository {
 // import 'package:dio/dio.dart';
 // import 'package:team_project/_core/constants/http.dart';
 // import 'package:team_project/data/dto/response_dto.dart';
-// import 'package:team_project/data/model/post.dart';
+// import 'package:team_project/data/model/product.dart';
 //
 // // V -> P(전역프로바이더, 뷰모델) -> R
 //

@@ -4,12 +4,12 @@ import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/product_request.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_choice_button.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_description_text_form_field.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_form_field_title.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_picture_add_area.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_suggest_ckeck_box.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_text_form_field.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_choice_button.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_description_text_form_field.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_form_field_title.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_picture_add_area.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_suggest_ckeck_box.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_text_form_field.dart';
 
 class ProductWriteForm extends StatelessWidget {
   ProductWriteForm({Key? key}) : super(key: key);
@@ -54,11 +54,17 @@ class ProductWriteForm extends StatelessWidget {
           ),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "제목"),
-          WriteTextFormField(hintText: "제목입력해주세요", controllerName: productName, funValidator: validateTitle()),
+          WriteTextFormField(
+              hintText: "제목입력해주세요",
+              controllerName: productName,
+              funValidator: validateTitle()),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "가격"),
           ChoiceButton(),
-          WriteTextFormField(hintText: "￦ 가격을 입력해주세요.", controllerName: price, funValidator: validatePrice()),
+          WriteTextFormField(
+              hintText: "￦ 가격을 입력해주세요.",
+              controllerName: price,
+              funValidator: validatePrice()),
           SuggestCheckBox(isChecked: isChecked),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "상품 설명"),

@@ -1,6 +1,6 @@
 import 'package:team_project/data/model/user.dart';
 
-class Post {
+class Product {
   final int id;
   final String productName;
   final int price;
@@ -12,7 +12,7 @@ class Post {
   final int heartCount;
   final int commentCount;
 
-  Post(
+  Product(
     this.id,
     this.productName,
     this.price,
@@ -26,7 +26,7 @@ class Post {
   );
 }
 
-Post post = Post(
+Product product = Product(
   0,
   "상품이름0",
   1000000,
@@ -46,8 +46,8 @@ Post post = Post(
   0,
 );
 
-List<Post> postList = [
-  Post(
+List<Product> productList = [
+  Product(
     1,
     "요기여기1",
     1000001,
@@ -66,7 +66,7 @@ List<Post> postList = [
     1,
     1,
   ),
-  Post(
+  Product(
     2,
     "요기여기2",
     1000002,
@@ -85,7 +85,7 @@ List<Post> postList = [
     2,
     2,
   ),
-  Post(
+  Product(
     3,
     "요기여기3",
     1000003,
@@ -104,7 +104,7 @@ List<Post> postList = [
     3,
     3,
   ),
-  Post(
+  Product(
     4,
     "요기여기4",
     1000004,
@@ -123,7 +123,7 @@ List<Post> postList = [
     4,
     4,
   ),
-  Post(
+  Product(
     5,
     "요기여기5",
     1000005,

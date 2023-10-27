@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/ui/pages/post/detail_page/detail_page_widgets/detail_appbar_button.dart';
-import 'package:team_project/ui/pages/post/detail_page/post_detail_view_model.dart';
+import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_appbar_button.dart';
+import 'package:team_project/ui/pages/product/detail_page/post_detail_view_model.dart';
 
 class DetailProductHeader extends ConsumerWidget {
   const DetailProductHeader({
@@ -10,7 +10,7 @@ class DetailProductHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    PostModel? model = ref.watch(postDetailProvider);
+    ProductModel? model = ref.watch(productDetailProvider);
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     }
