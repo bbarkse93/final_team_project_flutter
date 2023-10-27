@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_appbar_button.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_appbar_button.dart';
 
-class PostListAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ProductListAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String location;
 
-  PostListAppBar(this.location, {Key? key}) : super(key: key);
+  ProductListAppBar(this.location, {Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -18,13 +18,13 @@ class PostListAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(location),
           const SizedBox(width: 4.0),
-          PostListAppBarButton(CupertinoIcons.chevron_down),
+          ProductListAppBarButton(CupertinoIcons.chevron_down),
         ],
       ),
       actions: [
-        PostListAppBarButton(CupertinoIcons.search),
-        PostListAppBarButton(CupertinoIcons.list_dash),
-        PostListAppBarButton(CupertinoIcons.bell),
+        ProductListAppBarButton(CupertinoIcons.search),
+        ProductListAppBarButton(CupertinoIcons.list_dash),
+        ProductListAppBarButton(CupertinoIcons.bell),
       ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(0.5),

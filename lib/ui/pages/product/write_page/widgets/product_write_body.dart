@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_form.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_form.dart';
 
 class ProductWriteBody extends StatelessWidget {
   ProductWriteBody({super.key});

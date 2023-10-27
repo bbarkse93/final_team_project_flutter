@@ -1,6 +1,6 @@
 import 'package:team_project/data/model/user.dart';
 
-class Post {
+class Product {
   int id;
   String title;
   String content;
@@ -11,7 +11,7 @@ class Post {
   int heartCount;
   int commentCount;
 
-  Post({
+  Product({
     required this.id,
     required this.title,
     required this.content,
@@ -39,7 +39,7 @@ class Post {
       };
 
   // Map 형태로 받아서 Dart 객체로 변환
-  Post.fromJson(Map<String, dynamic> json)
+  Product.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         title = json["title"],
         content = json["content"],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/ui/pages/product/widgets/product_write_body.dart';
+import 'package:team_project/ui/pages/product/write_page/widgets/product_write_body.dart';
 
 class ProductWritePage extends StatelessWidget {
   const ProductWritePage({super.key});

@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/data/mock/post.dart';
+import 'package:team_project/data/mock/product.dart';
 import 'package:team_project/data/store/param_store.dart';
-import 'package:team_project/ui/pages/post/detail_page/post_detail_page.dart';
-import 'package:team_project/ui/pages/post/list_page/list_page_widgets/post_list_item.dart';
-import 'package:team_project/ui/pages/post/list_page/post_list_view_model.dart';
+import 'package:team_project/ui/pages/product/detail_page/post_detail_page.dart';
+import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item.dart';
+import 'package:team_project/ui/pages/product/list_page/post_list_view_model.dart';
 
-class PostListBody extends ConsumerWidget {
-  const PostListBody({
+class ProductListBody extends ConsumerWidget {
+  const ProductListBody({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // WidgetRef - 통신을하겠다라는 의미임, 정확히는 창고관리자에게 접근하겠다.
-    PostListModel? model = ref.watch(postListProvider);
+    ProductListModel? model = ref.watch(productListProvider);
 
-    List<Post> postList = [];
+    List<Product> productList = [];
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
-      postList = model.postList;
+      productList = model.productList;
       return ListView.separated(
-        itemCount: postList.length,
+        itemCount: productList.length,
         itemBuilder: (context, index) {
           return InkWell(
               onTap: () {
                 // 1. postId를 paramStore 에 저장
                 ParamStore paramStore = ref.read(paramProvider);
-                paramStore.postDetailId = postList[index].id;
+                paramStore.postDetailId = productList[index].id;
 
                 // 2. 화면 이동
-                Navigator.push(context, MaterialPageRoute(builder: (_) => PostDetailPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => ProductDetailPage()));
               },
-              child: PostListItem(postList[index]));
+              child: ProductListItem(productList[index]));
         },
         separatorBuilder: (context, index) {
           return const Divider();
