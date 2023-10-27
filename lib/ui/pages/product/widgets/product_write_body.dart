@@ -6,6 +6,7 @@ import 'package:team_project/ui/pages/product/widgets/product_write_form_field_t
 import 'package:team_project/ui/pages/product/widgets/product_write_picture_add_area.dart';
 import 'package:team_project/ui/pages/product/widgets/product_write_suggest_ckeck_box.dart';
 import 'package:team_project/ui/pages/product/widgets/product_write_text_form_field.dart';
+import 'package:team_project/ui/pages/product/widgets/product_write_text_form_field2.dart';
 
 class ProductWriteBody extends StatefulWidget {
   ProductWriteBody({super.key});
@@ -33,11 +34,11 @@ class _ProductWriteBodyState extends State<ProductWriteBody> {
           ),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "제목"),
-          WriteTextFormField(hintText: "제목"),
+          WriteTextFormField(hintText: "제목입력해주세요"),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "가격"),
           ChoiceButton(),
-          WriteTextFormField(hintText: "￦ 가격을 입력해주세요."),
+          WriteTextFormField2(hintText: "￦ 가격을 입력해주세요."),
           SuggestCheckBox(isChecked: isChecked),
           SizedBox(height: mediumGap),
           TextFormFieldTitle(text: "상품 설명"),

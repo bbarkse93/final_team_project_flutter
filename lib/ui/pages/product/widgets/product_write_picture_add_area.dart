@@ -6,7 +6,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/ui/pages/product/product_write_param_store.dart';
 
 class PictureAddArea extends StatefulWidget {
   final int maxImages;
@@ -37,6 +39,9 @@ class _PictureAddFormState extends State<PictureAddArea> {
           padding: const EdgeInsets.only(right: smallGap),
           child: Consumer(
             builder: (context, ref, child) {
+              // ViewModel model = ref.read(Provider);
+              //
+              // moddel.타입중 (해당) = value;
               //TODO : ref접근
               return OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -96,8 +101,8 @@ class _PictureAddFormState extends State<PictureAddArea> {
   }
 
   void _pickImageFromGallery() async {
-    XFile? pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    XFile? pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+
     if (pickedImage != null) {
       Uint8List temp = await pickedImage.readAsBytes();
       List<int> real = temp.toList();
@@ -110,7 +115,17 @@ class _PictureAddFormState extends State<PictureAddArea> {
         temp.add(_selectedImage!);
 
         encodedAllImage.add(dd);
+        Logger().d(encodedAllImage);
         allImage = temp;
+
+        Consumer(
+          builder: (context, ref, child) {
+            ProductWriteParam model = ref.read(productParamProvider);
+            model.photoList = encodedAllImage; // 이 부분에 값을 설정할 수 있음
+            Logger().d("PictureAddArea 위젯의 값이 ProductWriteParamStore로 가요! / productName : ${encodedAllImage.length}");
+            return Container(); // 여기에 반환하려는 위젯을 넣으세요
+          },
+        );
       });
     }
   }
