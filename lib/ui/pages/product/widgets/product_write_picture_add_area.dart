@@ -93,7 +93,7 @@ class _PictureAddFormState extends State<PictureAddArea> {
                       right: -10,
                       top: -10,
                       child: IconButton(
-                        icon: Icon(Icons.close),
+                        icon: Icon(CupertinoIcons.xmark_circle),
                         onPressed: () {
                           setState(() {
                             allImage.removeAt(index);
