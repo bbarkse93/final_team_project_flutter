@@ -76,16 +76,32 @@ class _PictureAddFormState extends State<PictureAddArea> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(right: smallGap),
-                child: SizedBox(
-                  height: 75,
-                  width: 75,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      allImage[index],
-                      fit: BoxFit.cover,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      height: 75,
+                      width: 75,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(
+                          allImage[index],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      right: -10,
+                      top: -10,
+                      child: IconButton(
+                        icon: Icon(Icons.close),
+                        onPressed: () {
+                          setState(() {
+                            allImage.removeAt(index);
+                          });
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               );
             },
