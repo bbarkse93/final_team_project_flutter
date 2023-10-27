@@ -1,3 +1,8 @@
+import 'package:dio/dio.dart';
+import 'package:team_project/_core/constants/http.dart';
+import 'package:team_project/data/dto/product_request.dart';
+import 'package:team_project/data/dto/response_dto.dart';
+
 import '../mock/post.dart';
 
 class PostRepository {
@@ -7,6 +12,19 @@ class PostRepository {
 
   Future<Post> fetchProductDetail() {
     return Future.delayed(Duration(seconds: 3), () => post);
+  }
+
+  // 통신
+  Future<ResponseDTO> fetchSave(ProductWriteDTO productWriteDTO) async {
+    try {
+      // TODO 요청하는 주소값 확인해야해요!
+      Response<dynamic> response = await dio.post("/TODO", data: productWriteDTO.toJson());
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(false, "상품을 등록할수없습니다.", null);
+    }
   }
 }
 
