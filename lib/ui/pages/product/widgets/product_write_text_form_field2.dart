@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/ui/pages/product/product_write_param_store.dart';
 
-class WriteTextFormField extends StatelessWidget {
+class WriteTextFormField2 extends StatelessWidget {
   final hintText;
-  const WriteTextFormField({
+  const WriteTextFormField2({
     super.key,
     required this.hintText,
   });
@@ -20,9 +20,10 @@ class WriteTextFormField extends StatelessWidget {
           return (TextFormField(
             // TODO: Controller말고 onChanged로 입력값 받는 연습
             onChanged: (value) {
+              int intValue = int.parse(value);
               print(value);
-              model.productName = value;
-              Logger().d("WriteTextFormField 위젯의 값이 ProductWriteParamStore로 가요! / productName : ${value}");
+              model.price = intValue;
+              Logger().d("WriteTextFormField2 위젯의 값이 ProductWriteParamStore로 가요! / productName : ${intValue}");
             },
             decoration: InputDecoration(
               hintText: "$hintText",
