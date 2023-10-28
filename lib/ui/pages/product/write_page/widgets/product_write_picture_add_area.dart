@@ -9,7 +9,8 @@ import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class PictureAddArea extends StatefulWidget {
-  final ValueNotifier<List<String>>? photoList; // Non-nullable ValueNotifier를 사용
+  final ValueNotifier<List<String>>?
+      photoList; // Non-nullable ValueNotifier를 사용
 
   final int maxImages;
 
@@ -111,12 +112,13 @@ class _PictureAddFormState extends State<PictureAddArea> {
   }
 
   void _pickImageFromGallery() async {
-    XFile? pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    XFile? pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
       Uint8List temp = await pickedImage.readAsBytes();
       List<int> real = temp.toList();
-      String dd = base64Encode(real);
+      String completeEncoded = base64Encode(real); // 이미 문자열로 인코딩됨
 
       setState(() {
         _selectedImage = File(pickedImage.path);
@@ -124,12 +126,12 @@ class _PictureAddFormState extends State<PictureAddArea> {
         List<File> temp = allImage;
         temp.add(_selectedImage!);
 
-        encodedAllImage.add(dd);
+        encodedAllImage.add(completeEncoded); // 문자열로 추가
         Logger().d(encodedAllImage);
         allImage = temp;
       });
 
-      widget.photoList!.value = encodedAllImage; // 'widget.photoList.value'에 값을 설정
+      widget.photoList!.value = encodedAllImage;
       Logger().d(widget.photoList!.value.length);
     }
   }

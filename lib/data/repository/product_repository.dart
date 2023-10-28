@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/dto/product_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
@@ -17,10 +18,54 @@ class ProductRepository {
   // 통신
   Future<ResponseDTO> fetchSave(ProductWriteDTO productWriteDTO) async {
     try {
-      // TODO 요청하는 주소값 확인해야해요!
+      Logger().d("3단계 통과 - repository 계층에 진입성공이에요! ");
+      Logger().d("${productWriteDTO.photoList.length}");
+      Logger().d("${productWriteDTO.productName}");
+      Logger().d("${productWriteDTO.price}");
+      Logger().d("${productWriteDTO.description}");
+
       Response<dynamic> response =
-          await dio.post("/TODO", data: productWriteDTO.toJson());
+          await dio.post("/product/write", data: productWriteDTO.toJson());
+      Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
+      Logger().d("${response}");
+
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("5단계 진입 - 거의 다 왔어요 ! 조금만 더 힘내요 !");
+      Logger().d("${responseDTO}");
+
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(false, "상품을 등록할수없습니다.", null);
+    }
+  }
+
+  Future<ResponseDTO> sendMixedFormData(ProductWriteDTO productWriteDTO) async {
+    final dio = Dio(BaseOptions(
+      baseUrl: "http://192.168.0.17:8080",
+      contentType: Headers.formUrlEncodedContentType, // Content-Type 설정
+    ));
+
+    // Create FormData for x-www-urlencoded fields
+    final formData = FormData.fromMap({
+      'productPics': productWriteDTO.photoList,
+    });
+
+    try {
+      final response = await dio.post(
+        '/product/write',
+        data: formData,
+        options: Options(
+          contentType: Headers.contentEncodingHeader, // 변경된 Content-Type
+        ),
+      );
+      print('Response: ${response.data}');
+
+      Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
+      Logger().d("${response}");
+
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("5단계 진입 - 거의 다 왔어요 ! 조금만 더 힘내요 !");
+      Logger().d("${responseDTO}");
 
       return responseDTO;
     } catch (e) {

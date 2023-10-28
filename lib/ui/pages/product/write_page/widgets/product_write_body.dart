@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/dto/product_request.dart';
+import 'package:team_project/ui/pages/product/list_page/post_list_view_model.dart';
+import 'package:team_project/ui/pages/product/write_page/product_write_store.dart';
 import 'package:team_project/ui/pages/product/write_page/widgets/product_write_form.dart';
 
 class ProductWriteBody extends StatelessWidget {
@@ -14,8 +17,6 @@ class ProductWriteBody extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: ListView(
         children: [
-          //PictureAddForm(),
-
           productWriteForm,
           Consumer(
             builder: (context, ref, child) {
@@ -23,10 +24,11 @@ class ProductWriteBody extends StatelessWidget {
                 padding: EdgeInsets.only(top: smallGap),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      backgroundColor: Color.fromRGBO(255, 126, 0, 1)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    backgroundColor: Color.fromRGBO(255, 126, 0, 1),
+                  ),
                   child: Text(
                     '작성완료',
                     style: TextStyle(
@@ -37,7 +39,13 @@ class ProductWriteBody extends StatelessWidget {
                   ),
                   onPressed: () {
                     productWriteForm.submit(ref);
-                    // TODO 통신코드 구현
+                    ProductWriteDTO proReqDTO = ProductWriteDTO(
+                      productName: productWriteForm.productName.text,
+                      price: int.tryParse(productWriteForm.price.text) ?? 0,
+                      description: productWriteForm.description.text,
+                      photoList: productWriteForm.photoList.value,
+                    );
+                    ref.read(productListProvider.notifier).notifyAdd(proReqDTO);
                   },
                 ),
               ));
