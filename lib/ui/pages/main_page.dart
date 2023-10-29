@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/ui/pages/board/list_page/board_list_page.dart';
 import 'package:team_project/ui/pages/product/list_page/post_list_page.dart';
 import 'package:team_project/ui/widgets/buttons/custom_floating_button.dart';
 
