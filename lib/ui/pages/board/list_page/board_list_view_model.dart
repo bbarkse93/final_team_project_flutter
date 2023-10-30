@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
+import 'package:team_project/data/dto/board_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
 import 'package:team_project/data/repository/board_repository.dart';
@@ -25,6 +28,24 @@ class BoardListViewModel extends StateNotifier<BoardListModel?> {
     ResponseDTO responseDTO = await BoardRepository().fetchBoardList();
     print("통신 끝");
     state = BoardListModel(responseDTO.response);
+  }
+
+  Future<void> notifyAdd(BoardWriteDTO boardWriteDTO) async {
+    Logger().d("1단계 - noifyAdd계층에 접근했어요!");
+
+    ResponseDTO responseDTO = await BoardRepository().fetchSave(boardWriteDTO);
+    Logger().d("2단계 - 첫번째 디티오 파싱이 성공했어요, 졸려 뒤질것 같지만 참아야해요!");
+
+    if (responseDTO.response is Map<String, dynamic>) {
+      Board writeBoard = Board.fromJson(responseDTO.response);
+      Logger().d("3단계 - 두번째 디티오 파싱에 성공했어요, Board객체가 생성 되었어요!");
+
+      List<Board> newBoardList = [writeBoard, ...state!.boardList];
+      Logger().d("4단계 - 세번째 파싱이 종료되었어요.");
+      state = BoardListModel(newBoardList);
+
+      Navigator.pop(mContext!);
+    }
   }
 }
 

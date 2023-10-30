@@ -3,10 +3,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/board/write_page/widgets/board_write_select_cartegory_sheet.dart';
 
-class BoardWriteCategoryButton extends StatelessWidget {
-  const BoardWriteCategoryButton({
-    super.key,
-  });
+class BoardWriteCategoryButton extends StatefulWidget {
+  const BoardWriteCategoryButton({Key? key}) : super(key: key);
+
+  @override
+  _BoardWriteCategoryButtonState createState() =>
+      _BoardWriteCategoryButtonState();
+}
+
+class _BoardWriteCategoryButtonState extends State<BoardWriteCategoryButton> {
+  String? selectedCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +26,25 @@ class BoardWriteCategoryButton extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: smallGap),
                 child: Text(
-                  "일상",
+                  selectedCategory ?? '카테고리 선택',
                   style: TextStyle(fontSize: fontMedium),
                 ),
               ),
               IconButton(
                 onPressed: () {
                   showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) {
-                        return BoardWriteSelectCategorySheet();
-                      });
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) {
+                      return BoardWriteSelectCategorySheet(
+                        onCategorySelected: (category) {
+                          setState(() {
+                            selectedCategory = category;
+                          });
+                        },
+                      );
+                    },
+                  );
                 },
                 icon: Icon(
                   FontAwesomeIcons.chevronRight,

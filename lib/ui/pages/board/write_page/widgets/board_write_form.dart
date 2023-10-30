@@ -9,9 +9,12 @@ import 'package:team_project/ui/pages/board/write_page/widgets/board_write_pictu
 import 'package:team_project/ui/pages/board/write_page/widgets/board_write_warn.dart';
 
 class BoardWriteForm extends StatelessWidget {
+  BoardWriteForm({Key? key}) : super(key: key);
+
   final formKey = GlobalKey<FormState>();
   final boardTitleController = TextEditingController();
   final boardContentController = TextEditingController();
+  final ValueNotifier<int> categoryId = ValueNotifier(0);
   final photoList = ValueNotifier<List<String>>([]);
 
   void submit(WidgetRef ref) {
@@ -19,6 +22,7 @@ class BoardWriteForm extends StatelessWidget {
       BoardWriteDTO boardWriteDTO = BoardWriteDTO(
         boardTitle: boardTitleController.text,
         boardContent: boardContentController.text,
+        categoryId: categoryId.value,
         photoList: photoList.value,
       );
     }
@@ -28,6 +32,7 @@ class BoardWriteForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        key: formKey,
         children: [
           BoardWriteCategoryButton(),
           BoardWriteWarn(),
@@ -49,7 +54,7 @@ class BoardWriteForm extends StatelessWidget {
             height: 100,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: BoardWritePictureAddArea(),
+              child: BoardWritePictureAddArea(photoList: photoList),
             ),
           ),
         ],

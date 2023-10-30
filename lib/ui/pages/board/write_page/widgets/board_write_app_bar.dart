@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/dto/board_request.dart';
+import 'package:team_project/ui/pages/board/list_page/board_list_view_model.dart';
 import 'package:team_project/ui/pages/board/write_page/widgets/board_write_form.dart';
 
 class BoardWriteAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -31,8 +33,9 @@ class BoardWriteAppBar extends StatelessWidget implements PreferredSizeWidget {
                   boardTitle: boardWriteForm.boardTitleController.text,
                   boardContent: boardWriteForm.boardContentController.text,
                   photoList: boardWriteForm.photoList.value,
+                  categoryId: boardWriteForm.categoryId.value,
                 );
-                // ref.read(boardListProvider.notifier).notifyAdd(boardWriteDTO);
+                ref.read(boardListProvider.notifier).notifyAdd(boardWriteDTO);
               },
               child: Text(
                 "완료",

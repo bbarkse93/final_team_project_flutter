@@ -6,8 +6,7 @@ class BoardWriteCustomTextFormField extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final funValidator;
-  final TextEditingController controller;
-  final String? initValue;
+  final controller;
 
   const BoardWriteCustomTextFormField({
     Key? key,
@@ -15,14 +14,10 @@ class BoardWriteCustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     required this.funValidator,
     required this.controller,
-    this.initValue = "",
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (initValue != null) {
-      controller.text = initValue!;
-    }
     return Padding(
       padding: const EdgeInsets.only(top: mediumGap, left: smallGap),
       child: TextFormField(
