@@ -11,7 +11,7 @@ class DetailProductInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ProductModel? model = ref.watch(productDetailProvider);
+    ProductDetailModel? model = ref.watch(productDetailProvider);
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     }
@@ -22,12 +22,10 @@ class DetailProductInfo extends ConsumerWidget {
         children: [
           _productName(productName: "${model.product.productName}"),
           SizedBox(height: smallGap),
-          _productCategory(
-              categoty: "${model.product.category}",
-              time: "${model.product.created}"),
+          _productCategory(categoty: "${model.product.productName}", time: "${model.product.createdAt}"),
           SizedBox(height: smallGap),
           _productDescription(
-            productDescription: model.product.content,
+            productDescription: model.product.productDescription,
           ),
         ],
       ),
@@ -56,8 +54,7 @@ class _productName extends StatelessWidget {
 class _productCategory extends StatelessWidget {
   final String categoty;
   final String time;
-  const _productCategory(
-      {super.key, required this.categoty, required this.time});
+  const _productCategory({super.key, required this.categoty, required this.time});
 
   @override
   Widget build(BuildContext context) {

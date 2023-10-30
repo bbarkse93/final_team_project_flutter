@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
+import 'package:team_project/data/dto/board_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
 
@@ -12,8 +13,7 @@ class BoardRepository {
     Logger().d("여기1");
     try {
       // 1.통신
-      final response = await dio.get("/boards",
-          options: Options(headers: {"Authorization": jwt}));
+      final response = await dio.get("/boards", options: Options(headers: {"Authorization": jwt}));
       Logger().d("여기2");
 
       // 2. ResponseDTO 파싱
@@ -29,6 +29,24 @@ class BoardRepository {
       return responseDTO;
     } catch (e) {
       return ResponseDTO(false, "게시글 목록 불러오기 실패", null);
+    }
+  }
+
+  // 통신
+  Future<ResponseDTO> fetchSave(BoardWriteDTO boardWriteDTO) async {
+    String jwt =
+        "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJyb3Qta2V5IiwiaWQiOjEsInVzZXJuYW1lIjoic3NhciIsImV4cCI6MTY5OTIzMDc2Mn0.5Qeh5s_l8lBvB94ckTNPSHPg5RYsU67Rpp0slZf3plHZiTAkhDuK1NtJ-Zor6PmpeBhEHBlWBfM6EqcUF737fw";
+
+    try {
+      Response<dynamic> response =
+          await dio.post("/boards/write", options: Options(headers: {"Authorization": "${jwt}"}), data: boardWriteDTO.toJson());
+
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("responseDTO ${responseDTO}");
+
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(false, "게시물을 등록할수없습니다.", null);
     }
   }
 }

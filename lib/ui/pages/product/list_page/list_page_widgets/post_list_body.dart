@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/data/mock/product.dart';
+import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/ui/pages/product/detail_page/post_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item.dart';
@@ -28,11 +28,10 @@ class ProductListBody extends ConsumerWidget {
               onTap: () {
                 // 1. postId를 paramStore 에 저장
                 ParamStore paramStore = ref.read(paramProvider);
-                paramStore.postDetailId = productList[index].id;
+                paramStore.productDetailId = productList[index].id;
 
                 // 2. 화면 이동
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ProductDetailPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage()));
               },
               child: ProductListItem(productList[index]));
         },

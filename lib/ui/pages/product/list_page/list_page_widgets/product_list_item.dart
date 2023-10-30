@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/data/model/product.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item_detail.dart';
-
-import '../../../../../data/mock/product.dart';
 
 class ProductListItem extends StatelessWidget {
   final Product product;
