@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/product/detail_page/post_detail_view_model.dart';
+import 'package:team_project/ui/pages/product/detail_page/product_detail_view_model.dart';
 
 class DetailProductInfo extends ConsumerWidget {
   const DetailProductInfo({

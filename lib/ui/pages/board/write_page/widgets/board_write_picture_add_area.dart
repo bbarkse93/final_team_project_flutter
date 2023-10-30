@@ -8,22 +8,22 @@ import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 
-class PictureAddArea extends StatefulWidget {
+class BoardWritePictureAddArea extends StatefulWidget {
   final ValueNotifier<List<String>>? photoList; // Non-nullable ValueNotifier를 사용
 
   final int maxImages;
 
-  PictureAddArea({
+  BoardWritePictureAddArea({
     this.photoList, // 'required' 키워드를 사용하여 photoList가 null이 아니라는 것을 명시
     Key? key,
     this.maxImages = 10,
   }) : super(key: key);
 
   @override
-  State<PictureAddArea> createState() => _PictureAddFormState();
+  State<BoardWritePictureAddArea> createState() => _PictureAddFormState();
 }
 
-class _PictureAddFormState extends State<PictureAddArea> {
+class _PictureAddFormState extends State<BoardWritePictureAddArea> {
   File? _selectedImage;
   List<File> allImage = [];
   List<String> encodedAllImage = [];
