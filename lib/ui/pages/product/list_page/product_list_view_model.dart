@@ -8,7 +8,7 @@ import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/repository/product_repository.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
-import 'package:team_project/ui/pages/product/detail_page/post_detail_page.dart';
+import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 
 // 1. 창고 데이터
 class ProductListModel {

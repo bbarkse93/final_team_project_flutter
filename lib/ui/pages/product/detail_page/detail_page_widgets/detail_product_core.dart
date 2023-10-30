@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_product_info.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_user_profile.dart';
-import 'package:team_project/ui/pages/product/detail_page/post_detail_view_model.dart';
+import 'package:team_project/ui/pages/product/detail_page/product_detail_view_model.dart';
 
 class DetailProductCore extends ConsumerWidget {
   const DetailProductCore({super.key});

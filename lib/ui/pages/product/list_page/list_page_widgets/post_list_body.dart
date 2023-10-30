@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/store/param_store.dart';
-import 'package:team_project/ui/pages/product/detail_page/post_detail_page.dart';
+import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item.dart';
-import 'package:team_project/ui/pages/product/list_page/post_list_view_model.dart';
+import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 
 class ProductListBody extends ConsumerWidget {
   const ProductListBody({
