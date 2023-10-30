@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class BoardListCategory extends StatelessWidget {
+  final String category;
   const BoardListCategory({
     super.key,
+    required this.category,
   });
 
   @override
@@ -14,7 +16,7 @@ class BoardListCategory extends StatelessWidget {
         color: Colors.grey[400],
       ),
       padding: EdgeInsets.all(3),
-      child: Text("동네맛집", style: TextStyle(fontSize: fontSmall)),
+      child: Text("${category}", style: TextStyle(fontSize: fontSmall)),
     );
   }
 }

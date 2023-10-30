@@ -19,6 +19,8 @@ class BoardListInfo extends StatelessWidget {
         Text(
           "${location} ${time} 조회수 ${select}",
           style: TextStyle(color: kHintColor),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
