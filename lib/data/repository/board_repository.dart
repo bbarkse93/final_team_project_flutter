@@ -13,7 +13,8 @@ class BoardRepository {
     Logger().d("여기1");
     try {
       // 1.통신
-      final response = await dio.get("/boards", options: Options(headers: {"Authorization": jwt}));
+      final response = await dio.get("/boards",
+          options: Options(headers: {"Authorization": jwt}));
       Logger().d("여기2");
 
       // 2. ResponseDTO 파싱
@@ -38,11 +39,13 @@ class BoardRepository {
         "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJyb3Qta2V5IiwiaWQiOjEsInVzZXJuYW1lIjoic3NhciIsImV4cCI6MTY5OTIzMDc2Mn0.5Qeh5s_l8lBvB94ckTNPSHPg5RYsU67Rpp0slZf3plHZiTAkhDuK1NtJ-Zor6PmpeBhEHBlWBfM6EqcUF737fw";
 
     try {
-      Response<dynamic> response =
-          await dio.post("/boards/write", options: Options(headers: {"Authorization": "${jwt}"}), data: boardWriteDTO.toJson());
+      Logger().d("fetchSave 계층이에요!");
+      Response<dynamic> response = await dio.post("/boards/write",
+          options: Options(headers: {"Authorization": "${jwt}"}),
+          data: boardWriteDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      Logger().d("responseDTO ${responseDTO}");
+      Logger().d("responseDTO : ${responseDTO}");
 
       return responseDTO;
     } catch (e) {
