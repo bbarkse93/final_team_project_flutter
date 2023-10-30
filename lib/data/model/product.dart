@@ -50,8 +50,8 @@ class Product {
         heartCount = json["heartCount"],
         commentCount = json["commentCount"];
 
-  // String getUpdated() {
-  //   // 출력시 -> 값을 Oct 23 이렇게 만든다.
-  //   return DateFormat.MMMd().format(updated);
-  // }
+// String getUpdated() {
+//   // 출력시 -> 값을 Oct 23 이렇게 만든다.
+//   return DateFormat.MMMd().format(updated);
+// }
 }
