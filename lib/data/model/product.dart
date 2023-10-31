@@ -5,9 +5,9 @@ import 'package:team_project/data/model/user.dart';
 class Product {
   int id;
   String productName;
-  String productDescription;
+  String? productDescription;
   int productPrice;
-  String createdAt;
+  String productCreatedAt;
   User user;
   List<ProductPic> productPics;
   int? productComment;
@@ -20,7 +20,7 @@ class Product {
     required this.productPrice,
     required this.productPics,
     required this.user,
-    required this.createdAt,
+    required this.productCreatedAt,
     this.productComment,
     this.productLike,
   });
@@ -31,7 +31,7 @@ class Product {
         "productName": productName,
         "productDescription": productDescription,
         "productPrice": productPrice,
-        "productCreatedAt": createdAt,
+        "productCreatedAt": productCreatedAt,
         "user": user,
         "productPics": productPics,
       };
@@ -42,9 +42,11 @@ class Product {
         productName = json["productName"],
         productDescription = json["productDescription"],
         productPrice = json["productPrice"],
-        createdAt = json["createdAt"],
+        productCreatedAt = json["productCreatedAt"],
         user = User.fromJson(json["user"]),
-        productPics = (json["productPics"] as List<dynamic>).map((item) => ProductPic.fromJson(item)).toList();
+        productPics = (json["productPics"] as List<dynamic>? ?? [])
+            .map((item) => ProductPic.fromJson(item))
+            .toList();
 
 // String getUpdated() {
 //     // 출력시 -> 값을 Oct 23 이렇게 만든다.
@@ -56,7 +58,7 @@ Product product = Product(
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     user: User(
       id: 0,
       username: "유저네임0",
@@ -70,7 +72,8 @@ Product product = Product(
     productComment: 3,
     productLike: 3,
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ]);
 
 List<Product> productList = [
@@ -79,7 +82,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -93,7 +96,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   Product(
@@ -101,7 +105,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -115,7 +119,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   Product(
@@ -123,7 +128,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -137,7 +142,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   Product(
@@ -145,7 +151,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -159,7 +165,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   Product(
@@ -167,7 +174,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -181,7 +188,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   Product(
@@ -189,7 +197,7 @@ List<Product> productList = [
     productName: "티바로우",
     productDescription: "등맥이기",
     productPrice: 999999,
-    createdAt: "2023-10-23",
+    productCreatedAt: "2023-10-23",
     productComment: 3,
     productLike: 3,
     user: User(
@@ -203,7 +211,8 @@ List<Product> productList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
 ];

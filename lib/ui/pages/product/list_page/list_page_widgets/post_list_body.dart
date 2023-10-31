@@ -15,8 +15,8 @@ class ProductListBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // WidgetRef - 통신을하겠다라는 의미임, 정확히는 창고관리자에게 접근하겠다.
     ProductListModel? model = ref.watch(productListProvider);
-
     List<Product> productList = [];
+
     if (model == null) {
       return Center(child: CircularProgressIndicator());
     } else {
@@ -31,7 +31,8 @@ class ProductListBody extends ConsumerWidget {
                 paramStore.productDetailId = productList[index].id;
 
                 // 2. 화면 이동
-                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => ProductDetailPage()));
               },
               child: ProductListItem(productList[index]));
         },
