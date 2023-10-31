@@ -46,7 +46,8 @@ MockProduct mockProduct = MockProduct(
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ]);
 
 List<MockProduct> mockProductList = [
@@ -67,7 +68,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   MockProduct(
@@ -87,7 +89,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   MockProduct(
@@ -107,7 +110,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   MockProduct(
@@ -127,7 +131,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   MockProduct(
@@ -147,7 +152,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
   MockProduct(
@@ -167,7 +173,8 @@ List<MockProduct> mockProductList = [
       userCreatedAt: "2023-10-23",
     ),
     productPics: [
-      ProductPic(productPicUrl: Dummy().dummyImage),
+      ProductPic(
+          productPicId: Dummy().dummyid, productPicUrl: Dummy().dummyImage),
     ],
   ),
 ];

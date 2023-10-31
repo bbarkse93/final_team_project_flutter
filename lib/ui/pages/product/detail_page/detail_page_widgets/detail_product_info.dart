@@ -22,11 +22,13 @@ class DetailProductInfo extends ConsumerWidget {
         children: [
           _productName(productName: "${model.product.productName}"),
           SizedBox(height: smallGap),
-          _productCategory(categoty: "${model.product.productName}", time: "${model.product.createdAt}"),
+          _productCategory(
+              categoty: "${model.product.productName}",
+              time: "${model.product.productCreatedAt}"),
           SizedBox(height: smallGap),
-          _productDescription(
-            productDescription: model.product.productDescription,
-          ),
+          // _productDescription(
+          // productDescription: model.product.productDescription,
+          // ),
         ],
       ),
     );
@@ -54,7 +56,8 @@ class _productName extends StatelessWidget {
 class _productCategory extends StatelessWidget {
   final String categoty;
   final String time;
-  const _productCategory({super.key, required this.categoty, required this.time});
+  const _productCategory(
+      {super.key, required this.categoty, required this.time});
 
   @override
   Widget build(BuildContext context) {

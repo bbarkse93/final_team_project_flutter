@@ -25,7 +25,7 @@ class ProductListItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16.0),
-            ProductListItemDetail(product)
+            Expanded(child: ProductListItemDetail(product))
           ],
         ),
       ),

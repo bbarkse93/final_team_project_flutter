@@ -6,7 +6,7 @@ import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
 
 String jwt =
-    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJyb3Qta2V5IiwiaWQiOjEsInVzZXJuYW1lIjoic3NhciIsImV4cCI6MTY5OTI0NjQ5N30.1-zziEQ8Ic4kq0XqUUA4dLIqSkOuUm6frw-7R6Z21f3mCNHPOaNZMYfcnJsNrTbrBIvdRBFmXkWxjGu5JMGO8A";
+    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE2OTkzMjYzMDJ9.T3og_6O3iCe7aZVDbrcxg29av_Z5pvZjhAaUoGydq8XOlkeGKJ9lz__kkdc7-ACAjZ-52HN-h1lj1KPDD02Ezw";
 
 class BoardRepository {
   Future<ResponseDTO> fetchBoardList() async {

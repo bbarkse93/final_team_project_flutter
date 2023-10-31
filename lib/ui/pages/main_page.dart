@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/board/list_page/board_list_page.dart';
+import 'package:team_project/ui/pages/chatting/list_page/list_page_widgets/chatting_list_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 import 'package:team_project/ui/widgets/buttons/custom_floating_button.dart';
 
@@ -22,8 +23,9 @@ class _MainPageState extends State<MainPage> {
         index: _selectedIndex,
         children: [
           // 이쪽에 각각의 페이지를 추가하면됌 - 바텀네비게이션바의 아이콘과 동일한 페이지
-          // ProductListPage(),
-          BoardListPage(),
+          ProductListPage(),
+          // BoardListPage(),
+          // ChattingListPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
