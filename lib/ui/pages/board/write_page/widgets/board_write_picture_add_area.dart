@@ -20,10 +20,10 @@ class BoardWritePictureAddArea extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<BoardWritePictureAddArea> createState() => _PictureAddFormState();
+  State<BoardWritePictureAddArea> createState() => _BoardWritePictureAddFormState();
 }
 
-class _PictureAddFormState extends State<BoardWritePictureAddArea> {
+class _BoardWritePictureAddFormState extends State<BoardWritePictureAddArea> {
   File? _selectedImage;
   List<File> allImage = [];
   List<String> encodedAllImage = [];
@@ -130,7 +130,7 @@ class _PictureAddFormState extends State<BoardWritePictureAddArea> {
       });
 
       widget.photoList!.value = encodedAllImage;
-      Logger().d(widget.photoList!.value.length);
+      Logger().d("내가 말한 부분이 여기  : ${widget.photoList!.value.length}");
     }
   }
 }

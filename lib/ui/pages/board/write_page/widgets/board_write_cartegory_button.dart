@@ -7,11 +7,12 @@ class BoardWriteCategoryButton extends StatefulWidget {
   const BoardWriteCategoryButton({Key? key}) : super(key: key);
 
   @override
-  _BoardWriteCategoryButtonState createState() =>
-      _BoardWriteCategoryButtonState();
+  _BoardWriteCategoryButtonState createState() => _BoardWriteCategoryButtonState();
 }
 
 class _BoardWriteCategoryButtonState extends State<BoardWriteCategoryButton> {
+  List<String> categoryList = ["동네맛집", "동네질문", "동네소식", "생활정보", "취미생활"];
+
   String? selectedCategory;
 
   @override

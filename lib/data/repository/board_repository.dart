@@ -6,15 +6,15 @@ import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
 
 String jwt =
-    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJyb3Qta2V5IiwiaWQiOjEsInVzZXJuYW1lIjoic3NhciIsImV4cCI6MTY5OTI0NjQ5N30.1-zziEQ8Ic4kq0XqUUA4dLIqSkOuUm6frw-7R6Z21f3mCNHPOaNZMYfcnJsNrTbrBIvdRBFmXkWxjGu5JMGO8A";
+    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE2OTkzMTkzOTR9.gxA19qDQbPoWsoRiIv1BZwdKWPAc6_PlIh20faPjS7AphiVYOdnwsAbzVA3Pyo4v21DFNk8aQYMp7C29lTxPQA";
 
 class BoardRepository {
   Future<ResponseDTO> fetchBoardList() async {
     Logger().d("여기1");
     try {
       // 1.통신
-      final response = await dio.get("/boards",
-          options: Options(headers: {"Authorization": jwt}));
+      Logger().d(jwt);
+      final response = await dio.get("/boards", options: Options(headers: {"Authorization": jwt}));
       Logger().d("여기2");
 
       // 2. ResponseDTO 파싱
@@ -35,14 +35,10 @@ class BoardRepository {
 
   // 통신
   Future<ResponseDTO> fetchSave(BoardWriteDTO boardWriteDTO) async {
-    String jwt =
-        "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJyb3Qta2V5IiwiaWQiOjEsInVzZXJuYW1lIjoic3NhciIsImV4cCI6MTY5OTIzMDc2Mn0.5Qeh5s_l8lBvB94ckTNPSHPg5RYsU67Rpp0slZf3plHZiTAkhDuK1NtJ-Zor6PmpeBhEHBlWBfM6EqcUF737fw";
-
     try {
       Logger().d("fetchSave 계층이에요!");
-      Response<dynamic> response = await dio.post("/boards/write",
-          options: Options(headers: {"Authorization": "${jwt}"}),
-          data: boardWriteDTO.toJson());
+      Response<dynamic> response =
+          await dio.post("/boards/write", options: Options(headers: {"Authorization": "${jwt}"}), data: boardWriteDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("responseDTO : ${responseDTO}");
