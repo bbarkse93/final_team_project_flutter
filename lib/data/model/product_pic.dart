@@ -2,9 +2,11 @@ import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/model/user.dart';
 
 class ProductPic {
+  int productPicId;
   String productPicUrl;
 
   ProductPic({
+    required this.productPicId,
     required this.productPicUrl,
   });
 
@@ -15,7 +17,8 @@ class ProductPic {
 
   // Map 형태로 받아서 Dart 객체로 변환
   ProductPic.fromJson(Map<String, dynamic> json)
-      : productPicUrl = json["productPicUrl"];
+      : productPicId = json["productPicId"],
+        productPicUrl = json["productPicUrl"];
 // String getUpdated() {
 //   // 출력시 -> 값을 Oct 23 이렇게 만든다.
 //   return DateFormat.MMMd().format(updated);

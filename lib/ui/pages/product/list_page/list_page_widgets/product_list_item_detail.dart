@@ -19,14 +19,23 @@ class ProductListItemDetail extends StatelessWidget {
       children: [
         Text(
           "${product.productName}",
-          style: TextStyle(fontWeight: FontWeight.w700, fontSize: fontMedium, color: kDarkColor),
+          style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: fontMedium,
+              color: kDarkColor),
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 4.0),
-        Text("${product.productName}", style: TextStyle(color: kHintColor)),
+        Text(
+          "${product.productName}",
+          style: TextStyle(color: kHintColor),
+          overflow: TextOverflow.ellipsis,
+        ),
         const SizedBox(height: 4.0),
         Text(
           "${numberFormat(product.productPrice)}원",
           style: TextStyle(fontSize: fontXlarge, color: Colors.black),
+          overflow: TextOverflow.ellipsis,
         ),
         const Spacer(),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: [
