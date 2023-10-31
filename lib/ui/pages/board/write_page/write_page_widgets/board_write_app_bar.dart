@@ -5,7 +5,7 @@ import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/dto/board_request.dart';
 import 'package:team_project/ui/pages/board/list_page/board_list_view_model.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_form.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_form.dart';
 
 class BoardWriteAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/board_request.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_cartegory_button.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_custom_text_form_field.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_description_text_form.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_picture_add_area.dart';
-import 'package:team_project/ui/pages/board/write_page/widgets/board_write_warn.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_cartegory_button.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_custom_text_form_field.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_description_text_form.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_picture_add_area.dart';
+import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_warn.dart';
 
 class BoardWriteForm extends StatelessWidget {
   BoardWriteForm({
