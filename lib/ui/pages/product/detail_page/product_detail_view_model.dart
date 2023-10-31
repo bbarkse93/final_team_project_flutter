@@ -24,6 +24,8 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
     Logger().d("id : ${id}");
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
 
+    Logger().d(responseDTO.response);
+
     state = ProductDetailModel(responseDTO.response);
   }
 }

@@ -15,13 +15,17 @@ class BoardWriteSelectCategorySheet extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<BoardWriteSelectCategorySheet> createState() =>
-      _BoardWriteSelectCategorySheetState();
+  State<BoardWriteSelectCategorySheet> createState() => _BoardWriteSelectCategorySheetState();
 }
 
-class _BoardWriteSelectCategorySheetState
-    extends State<BoardWriteSelectCategorySheet> {
-  List<String> categoryList = ["일상", "맛집", "카페투어", "헬스", "코딩"];
+//
+//
+//
+//
+//
+
+class _BoardWriteSelectCategorySheetState extends State<BoardWriteSelectCategorySheet> {
+  List<String> categoryList = ["동네맛집", "동네질문", "동네소식", "생활정보", "취미생활"];
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +50,8 @@ class _BoardWriteSelectCategorySheetState
                   onPressed: () {
                     {
                       widget.onCategorySelected!(categoryList[index]);
-                      widget.categoryId?.value = index;
-                      Logger().d("선택된 카테고리의 아이디는 다음과 같습니다 : ${index}");
+                      widget.categoryId?.value = index + 1;
+                      Logger().d("선택된 카테고리의 아이디는 다음과 같습니다 : ${index + 1}");
                     }
                     Navigator.pop(context);
                   },
