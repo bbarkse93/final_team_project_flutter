@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
         index: _selectedIndex,
         children: [
           // 이쪽에 각각의 페이지를 추가하면됌 - 바텀네비게이션바의 아이콘과 동일한 페이지
-          ProductListPage(),
+          // ProductListPage(),
           BoardListPage(),
         ],
       ),
