@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/ui/pages/auth/join_page/join_page.dart';
 import 'package:team_project/ui/pages/auth/login_page/login_page.dart';
+import 'package:team_project/ui/pages/board/detail_page/board_detaill_page.dart';
 import 'package:team_project/ui/pages/board/list_page/board_list_page.dart';
 import 'package:team_project/ui/pages/board/write_page/board_write_page.dart';
 import 'package:team_project/ui/pages/chatting/list_page/list_page_widgets/chatting_list_page.dart';
@@ -28,10 +29,12 @@ class Move {
   // 게시물 관련 (동네생활)
   static String boardListPage = "/board/list";
   static String boardWritePage = "/board/write";
+  static String boardDetailPage = "/board/detail";
 
   // 채팅관련
   static String chattingListPage = "/chat/list";
   static String chattingRoomPage = "/chat/room";
+
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -52,9 +55,12 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     // 게시물 관련
     Move.boardListPage: (context) => BoardListPage(),
     Move.boardWritePage: (context) => BoardWritePage(),
+    Move.boardDetailPage: (context) => BoardDetailPage()
+
 
     // 채팅 관련
     Move.chattingListPage: (context) => ChattingListPage(),
     Move.chattingRoomPage: (context) => ChattingRoomPage(),
+
   };
 }
