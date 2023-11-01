@@ -7,7 +7,7 @@ class Product {
   String productName;
   String? productDescription;
   int productPrice;
-  String productCreatedAt;
+  String? productCreatedAt;
   User user;
   List<ProductPic> productPics;
   int? productComment;
@@ -20,7 +20,7 @@ class Product {
     required this.productPrice,
     required this.productPics,
     required this.user,
-    required this.productCreatedAt,
+    this.productCreatedAt,
     this.productComment,
     this.productLike,
   });
