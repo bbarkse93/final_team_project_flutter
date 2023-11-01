@@ -34,19 +34,15 @@ class ProductRepository {
   }
 
   Future<ResponseDTO> fetchProductDetail(int id) async {
-    Logger().d("fetchProductDetail메소드로 들어왔어요!");
     try {
       // 통신
       Response response = await dio.get("/products/${id}",
-          options: Options(headers: {"Authorization": "${jwt}"}));
-      Logger().d("response : ${response}");
+          options: Options(headers: {"Authorization": jwt}));
 
       // 응답 받은 데이터 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-      Logger().d("responseDTO : ${responseDTO}");
 
       responseDTO.response = Product.fromJson(responseDTO.response);
-      Logger().d("responseDTO : ${responseDTO.response}");
 
       return responseDTO;
     } catch (e) {

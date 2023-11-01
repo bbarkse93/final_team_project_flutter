@@ -20,18 +20,15 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   Ref ref;
 
   Future<void> notifyInit(int id) async {
-    Logger().d("통신 코드로 넘어왔어요!");
-    Logger().d("id : ${id}");
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
-
-    Logger().d(responseDTO.response);
 
     state = ProductDetailModel(responseDTO.response);
   }
 }
 
 // 3. 창고 관리자
-final productDetailProvider = StateNotifierProvider.autoDispose<ProductDetailViewModel, ProductDetailModel?>((ref) {
+final productDetailProvider = StateNotifierProvider.autoDispose<
+    ProductDetailViewModel, ProductDetailModel?>((ref) {
   int productId = ref.read(paramProvider).productDetailId!;
   return ProductDetailViewModel(null, ref)..notifyInit(productId);
 });
