@@ -9,28 +9,22 @@ import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_
 import 'package:team_project/ui/pages/board/write_page/write_page_widgets/board_write_warn.dart';
 
 class BoardWriteForm extends StatelessWidget {
-  BoardWriteForm({
-    Key? key,
-    this.boardTitleController,
-    this.boardContentController,
-    this.categoryId,
-    this.photoList,
-  }) : super(key: key);
+  BoardWriteForm({Key? key}) : super(key: key);
 
   final formKey = GlobalKey<FormState>();
-  final TextEditingController? boardTitleController;
-  final TextEditingController? boardContentController;
-  final ValueNotifier<int>? categoryId;
-  final ValueNotifier<List<String>>? photoList;
+  final TextEditingController boardTitleController = TextEditingController();
+  final TextEditingController boardContentController = TextEditingController();
+  final categoryId = ValueNotifier<int>(1);
+  final photoList = ValueNotifier<List<String>>([]);
 
   void submit(WidgetRef ref) {
     if (formKey.currentState!.validate()) {
       if (boardTitleController != null && boardContentController != null && categoryId != null && photoList != null) {
         BoardWriteDTO boardWriteDTO = BoardWriteDTO(
-          boardTitle: boardTitleController!.text,
-          boardContent: boardContentController!.text,
-          categoryId: categoryId!.value,
-          photoList: photoList!.value,
+          boardTitle: boardTitleController.text,
+          boardContent: boardContentController.text,
+          categoryId: categoryId.value,
+          photoList: photoList.value,
         );
         // 나머지 로직...
       }
@@ -44,7 +38,7 @@ class BoardWriteForm extends StatelessWidget {
       child: Container(
         child: Column(
           children: [
-            BoardWriteCategoryButton(),
+            BoardWriteCategoryButton(categoryId: categoryId),
             BoardWriteWarn(),
             BoardWriteCustomTextFormField(
               hint: "제목을 입력하세요",

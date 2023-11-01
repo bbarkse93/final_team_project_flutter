@@ -96,7 +96,7 @@ flutter:
   fonts:
      - family: carrot
        fonts:
-         - asset: assets/fonts/jalnan.ttf
+         - asset: assets/fonts/mayo.ttf
 
 
 

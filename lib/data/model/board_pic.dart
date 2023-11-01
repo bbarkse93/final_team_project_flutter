@@ -1,9 +1,6 @@
-import 'package:team_project/data/model/product.dart';
-import 'package:team_project/data/model/user.dart';
-
 class BoardPic {
-  int boardId;
-  String boardPicUrl;
+  int? boardId;
+  String? boardPicUrl;
 
   BoardPic({
     required this.boardId,
