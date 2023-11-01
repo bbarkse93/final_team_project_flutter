@@ -36,6 +36,16 @@ class BoardListViewModel extends StateNotifier<BoardListModel?> {
     ResponseDTO responseDTO = await BoardRepository().fetchSave(boardWriteDTO);
     Logger().d("2단계 - 첫번째 디티오 파싱이 성공했어요, 졸려 뒤질것 같지만 참아야해요!");
 
+    // TODO 테스팅 - 동네생활 게시글 작성
+    Logger().d(responseDTO.response);
+    Logger().d(responseDTO.success);
+    Logger().d(responseDTO.error);
+    Logger().d("이미지는 이만큼 담겼어요! ${boardWriteDTO.photoList.length}");
+    Logger().d(boardWriteDTO.userId);
+    Logger().d(boardWriteDTO.boardContent);
+    Logger().d(boardWriteDTO.boardTitle);
+    Logger().d(boardWriteDTO.categoryId);
+
     if (responseDTO.response is Map<String, dynamic>) {
       Board writeBoard = Board.fromJson(responseDTO.response);
       Logger().d("3단계 - 두번째 디티오 파싱에 성공했어요, Board객체가 생성 되었어요!");
@@ -50,8 +60,6 @@ class BoardListViewModel extends StateNotifier<BoardListModel?> {
 }
 
 // 3. 창고 관리자
-final boardListProvider =
-    StateNotifierProvider.autoDispose<BoardListViewModel, BoardListModel?>(
-        (ref) {
+final boardListProvider = StateNotifierProvider.autoDispose<BoardListViewModel, BoardListModel?>((ref) {
   return BoardListViewModel(null, ref)..notifyInit();
 });
