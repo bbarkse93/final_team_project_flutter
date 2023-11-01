@@ -111,6 +111,7 @@ class _BoardWritePictureAddFormState extends State<BoardWritePictureAddArea> {
   }
 
   void _pickImageFromGallery() async {
+    Logger().d("여기는 때리나요 ? ");
     XFile? pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
@@ -129,7 +130,14 @@ class _BoardWritePictureAddFormState extends State<BoardWritePictureAddArea> {
         allImage = temp;
       });
 
-      widget.photoList!.value = encodedAllImage;
+      if (widget.photoList != null) {
+        Logger().d("이미지 값이 올바르게 들어갔어요!");
+        widget.photoList!.value = encodedAllImage;
+      }
+
+      if (widget.photoList == null) {
+        Logger().d("값이 들어오지 않았어요! 확인을 해야해요!");
+      }
       Logger().d("내가 말한 부분이 여기  : ${widget.photoList!.value.length}");
     }
   }

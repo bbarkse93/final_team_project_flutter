@@ -5,8 +5,7 @@ import 'package:team_project/_core/constants/size.dart';
 
 class BoardWriteSelectCategorySheet extends StatefulWidget {
   final Function(String)? onCategorySelected;
-
-  ValueNotifier<int>? categoryId;
+  ValueNotifier<int>? categoryId; // int로 변경
 
   BoardWriteSelectCategorySheet({
     Key? key,
@@ -17,12 +16,6 @@ class BoardWriteSelectCategorySheet extends StatefulWidget {
   @override
   State<BoardWriteSelectCategorySheet> createState() => _BoardWriteSelectCategorySheetState();
 }
-
-//
-//
-//
-//
-//
 
 class _BoardWriteSelectCategorySheetState extends State<BoardWriteSelectCategorySheet> {
   List<String> categoryList = ["동네맛집", "동네질문", "동네소식", "생활정보", "취미생활"];
@@ -48,10 +41,20 @@ class _BoardWriteSelectCategorySheetState extends State<BoardWriteSelectCategory
                 ),
                 IconButton(
                   onPressed: () {
-                    {
+                    if (widget.categoryId != null) {
+                      widget.categoryId!.value = index + 1;
+                      Logger().d("widget.categoryId!.value : ${widget.categoryId!.value}");
+                    } else {
+                      Logger().d("widget.categoryId 널값이다.");
+                    }
+
+                    // categoryId의 value를 int 변수에 할당
+                    int categoryIdInt = widget.categoryId?.value ?? 1;
+
+                    // 테스팅
+                    if (widget.onCategorySelected != null) {
                       widget.onCategorySelected!(categoryList[index]);
-                      widget.categoryId?.value = index + 1;
-                      Logger().d("선택된 카테고리의 아이디는 다음과 같습니다 : ${index + 1}");
+                      Logger().d("선택된 카테고리의 아이디는 다음과 같습니다 : $categoryIdInt");
                     }
                     Navigator.pop(context);
                   },
