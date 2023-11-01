@@ -38,7 +38,7 @@ class BoardWriteForm extends StatelessWidget {
       child: Container(
         child: Column(
           children: [
-            BoardWriteCategoryButton(),
+            BoardWriteCategoryButton(categoryId: categoryId),
             BoardWriteWarn(),
             BoardWriteCustomTextFormField(
               hint: "제목을 입력하세요",
