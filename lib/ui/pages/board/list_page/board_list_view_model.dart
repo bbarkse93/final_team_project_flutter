@@ -34,7 +34,7 @@ class BoardListViewModel extends StateNotifier<BoardListModel?> {
     Logger().d("1단계 - noifyAdd계층에 접근했어요!");
 
     ResponseDTO responseDTO = await BoardRepository().fetchSave(boardWriteDTO);
-    Logger().d("2단계 - 첫번째 디티오 파싱이 성공했어요, 졸려 뒤질것 같지만 참아야해요!");
+    Logger().d("2단계 - 첫번째 디티오 파싱이 성공했어요!");
 
     // TODO 테스팅 - 동네생활 게시글 작성
     Logger().d(responseDTO.response);
@@ -44,7 +44,7 @@ class BoardListViewModel extends StateNotifier<BoardListModel?> {
     Logger().d(boardWriteDTO.userId);
     Logger().d(boardWriteDTO.boardContent);
     Logger().d(boardWriteDTO.boardTitle);
-    Logger().d(boardWriteDTO.categoryId);
+    Logger().d("boaedWirteDTO.categoryId :  ${boardWriteDTO.categoryId}");
 
     if (responseDTO.response is Map<String, dynamic>) {
       Board writeBoard = Board.fromJson(responseDTO.response);
