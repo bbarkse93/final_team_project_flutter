@@ -34,7 +34,6 @@ class Move {
   // 채팅관련
   static String chattingListPage = "/chat/list";
   static String chattingRoomPage = "/chat/room";
-
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -55,12 +54,10 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     // 게시물 관련
     Move.boardListPage: (context) => BoardListPage(),
     Move.boardWritePage: (context) => BoardWritePage(),
-    Move.boardDetailPage: (context) => BoardDetailPage()
-
+    Move.boardDetailPage: (context) => BoardDetailPage(),
 
     // 채팅 관련
     Move.chattingListPage: (context) => ChattingListPage(),
     Move.chattingRoomPage: (context) => ChattingRoomPage(),
-
   };
 }

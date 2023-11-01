@@ -10,7 +10,6 @@ class ProductDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Logger().d("디테일 화면으로 넘어왔어요 !");
     int? clickedProductDetailId = ref.read(paramProvider).productDetailId;
     return Scaffold(
       body: DetailProductBody(),
