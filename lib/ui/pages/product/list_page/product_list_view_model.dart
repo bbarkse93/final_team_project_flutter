@@ -25,12 +25,9 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
   Ref ref;
 
   Future<void> notifyInit() async {
-    Logger().d("저 여기요");
     ResponseDTO responseDTO = await ProductRepository().fetchProductList();
-    Logger().d("저 여기요2");
 
     state = ProductListModel(responseDTO.response);
-    Logger().d("여까지됨");
   }
 
   Future<void> notifyAdd(ProductWriteDTO dto) async {
