@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/data/model/product.dart';
+import 'package:team_project/ui/pages/product/update_page/product_update_view_model.dart';
 
-class UpdateTextFormField extends StatelessWidget {
+class UpdatePriceTextFormField extends StatelessWidget {
   final controllerName;
-  final hintText;
   final funValidator;
 
-  const UpdateTextFormField({
+  const UpdatePriceTextFormField({
     required this.funValidator,
     required this.controllerName,
     super.key,
-    required this.hintText,
   });
 
   @override
@@ -19,12 +19,18 @@ class UpdateTextFormField extends StatelessWidget {
       height: 45,
       child: Consumer(
         builder: (context, ref, child) {
+          ProductUpdateModel? model = ref.watch(productUpdateProvider);
+
+          if (model!.product != null) {
+            Product product = model.product;
+          }
+
           return (TextFormField(
             controller: controllerName,
             obscureText: false,
             validator: funValidator,
             decoration: InputDecoration(
-              hintText: "$hintText",
+              hintText: "${product.productPrice}",
               hintStyle: TextStyle(fontSize: 15),
               contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
               enabledBorder: OutlineInputBorder(
