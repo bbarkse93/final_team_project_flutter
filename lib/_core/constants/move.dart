@@ -9,6 +9,7 @@ import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
+import 'package:team_project/ui/pages/product/update_page/product_update_page.dart';
 import 'package:team_project/ui/pages/product/write_page/product_write_page.dart';
 import 'package:team_project/ui/pages/splash_page/splash_page.dart';
 
@@ -25,6 +26,7 @@ class Move {
   static String productListPage = "/post/list";
   static String productDetailPage = "/post/detail";
   static String productWritePage = "/product/write";
+  static String productUpdatePage = "/product/update";
 
   // 게시물 관련 (동네생활)
   static String boardListPage = "/board/list";
@@ -50,6 +52,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.productListPage: (context) => ProductListPage(),
     Move.productDetailPage: (context) => ProductDetailPage(),
     Move.productWritePage: (context) => ProductWritePage(),
+    Move.productUpdatePage: (context) => ProductUpdatePage(),
 
     // 게시물 관련
     Move.boardListPage: (context) => BoardListPage(),
