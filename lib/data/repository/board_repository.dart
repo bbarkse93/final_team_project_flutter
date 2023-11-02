@@ -57,7 +57,6 @@ class BoardRepository {
           options: Options(headers: {"Authorization": jwt}));
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
-
       responseDTO.response = Board.fromJson(responseDTO.response);
 
       return responseDTO;

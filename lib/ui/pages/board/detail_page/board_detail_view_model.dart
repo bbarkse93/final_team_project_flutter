@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
-import 'package:team_project/data/model/reply.dart';
+import 'package:team_project/data/model/replies.dart';
 import 'package:team_project/data/repository/board_repository.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';

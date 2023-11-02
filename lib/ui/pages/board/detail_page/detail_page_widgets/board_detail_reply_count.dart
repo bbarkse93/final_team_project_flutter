@@ -20,7 +20,7 @@ class BoardDetailReplyCount extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("댓글 0"),
+          Text("댓글 ${model.board.replies?.length}"),
           Row(
             children: [
               Text("등록순"),

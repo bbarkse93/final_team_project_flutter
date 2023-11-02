@@ -7,7 +7,7 @@ class User {
   String? location;
   bool? distinguish;
   String? userCreatedAt;
-  String? replyUserId;
+  int? replyUserId;
   String? nickname;
 
   User({

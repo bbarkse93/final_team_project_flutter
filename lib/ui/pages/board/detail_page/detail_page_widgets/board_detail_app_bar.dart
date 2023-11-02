@@ -14,7 +14,9 @@ class BoardDetailAppBar extends StatelessWidget implements PreferredSizeWidget {
           Icons.arrow_back_ios_new,
           color: Colors.black,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       actions: [
         Icon(CupertinoIcons.bell_slash, color: Colors.black),
