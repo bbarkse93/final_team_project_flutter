@@ -7,16 +7,21 @@ class User {
   String? location;
   bool? distinguish;
   String? userCreatedAt;
+  String? replyUserId;
+  String? nickname;
 
-  User(
-      {this.id,
-      this.username,
-      this.password,
-      this.email,
-      this.userPicUrl,
-      this.location,
-      this.distinguish,
-      this.userCreatedAt});
+  User({
+    this.id,
+    this.username,
+    this.password,
+    this.email,
+    this.userPicUrl,
+    this.location,
+    this.distinguish,
+    this.userCreatedAt,
+    this.replyUserId,
+    this.nickname,
+  });
 
   // 1. Dart 객체를 통신을 위한 Map 형태로 변환합니다.
   Map<String, dynamic> toJson() => {
@@ -28,6 +33,8 @@ class User {
         "location": location,
         "distinguish": distinguish,
         "userCreatedAt": userCreatedAt,
+        "replyUserId": replyUserId,
+        "nickname": nickname,
       };
 
   // 2. Map 형태로 받아서 Dart 객체로 변환합니다.
@@ -39,5 +46,7 @@ class User {
         userPicUrl = json["userPicUrl"],
         location = json["location"],
         distinguish = json["distinguish"],
-        userCreatedAt = json["userCreatedAt"];
+        userCreatedAt = json["userCreatedAt"],
+        replyUserId = json["replyUserId"],
+        nickname = json["nickname"];
 }

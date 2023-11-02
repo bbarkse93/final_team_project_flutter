@@ -1,4 +1,5 @@
 import 'package:team_project/data/model/board_pic.dart';
+import 'package:team_project/data/model/reply.dart';
 import 'package:team_project/data/model/user.dart';
 
 class Board {
@@ -9,6 +10,7 @@ class Board {
   String? boardCategory;
   User? user;
   List<BoardPic>? boardPics;
+  List<Reply>? replies;
 
   Board({
     required this.id,
@@ -39,7 +41,9 @@ class Board {
         createdAt = json["createdAt"],
         boardCategory = json["boardCategory"],
         user = User.fromJson(json["user"]),
-        boardPics = (json["boardPics"] as List<dynamic>? ?? []).map((picJson) => BoardPic.fromJson(picJson)).toList();
+        boardPics = (json["boardPics"] as List<dynamic>? ?? [])
+            .map((picJson) => BoardPic.fromJson(picJson))
+            .toList();
 
 // String getUpdated() {
 //   // 출력시 -> 값을 Oct 23 이렇게 만든다.
