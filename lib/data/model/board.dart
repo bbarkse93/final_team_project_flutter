@@ -1,5 +1,5 @@
 import 'package:team_project/data/model/board_pic.dart';
-import 'package:team_project/data/model/reply.dart';
+import 'package:team_project/data/model/replies.dart';
 import 'package:team_project/data/model/user.dart';
 
 class Board {
@@ -10,7 +10,7 @@ class Board {
   String? boardCategory;
   User? user;
   List<BoardPic>? boardPics;
-  List<Reply>? replies;
+  List<Replies>? replies;
 
   Board(
       {required this.id,
@@ -20,7 +20,7 @@ class Board {
       required this.boardCategory,
       required this.user,
       required this.boardPics,
-      List<Reply>? replies});
+      List<Replies>? replies});
 
   // Dart 객체를 통신을 위한 Map 형태로 변환
   Map<String, dynamic> toJson() => {
@@ -41,7 +41,12 @@ class Board {
         createdAt = json["createdAt"],
         boardCategory = json["boardCategory"],
         user = User.fromJson(json["user"]),
-        boardPics = (json["boardPics"] as List<dynamic>? ?? []).map((picJson) => BoardPic.fromJson(picJson)).toList();
+        boardPics = (json["boardPics"] as List<dynamic>? ?? [])
+            .map((picJson) => BoardPic.fromJson(picJson))
+            .toList(),
+        replies = (json["replies"] as List<dynamic>? ?? [])
+            .map((item) => Replies.fromJson(item))
+            .toList();
 
 // String getUpdated() {
 //   // 출력시 -> 값을 Oct 23 이렇게 만든다.
