@@ -24,7 +24,7 @@ class BoardDetailPics extends ConsumerWidget {
           Container(
             padding: EdgeInsets.all(defaultPadding),
             child: Center(
-              child: Image.asset(
+              child: Image.network(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
