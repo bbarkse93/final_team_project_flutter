@@ -4,7 +4,8 @@ import 'package:team_project/main.dart';
 // 1. 창고 데이터
 class RequestParam {
   int? productDetailId;
-  RequestParam({this.productDetailId});
+  int? boardDetailId;
+  RequestParam({this.productDetailId, this.boardDetailId});
 }
 
 // 2. 창고 (비지니스 로직)
