@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/ui/pages/product/update_page/product_update_page.dart';
 
 class DetailAppbarButton extends StatelessWidget {
   const DetailAppbarButton({
@@ -19,15 +20,12 @@ class DetailAppbarButton extends StatelessWidget {
                 child: Column(
                   children: [
                     TextButton(
-                        child: Text("수정하기",
-                            style: TextStyle(
-                                fontSize: fontMedium, color: kDarkColor)),
-                        onPressed: () {}),
-                    TextButton(
-                        child: Text("삭제하기",
-                            style: TextStyle(
-                                fontSize: fontMedium, color: kDarkColor)),
-                        onPressed: () {}),
+                        child: Text("수정하기", style: TextStyle(fontSize: fontMedium, color: kDarkColor)),
+                        onPressed: () {
+                          // 2. 화면 이동
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => ProductUpdatePage()));
+                        }),
+                    TextButton(child: Text("삭제하기", style: TextStyle(fontSize: fontMedium, color: kDarkColor)), onPressed: () {}),
                   ],
                 ),
               ),
