@@ -20,7 +20,6 @@ class BoardDetailReply extends ConsumerWidget {
     } else {
       List<Replies> ReplyList =
           model.board.replies?.map((e) => e).toList() ?? [];
-
       return Container(
         child: Padding(
           padding: const EdgeInsets.only(bottom: defaultPadding),
