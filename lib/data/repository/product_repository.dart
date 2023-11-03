@@ -13,14 +13,16 @@ class ProductRepository {
   Future<ResponseDTO> fetchProductList() async {
     try {
       // 통신
-      final response = await dio.get("/products", options: Options(headers: {"Authorization": jwt}));
+      final response = await dio.get("/products",
+          options: Options(headers: {"Authorization": jwt}));
 
       // ResponseDTO파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
 
       // ResponseDTO의 data 파싱
       List<dynamic> mapList = responseDTO.response as List<dynamic>;
-      List<Product> productList = mapList.map((e) => Product.fromJson(e)).toList();
+      List<Product> productList =
+          mapList.map((e) => Product.fromJson(e)).toList();
 
       // 파싱된 데이터를 공통DTO로 덮어씌우기
       responseDTO.response = productList;
@@ -34,7 +36,8 @@ class ProductRepository {
   Future<ResponseDTO> fetchProductDetail(int id) async {
     try {
       // 통신
-      Response response = await dio.get("/products/${id}", options: Options(headers: {"Authorization": jwt}));
+      Response response = await dio.get("/products/${id}",
+          options: Options(headers: {"Authorization": jwt}));
 
       // 응답 받은 데이터 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -56,8 +59,11 @@ class ProductRepository {
       Logger().d("${productWriteDTO.price}");
       Logger().d("${productWriteDTO.description}");
 
-      Response<dynamic> response =
-          await dio.post("/products/write", options: Options(headers: {"Authorization": "${jwt}"}), data: productWriteDTO.toJson());
+      Response<dynamic> response = await dio.post(
+        "/products/write",
+        options: Options(headers: {"Authorization": "${jwt}"}),
+        data: productWriteDTO.toJson(),
+      );
 
       Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
       Logger().d("${response}");
@@ -81,8 +87,9 @@ class ProductRepository {
       Logger().d("${productUpdateDTO.price}");
       Logger().d("${productUpdateDTO.description}");
 
-      Response<dynamic> response =
-          await dio.put("/products/write", options: Options(headers: {"Authorization": "${jwt}"}), data: productUpdateDTO.toJson());
+      Response<dynamic> response = await dio.put("/products/write",
+          options: Options(headers: {"Authorization": "${jwt}"}),
+          data: productUpdateDTO.toJson());
 
       Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
       Logger().d("${response}");
