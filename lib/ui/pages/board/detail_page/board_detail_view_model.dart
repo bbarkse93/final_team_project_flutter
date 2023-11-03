@@ -49,12 +49,24 @@ class BoardDetailViewModel extends StateNotifier<BoardDetailModel?> {
           writeReplies,
           ...?state!.board.replies,
         ];
+        Board board = Board(
+          id: state!.board.id,
+          boardTitle: state!.board.boardTitle,
+          boardContent: state!.board.boardContent,
+          createdAt: state!.board.createdAt,
+          boardCategory: state!.board.boardCategory,
+          user: state!.board.user,
+          boardPics: state!.board.boardPics,
+          replies: newRepliesList,
+        );
+
+        state = BoardDetailModel(board);
       }
     }
   }
 }
 
-//창고 관리자
+//창고 관리자b
 final boardDetailProvider =
     StateNotifierProvider.autoDispose<BoardDetailViewModel, BoardDetailModel?>(
         (ref) {

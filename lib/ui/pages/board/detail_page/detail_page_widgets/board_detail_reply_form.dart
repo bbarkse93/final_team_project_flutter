@@ -72,7 +72,7 @@ class BoardDetailReplyForm extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {
+                onPressed: () async {
                   BoardDetailModel? model = ref.read(boardDetailProvider);
                   submit(ref);
                   ReplyWriteDTO replyReqDTO = ReplyWriteDTO(
@@ -81,8 +81,8 @@ class BoardDetailReplyForm extends StatelessWidget {
                     userId: 1,
                   );
                   Logger().d("나 여기까지옴2 ${replyReqDTO.boardReply}");
-                  ref
-                      .watch(boardDetailProvider.notifier)
+                  await ref
+                      .read(boardDetailProvider.notifier)
                       .notifyAdd(replyReqDTO);
                 },
                 icon: Icon(Icons.send),

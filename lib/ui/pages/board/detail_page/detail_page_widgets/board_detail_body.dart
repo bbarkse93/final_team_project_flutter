@@ -8,16 +8,11 @@ import 'package:team_project/ui/pages/board/detail_page/detail_page_widgets/boar
 import 'package:team_project/ui/pages/board/detail_page/detail_page_widgets/board_detail_reply_area.dart';
 import 'package:team_project/ui/pages/board/detail_page/detail_page_widgets/board_detail_title.dart';
 
-class BoardDetailBody extends StatefulWidget {
+class BoardDetailBody extends StatelessWidget {
   const BoardDetailBody({
     super.key,
   });
 
-  @override
-  State<BoardDetailBody> createState() => _BoardDetailBodyState();
-}
-
-class _BoardDetailBodyState extends State<BoardDetailBody> {
   @override
   Widget build(BuildContext context) {
     // BoardDetailModel? model = ref.watch(boardDetailProvider);
