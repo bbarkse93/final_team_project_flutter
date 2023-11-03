@@ -20,7 +20,7 @@ class Board {
       required this.boardCategory,
       required this.user,
       required this.boardPics,
-      List<Replies>? replies});
+      required this.replies});
 
   // Dart 객체를 통신을 위한 Map 형태로 변환
   Map<String, dynamic> toJson() => {
