@@ -28,11 +28,10 @@ class ProductListBody extends ConsumerWidget {
               onTap: () {
                 // 1. postId를 paramStore 에 저장
                 ParamStore paramStore = ref.read(paramProvider);
-                paramStore.productDetailId = productList[index].id;
+                paramStore.productDetailId = productList[index].id - 1;
 
                 // 2. 화면 이동
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ProductDetailPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage()));
               },
               child: ProductListItem(productList[index]));
         },

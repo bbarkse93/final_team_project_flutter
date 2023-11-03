@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/model/product.dart';
-import 'package:team_project/ui/pages/product/update_page/product_update_view_model.dart';
+import 'package:team_project/data/store/param_store.dart';
+import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 
 class UpdateProductNameTextFormField extends StatelessWidget {
   final controllerName;
@@ -19,11 +20,12 @@ class UpdateProductNameTextFormField extends StatelessWidget {
       height: 45,
       child: Consumer(
         builder: (context, ref, child) {
-          ProductUpdateModel? model = ref.watch(productUpdateProvider);
-
-          if (model!.product != null) {
-            Product product = model.product;
-          }
+          // 무적의 리버팟코드
+          ProductListModel? productListModel = ref.watch(productListProvider);
+          ParamStore paramStore = ref.read(paramProvider);
+          List<Product> productList = productListModel!.productList;
+          int productId = paramStore.productDetailId!;
+          Product product = productList[productId];
 
           return (TextFormField(
             controller: controllerName,

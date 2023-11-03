@@ -31,7 +31,7 @@ class ProductWriteBody extends StatelessWidget {
                     backgroundColor: Color.fromRGBO(255, 126, 0, 1),
                   ),
                   child: Text(
-                    '작성완료',
+                    '수정하기',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
