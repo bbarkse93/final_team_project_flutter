@@ -56,8 +56,11 @@ class ProductRepository {
       Logger().d("${productWriteDTO.price}");
       Logger().d("${productWriteDTO.description}");
 
-      Response<dynamic> response =
-          await dio.post("/products/write", options: Options(headers: {"Authorization": "${jwt}"}), data: productWriteDTO.toJson());
+      Response<dynamic> response = await dio.post(
+        "/products/write",
+        options: Options(headers: {"Authorization": "${jwt}"}),
+        data: productWriteDTO.toJson(),
+      );
 
       Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
       Logger().d("${response}");
