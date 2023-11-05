@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:logger/logger.dart';
 import 'package:riverpod/riverpod.dart';
 
 // 페이지 나갈 때 자동으로 없어지게!
@@ -29,16 +28,21 @@ class AddressApiRepository {
   }
 
   Future<List<String>> findByName({required String location}) async {
-    final url =
-        "http://api.vworld.kr/req/search?key=$apiKey&request=search&category=L4&type=district&size=1000&query=$location";
-    final response = await addressDio.get(url);
-    final json = response.data;
-    Logger().d("이거 제이슨  $json");
-    if (json["response"]["status"] == "OK") {
-      return (json["response"]["result"]["items"] as List)
-          .map((e) => e["title"].toString())
-          .toList();
-    } else {
+    try {
+      final url =
+          "http://api.vworld.kr/req/search?key=$apiKey&request=search&category=L4&type=district&size=1000&query=$location";
+      final response = await addressDio.get(url);
+      final json = response.data;
+
+      if (json["response"]["status"] == "OK") {
+        List<dynamic> items = json["response"]["result"]["items"];
+        List<String> result = items.map((e) => e["title"].toString()).toList();
+        return result;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      print("오류: $e");
       return [];
     }
   }

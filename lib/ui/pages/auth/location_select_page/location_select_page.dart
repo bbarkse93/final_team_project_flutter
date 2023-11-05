@@ -17,7 +17,7 @@ class LocationSelectPage extends ConsumerWidget {
       body: Column(
         children: [
           PresentLocationButton(),
-          SearchLocationList(model: model),
+          SearchLocationList(),
         ],
       ),
     );
