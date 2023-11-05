@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.boardListPage,
+      initialRoute: Move.myCarrotPage,
       routes: getRouters(),
       theme: theme(),
     );
