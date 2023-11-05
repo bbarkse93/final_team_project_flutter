@@ -33,7 +33,7 @@ class Move {
   // 게시물 관련 (동네생활)
   static String boardListPage = "/board/list";
   static String boardWritePage = "/board/write";
-  static String boardDetailPage = "/board/detail";
+  static String boardDetailPage = "/boards/detail";
 
   // 채팅관련
   static String chattingListPage = "/chat/list";

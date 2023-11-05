@@ -56,36 +56,39 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
         Logger().d("user : ${writeProduct.user}");
         Logger().d("id : ${writeProduct.id}");
         // 나머지 코드는 그대로 유지
-        List<Product> newProductList = [
-          writeProduct,
-          ...state!.productList
-        ]; // 2. 기존 상태에 데이터 추가 [전개연산자]
+        List<Product> newProductList = [writeProduct, ...state!.productList]; // 2. 기존 상태에 데이터 추가 [전개연산자]
         Logger().d("마지막이에요.... 정말로 할수있어요.");
-        state = ProductListModel(
-            newProductList); // 3. 뷰모델(창고) 데이터 갱신이 완료 -> watch 구독자는 rebuild됨.
+        state = ProductListModel(newProductList); // 3. 뷰모델(창고) 데이터 갱신이 완료 -> watch 구독자는 rebuild됨.
         // Navigator.pop(mContext!); // 4. 글쓰기 화면 pop
 
         // Write Product 진행 후 DetailPage of writeProduct 이동
         ParamStore paramStore = ref.read(paramProvider);
         paramStore.productDetailId = writeProduct.id;
 
-        Navigator.push(
-            mContext!, MaterialPageRoute(builder: (_) => ProductDetailPage()));
+        Navigator.push(mContext!, MaterialPageRoute(builder: (_) => ProductDetailPage()));
       } else {
         Logger().d("Invalid response data format");
         // JSON 데이터가 아닌 다른 형식인 경우 에러 처리
         // 에러 처리 로직 추가
       }
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(
-          SnackBar(content: Text("게시물 작성 실패 : ${responseDTO.error}")));
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("게시물 작성 실패 : ${responseDTO.error}")));
     }
+  }
+
+  Future<void> notifyUpdate(Product product) async {
+    Logger().d("여기가 문제구나!!");
+    List<Product> products = state!.productList;
+    Logger().d(" products.length : ${products.length}");
+    Logger().d(" products.length : ${products}");
+
+    List<Product> newProducts = products.map((e) => e.id == product.id ? product : e).toList();
+
+    state = ProductListModel(newProducts);
   }
 }
 
 // 3. 창고 관리자
-final productListProvider =
-    StateNotifierProvider.autoDispose<ProductListViewModel, ProductListModel?>(
-        (ref) {
+final productListProvider = StateNotifierProvider.autoDispose<ProductListViewModel, ProductListModel?>((ref) {
   return ProductListViewModel(null, ref)..notifyInit();
 });

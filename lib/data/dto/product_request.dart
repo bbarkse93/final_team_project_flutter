@@ -37,7 +37,7 @@ class ProductWriteDTO {
 
 // 글쓰기 수정 DTO
 class ProductUpdateDTO {
-  // final int productId;
+  final int productId;
   final String productName;
   final String description;
   final int price;
@@ -46,7 +46,7 @@ class ProductUpdateDTO {
   final List<String> photoList;
 
   ProductUpdateDTO({
-    // required this.productId,
+    required this.productId,
     required this.productName,
     required this.price,
     required this.description,
@@ -64,7 +64,7 @@ class ProductUpdateDTO {
     }
 
     return {
-      // "productId": productId,
+      "productId": productId,
       "productName": productName,
       "productDescription": description,
       "productPrice": price,

@@ -23,7 +23,7 @@ class _CarouselImageState extends State<CarouselImage> {
   void initState() {
     super.initState();
     product = widget.product;
-    productPicList = product.productPics
+    productPicList = product.productPics!
         .map((e) => Image.memory(
               fit: BoxFit.fill,
               base64.decode(e.productPicUrl),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/product_request.dart';
+import 'package:team_project/data/model/product.dart';
+import 'package:team_project/data/store/param_store.dart';
+import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 import 'package:team_project/ui/pages/product/update_page/widgets/product_update_description_text_form_field.dart';
 import 'package:team_project/ui/pages/product/update_page/widgets/product_update_price_text_form_field.dart';
 import 'package:team_project/ui/pages/product/update_page/widgets/product_update_product_name_text_form_field.dart';
@@ -24,15 +26,18 @@ class ProductUpdateForm extends StatelessWidget {
   final photoList = ValueNotifier<List<String>>([]);
 
   void submit(WidgetRef ref) {
-    if (formKey.currentState!.validate()) {
-      Logger().d("여기는 form 위젯 계층이에요 + ${photoList.value.length}");
-      Logger().d("여기는 form 위젯 계층이에요 + ${productName}");
-      Logger().d("여기는 form 위젯 계층이에요 + ${price}");
-      Logger().d("여기는 form 위젯 계층이에요 + ${description}");
+    // 무적의 리버팟코드
+    ProductListModel? productListModel = ref.watch(productListProvider);
+    ParamStore paramStore = ref.read(paramProvider);
+    List<Product> productList = productListModel!.productList;
+    int productId = paramStore.productDetailId!;
+    Product product = productList[productId];
 
+    if (formKey.currentState!.validate()) {
       int intPrice = int.parse(price.text);
 
-      ProductUpdateDTO productUpdateDTODTO = ProductUpdateDTO(
+      ProductUpdateDTO productUpdateDTO = ProductUpdateDTO(
+        productId: product.id,
         productName: productName.text,
         price: intPrice,
         description: description.text,

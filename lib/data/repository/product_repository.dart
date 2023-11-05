@@ -56,8 +56,11 @@ class ProductRepository {
       Logger().d("${productWriteDTO.price}");
       Logger().d("${productWriteDTO.description}");
 
-      Response<dynamic> response =
-          await dio.post("/products/write", options: Options(headers: {"Authorization": "${jwt}"}), data: productWriteDTO.toJson());
+      Response<dynamic> response = await dio.post(
+        "/products/write",
+        options: Options(headers: {"Authorization": "${jwt}"}),
+        data: productWriteDTO.toJson(),
+      );
 
       Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
       Logger().d("${response}");
@@ -73,7 +76,7 @@ class ProductRepository {
   }
 
   // 통신
-  Future<ResponseDTO> fetchUpdate(ProductUpdateDTO productUpdateDTO) async {
+  Future<ResponseDTO> fetchUpdate(String jwt, int id, ProductUpdateDTO productUpdateDTO) async {
     try {
       Logger().d("3단계 통과 - repository 계층에 진입성공이에요! ");
       Logger().d("${productUpdateDTO.photoList.length}");
@@ -82,12 +85,15 @@ class ProductRepository {
       Logger().d("${productUpdateDTO.description}");
 
       Response<dynamic> response =
-          await dio.put("/products/write", options: Options(headers: {"Authorization": "${jwt}"}), data: productUpdateDTO.toJson());
+          await dio.put("/products/update/${id}", options: Options(headers: {"Authorization": "${jwt}"}), data: productUpdateDTO.toJson());
 
       Logger().d("4단계 진입 - 파싱과 바인딩이 시작이에요 ! 중간 과정이니 조금만 더 힘내요 !");
       Logger().d("${response}");
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      Logger().d("여기는 해결이 되징 ? 4.5 단계");
+      Logger().d("responseDTO.response : ${responseDTO.response}");
+      responseDTO.response = Product.fromJson(responseDTO.response);
       Logger().d("5단계 진입 - 거의 다 왔어요 ! 조금만 더 힘내요 !");
       Logger().d("${responseDTO}");
 
