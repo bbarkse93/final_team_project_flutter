@@ -19,14 +19,19 @@ MaterialColor primaryWhite = MaterialColor(
 );
 
 ThemeData theme() {
-  return ThemeData(appBarTheme: appBarTheme(), fontFamily: 'carrot');
+  return ThemeData(
+    appBarTheme: appBarTheme(),
+    fontFamily: 'carrot',
+    primarySwatch: primaryWhite,
+  );
 }
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    titleTextStyle: TextStyle(color: Colors.white, fontSize: fontLarge, fontFamily: 'carrot'),
+    titleTextStyle:
+        TextStyle(color: kDarkColor, fontSize: fontLarge, fontFamily: 'carrot'),
     centerTitle: true,
-    backgroundColor: kCarrotColor,
+    backgroundColor: Colors.white,
     elevation: 1,
   );
 }

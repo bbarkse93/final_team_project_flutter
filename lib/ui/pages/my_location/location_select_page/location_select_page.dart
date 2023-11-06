@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/ui/pages/auth/location_select_page/location_select_page_widgets/present_location_button.dart';
-import 'package:team_project/ui/pages/auth/location_select_page/location_select_page_widgets/search_location_button.dart';
-import 'package:team_project/ui/pages/auth/location_select_page/location_select_view_model.dart';
+import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page_widgets/present_location_button.dart';
+import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page_widgets/search_location_button.dart';
+import 'package:team_project/ui/pages/my_location/location_select_page/location_select_view_model.dart';
 import 'package:team_project/ui/widgets/forms/custom_search_text_form_field.dart';
 
 class LocationSelectPage extends ConsumerWidget {

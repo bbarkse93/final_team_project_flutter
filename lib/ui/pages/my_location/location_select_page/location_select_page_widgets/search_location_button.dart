@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/auth/location_select_page/location_select_view_model.dart';
+import 'package:team_project/ui/pages/my_location/location_select_page/location_select_view_model.dart';
 
 class SearchLocationList extends ConsumerWidget {
   const SearchLocationList({super.key});
