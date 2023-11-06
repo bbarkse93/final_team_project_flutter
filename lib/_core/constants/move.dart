@@ -25,7 +25,7 @@ class Move {
   static String joinPage = "/join";
   static String locationSelectPage = "/location/select";
   static String myCarrotPage = "/mycarrot";
-
+  
   // 상품 관련
   static String productListPage = "/post/list";
   static String productDetailPage = "/post/detail";
