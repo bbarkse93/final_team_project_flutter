@@ -19,7 +19,6 @@ class ProductListPage extends ConsumerWidget {
       // 스낵바, 드로어, 앱바 등을 관리하며, 이러한 요소들을 프로그래밍 방식으로 제어하려면 ScaffoldKey가 필요
       //Scaffold는 앱의 기본 레이아웃 구조를 나타내는 위젯
       key: scaffoldKey,
-      drawer: CustomSideNavigator(scaffoldKey),
       appBar: ProductListAppBar("부전"),
       floatingActionButton: CustomFloationButton(),
 
