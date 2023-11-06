@@ -50,6 +50,7 @@ dependencies:
   converter: ^0.3.6
   permission_handler: ^11.0.1
   carousel_slider: ^4.2.1 # 사진 페이지 쪼고만한 동끌벵이 생겨서 옆으로 넘기면 넘어가는거 지원
+  geolocator: ^10.1.0 #GPS
 
 
 
