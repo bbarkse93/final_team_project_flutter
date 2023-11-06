@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/ui/pages/auth/my_carrot_page/my_carrot_page_widgets/my_carrot_activity.dart';
-import 'package:team_project/ui/pages/auth/my_carrot_page/my_carrot_page_widgets/my_carrot_app_bar.dart';
-import 'package:team_project/ui/pages/auth/my_carrot_page/my_carrot_page_widgets/my_carrot_info.dart';
-import 'package:team_project/ui/pages/auth/my_carrot_page/my_carrot_page_widgets/my_carrot_items.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_activity.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_app_bar.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_info.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_items.dart';
 
 class MyCarrotPage extends StatelessWidget {
   const MyCarrotPage({super.key});
