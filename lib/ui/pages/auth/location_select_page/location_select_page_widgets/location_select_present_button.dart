@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 
-class PresentLocationButton extends StatelessWidget {
-  const PresentLocationButton({
+class LocationSelectPresentButton extends StatelessWidget {
+  const LocationSelectPresentButton({
     super.key,
   });
 
