@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_view_model.dart';
 
 class LocationSelectSearchList extends ConsumerWidget {
@@ -9,6 +11,8 @@ class LocationSelectSearchList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String text = "";
+
     LocationModel? model = ref.watch(locationSelectProvider);
     return Expanded(
       child: ListView.builder(
@@ -48,7 +52,14 @@ class LocationSelectSearchList extends ConsumerWidget {
                         "${model?.location?[index - 1] ?? " "}",
                         style: TextStyle(fontSize: fontLarge),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        text = model?.location?[index - 1] ?? " ";
+                        Logger().d(text);
+                        // ParamStore에 text값 담기
+                        ParamStore textparam = ref.read(paramProvider);
+                        textparam.location = text;
+                        Navigator.popAndPushNamed(context, Move.joinPage);
+                      },
                     ),
                   ),
                   Divider(thickness: 1),
