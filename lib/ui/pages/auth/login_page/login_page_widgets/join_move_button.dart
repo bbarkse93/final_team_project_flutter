@@ -9,7 +9,7 @@ class JoinMoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextButton("회원가입 페이지로 이동", () {
-      Navigator.pushNamed(context, Move.joinPage);
+      Navigator.pushNamed(context, Move.locationSelectPage);
     });
   }
 }
