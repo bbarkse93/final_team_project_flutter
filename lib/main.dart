@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Move.locationSelectPage,
+      initialRoute: Move.myTownPage,
       routes: getRouters(),
       theme: theme(),
     );
