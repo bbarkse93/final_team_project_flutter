@@ -3,9 +3,9 @@ import 'package:logger/logger.dart';
 import 'package:team_project/data/repository/address_repository.dart';
 
 class LocationModel {
-  final List<dynamic>? location;
+  final List<String>? location;
   String? text;
-  LocationModel(this.location);
+  LocationModel(this.location, this.text);
 }
 
 class LocationViewModel extends StateNotifier<LocationModel?> {
@@ -17,10 +17,10 @@ class LocationViewModel extends StateNotifier<LocationModel?> {
   }
 
   void updateText(String value) async {
-    List<dynamic> location =
+    List<String> location =
         await AddressApiRepository().findByName(location: "$value");
-    Logger().d("ViewModel로 넘어온 결과값은:  $location");
-    state = LocationModel(location);
+
+    state = LocationModel(location, value);
   }
 }
 
