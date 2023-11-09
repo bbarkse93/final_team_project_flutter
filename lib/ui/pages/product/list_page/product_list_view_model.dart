@@ -84,7 +84,11 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
 
     List<Product> newProducts = products.map((e) => e.id == product.id ? product : e).toList();
 
+    Logger().d(newProducts);
+
     state = ProductListModel(newProducts);
+
+    Logger().d("여기는 넘어와 ? notifyUpdate");
   }
 }
 
