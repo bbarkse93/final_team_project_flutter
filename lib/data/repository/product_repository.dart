@@ -8,7 +8,7 @@ import 'package:team_project/data/model/product.dart';
 class ProductRepository {
   // TODO - 토큰은 기간이 만료되어서 값이 바뀔수 있기때문에 날마다 아침에 체크바랍니다!
   String jwt =
-      "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE2OTkzMjYzMDJ9.T3og_6O3iCe7aZVDbrcxg29av_Z5pvZjhAaUoGydq8XOlkeGKJ9lz__kkdc7-ACAjZ-52HN-h1lj1KPDD02Ezw";
+      "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE3MDAwMzA2OTJ9.KhgyUcE4S_zErCwY1zhNGQy1N_2yVl_OOmD2lkMCJ89gZqlru53LNJCXAdOfGSuEAUWYr1HEb0JCgFXycAHL3A";
 
   Future<ResponseDTO> fetchProductList() async {
     try {

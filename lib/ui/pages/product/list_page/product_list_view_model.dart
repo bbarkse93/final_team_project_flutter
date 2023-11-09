@@ -63,7 +63,7 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
 
         // Write Product 진행 후 DetailPage of writeProduct 이동
         ParamStore paramStore = ref.read(paramProvider);
-        paramStore.productDetailId = writeProduct.id;
+        paramStore.productDetailId = writeProduct.id - 1;
 
         Navigator.push(mContext!, MaterialPageRoute(builder: (_) => ProductDetailPage()));
       } else {
