@@ -30,8 +30,11 @@ class ProductListBody extends ConsumerWidget {
                 ParamStore paramStore = ref.read(paramProvider);
                 paramStore.productDetailId = productList[index].id - 1;
 
+                // TODO tip - product 통쨰로 넣는다면 ?
+                paramStore.product = productList[index];
+
                 // 2. 화면 이동
-                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage(productList[index])));
               },
               child: ProductListItem(productList[index]));
         },

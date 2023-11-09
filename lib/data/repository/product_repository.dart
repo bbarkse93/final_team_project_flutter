@@ -102,4 +102,17 @@ class ProductRepository {
       return ResponseDTO(false, "상품을 등록할수없습니다.", null);
     }
   }
+
+  Future<ResponseDTO> fetchDelete(String jwt, int id) async {
+    try {
+      // 통신
+      Response response = await dio.delete("/products/${id}", options: Options(headers: {"Authorization": "$jwt"}));
+      // 응답 받은 데이터 파싱
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(false, e, "실패");
+    }
+  }
 }

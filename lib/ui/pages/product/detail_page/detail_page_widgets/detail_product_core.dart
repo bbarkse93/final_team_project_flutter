@@ -23,7 +23,7 @@ class DetailProductCore extends ConsumerWidget {
                   username: "${product.user?.username ?? "이름없음"}",
                   location: "${product.user?.location ?? "지역선택안함"}",
                 ),
-                DetailProductInfo(),
+                DetailProductInfo(product),
               ],
             ),
           );
