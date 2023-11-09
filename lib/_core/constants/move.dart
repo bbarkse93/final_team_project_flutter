@@ -9,7 +9,6 @@ import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page.dart';
-import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 import 'package:team_project/ui/pages/product/update_page/product_update_page.dart';
 import 'package:team_project/ui/pages/product/write_page/product_write_page.dart';
@@ -56,7 +55,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
 
     // 상품 관련
     Move.productListPage: (context) => ProductListPage(),
-    Move.productDetailPage: (context) => ProductDetailPage(),
+    // Move.productDetailPage: (context) => ProductDetailPage(),
     Move.productWritePage: (context) => ProductWritePage(),
     Move.productUpdatePage: (context) => ProductUpdatePage(),
 

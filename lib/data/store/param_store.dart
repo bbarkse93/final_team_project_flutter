@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/data/model/product.dart';
 import 'package:team_project/main.dart';
 
 // 1. 창고 데이터
@@ -6,7 +7,15 @@ class RequestParam {
   int? productDetailId;
   int? boardDetailId;
   String? location;
-  RequestParam({this.productDetailId, this.boardDetailId, this.location});
+
+  Product? product;
+
+  RequestParam({
+    this.product,
+    this.productDetailId,
+    this.boardDetailId,
+    this.location,
+  });
 }
 
 // 2. 창고 (비지니스 로직)
