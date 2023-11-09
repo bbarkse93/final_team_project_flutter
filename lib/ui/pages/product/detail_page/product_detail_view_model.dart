@@ -24,17 +24,22 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   Future<void> notifyInit(int id) async {
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
 
-    state = ProductDetailModel(responseDTO.response);
+    if (mounted) {
+      Logger().d("여기는 나오아아아아아아");
+      state = ProductDetailModel(responseDTO.response);
+    }
   }
 
   Future<void> notifyUpdate(int productId, ProductUpdateDTO productUpdateDTO) async {
     String jwt =
-        "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE2OTkzMjYzMDJ9.T3og_6O3iCe7aZVDbrcxg29av_Z5pvZjhAaUoGydq8XOlkeGKJ9lz__kkdc7-ACAjZ-52HN-h1lj1KPDD02Ezw";
+        "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE3MDAwMzA2OTJ9.KhgyUcE4S_zErCwY1zhNGQy1N_2yVl_OOmD2lkMCJ89gZqlru53LNJCXAdOfGSuEAUWYr1HEb0JCgFXycAHL3A";
 
     Logger().d("notifyUpdate");
     // TODO - 세션으로 유저값 넘겨주는거 구현해야함!
     // SessionUser sessionUser = ref.read(sessionProvider);
     ResponseDTO responseDTO = await ProductRepository().fetchUpdate(jwt, productId, productUpdateDTO);
+
+    // TODO - 에러 발생지역 [타겟팅 설정]
     Logger().d("responseDTO.success : ${responseDTO.success}");
     Logger().d("responseDTO.response : ${responseDTO.response}");
     Logger().d("responseDTO.error : ${responseDTO.error}");
@@ -42,10 +47,14 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
     if (responseDTO.success != true) {
       ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("게시물 수정 실패 : ${responseDTO.error}")));
     } else {
+      Logger().d("타겟팅 재설정 지역 ");
       await ref.read(productListProvider.notifier).notifyUpdate(responseDTO.response);
 
-      state = ProductDetailModel(responseDTO.response);
-      Navigator.pop(mContext!);
+      if (mounted) {
+        Logger().d("여기는 나오아아아아아아");
+        state = ProductDetailModel(responseDTO.response);
+        Navigator.pop(mContext!);
+      }
     }
   }
 }

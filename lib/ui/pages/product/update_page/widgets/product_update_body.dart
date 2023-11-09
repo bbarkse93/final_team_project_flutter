@@ -42,7 +42,7 @@ class ProductUpdateBody extends ConsumerWidget {
                         backgroundColor: Color.fromRGBO(255, 126, 0, 1),
                       ),
                       child: Text(
-                        '작성완료',
+                        '수정완료',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class ProductUpdateBody extends ConsumerWidget {
                           description: productUpdateForm.description.text,
                           photoList: productUpdateForm.photoList.value,
                         );
-                        await ref.read(productDetailProvider(product.id).notifier).notifyUpdate(product.id, productUpdateDTO);
+                        await ref.watch(productDetailProvider(product.id).notifier).notifyUpdate(product.id, productUpdateDTO);
                         Logger().d(productUpdateDTO.productName);
                         Logger().d(productUpdateDTO.price);
                         Logger().d(productUpdateDTO.description);
