@@ -9,6 +9,7 @@ import 'package:team_project/data/repository/product_repository.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
+import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 
 // 1. 창고 데이터
 class ProductListModel {
@@ -63,9 +64,9 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
 
         // Write Product 진행 후 DetailPage of writeProduct 이동
         ParamStore paramStore = ref.read(paramProvider);
-        paramStore.productDetailId = writeProduct.id - 1;
+        // paramStore.productDetailId = writeProduct.id - 1;
 
-        Navigator.push(mContext!, MaterialPageRoute(builder: (_) => ProductDetailPage()));
+        Navigator.push(mContext!, MaterialPageRoute(builder: (_) => ProductDetailPage(paramStore.product!)));
       } else {
         Logger().d("Invalid response data format");
         // JSON 데이터가 아닌 다른 형식인 경우 에러 처리
@@ -89,6 +90,27 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
     state = ProductListModel(newProducts);
 
     Logger().d("여기는 넘어와 ? notifyUpdate");
+  }
+
+  Future<void> notifyRemove(int id) async {
+    // SessionUser sessionUser = ref.read(sessionProvider);
+    String jwt =
+        "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE3MDAwMzA2OTJ9.KhgyUcE4S_zErCwY1zhNGQy1N_2yVl_OOmD2lkMCJ89gZqlru53LNJCXAdOfGSuEAUWYr1HEb0JCgFXycAHL3A";
+
+    // ResponseDTO responseDTO = await ProductRepository().fetchDelete(sessionUser.jwt!, id);
+    ResponseDTO responseDTO = await ProductRepository().fetchDelete(jwt, id);
+    Logger().d("이까지 되야해 펄스트 트트트트");
+
+    if (responseDTO.success != true) {
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("게시물 삭제 실패 : ${responseDTO.error}")));
+    } else {
+      List<Product> productList = state!.productList;
+      List<Product> newProducts = productList.where((e) => e.id != id).toList();
+
+      state = ProductListModel(newProducts);
+      Logger().d("이까지 되야돼 !");
+      Navigator.push(mContext!, MaterialPageRoute(builder: (_) => ProductListPage()));
+    }
   }
 }
 
