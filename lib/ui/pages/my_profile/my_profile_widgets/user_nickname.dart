@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class UserNickname extends StatelessWidget {
+  final TextEditingController controller;
   const UserNickname({
     super.key,
+    required this.controller,
   });
 
   @override
@@ -14,6 +16,7 @@ class UserNickname extends StatelessWidget {
         Text("닉네임"),
         SizedBox(height: smallGap),
         TextFormField(
+          controller: controller,
           obscureText: false,
           decoration: InputDecoration(
             hintText: "Enter Password",
