@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/data/model/product.dart';
+import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_appbar_button.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_view_model.dart';
 
@@ -12,6 +13,8 @@ class DetailProductHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SessionUser sessionUser = ref.read(sessionProvider);
+
     var model = ref.watch(productDetailProvider(product.id));
 
     return SliverAppBar(
