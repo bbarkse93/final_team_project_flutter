@@ -27,7 +27,7 @@ class BoardDetailPics extends ConsumerWidget {
               child: Image.network(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                "http://192.168.0.39:8080/${model.board.boardPics?[index].boardPicUrl}",
+                "http://192.168.0.24:8080/${model.board.boardPics?[index].boardPicUrl}",
                 fit: BoxFit.cover,
               ),
             ),
