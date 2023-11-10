@@ -22,6 +22,7 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   Ref ref;
 
   Future<void> notifyInit(int id) async {
+    print("1번");
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
     print("함만..");
 
@@ -66,6 +67,5 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
 final productDetailProvider = StateNotifierProvider.family
     .autoDispose<ProductDetailViewModel, ProductDetailModel?, int>(
         (ref, productId) {
-  int productId = ref.read(paramProvider).productDetailId!;
   return ProductDetailViewModel(null, ref)..notifyInit(productId);
 });
