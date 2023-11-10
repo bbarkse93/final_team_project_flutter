@@ -43,7 +43,9 @@ class Product {
         productPrice = json["productPrice"],
         productCreatedAt = json["createdAt"],
         user = User.fromJson(json["user"]),
-        productPics = (json["productPics"] as List<dynamic>? ?? []).map((item) => ProductPic.fromJson(item)).toList();
+        productPics = (json["productPics"] as List<dynamic>? ?? [])
+            .map((item) => ProductPic.fromJson(item))
+            .toList();
 
 // String getUpdated() {
 //     // 출력시 -> 값을 Oct 23 이렇게 만든다.

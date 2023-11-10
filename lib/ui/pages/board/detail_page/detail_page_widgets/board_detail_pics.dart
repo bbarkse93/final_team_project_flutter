@@ -18,21 +18,21 @@ class BoardDetailPics extends ConsumerWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height - kToolbarHeight - 100,
       width: MediaQuery.of(context).size.width,
-      child: PageView(
+      child: PageView.builder(
         scrollDirection: Axis.horizontal,
-        children: [
-          Container(
+        itemBuilder: (context, index) {
+          return Container(
             padding: EdgeInsets.all(defaultPadding),
             child: Center(
               child: Image.network(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+                "http://192.168.0.39:8080/${model.board.boardPics?[index].boardPicUrl}",
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

@@ -6,7 +6,7 @@ import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/board.dart';
 
 String jwt =
-    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjE3MDAwMzA2OTJ9.KhgyUcE4S_zErCwY1zhNGQy1N_2yVl_OOmD2lkMCJ89gZqlru53LNJCXAdOfGSuEAUWYr1HEb0JCgFXycAHL3A";
+    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJ1c2VybmFtZSI6InNzYXIiLCJleHAiOjQ4NTMyMDUxNjN9.q8RNIYuZUVlENelBVbCoBKzwQY4UnxwMaYWPwmik1R1lK0rwVDDlbHGP3l8zkYAzjm-NopxzlNVlDVrPi_tcsw";
 
 class BoardRepository {
   Future<ResponseDTO> fetchBoardList() async {
@@ -14,7 +14,8 @@ class BoardRepository {
     try {
       // 1.통신
       Logger().d(jwt);
-      final response = await dio.get("/boards", options: Options(headers: {"Authorization": jwt}));
+      final response = await dio.get("/boards",
+          options: Options(headers: {"Authorization": jwt}));
       Logger().d("여기2");
 
       // 2. ResponseDTO 파싱
@@ -37,8 +38,9 @@ class BoardRepository {
   Future<ResponseDTO> fetchSave(BoardWriteDTO boardWriteDTO) async {
     try {
       Logger().d("fetchSave 계층이에요!");
-      Response<dynamic> response =
-          await dio.post("/boards/write", options: Options(headers: {"Authorization": "${jwt}"}), data: boardWriteDTO.toJson());
+      Response<dynamic> response = await dio.post("/boards/write",
+          options: Options(headers: {"Authorization": "${jwt}"}),
+          data: boardWriteDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("responseDTO : ${responseDTO}");
@@ -51,7 +53,8 @@ class BoardRepository {
 
   Future<ResponseDTO> fetchBoardDetail(int id) async {
     try {
-      Response response = await dio.get("/boards/${id}", options: Options(headers: {"Authorization": jwt}));
+      Response response = await dio.get("/boards/${id}",
+          options: Options(headers: {"Authorization": jwt}));
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.response = Board.fromJson(responseDTO.response);
