@@ -22,17 +22,9 @@ class _DetailBottomButtonState extends State<DetailBottomButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 4, top: 14, bottom: 14, right: 16),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          IconButton(
-            icon: Icon(
-                isHearted ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-                color: isHearted ? Colors.red : null),
-            onPressed: () {
-              toggleHeart();
-            },
-          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(

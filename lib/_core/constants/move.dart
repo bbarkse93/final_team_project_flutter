@@ -9,6 +9,7 @@ import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page.dart';
+import 'package:team_project/ui/pages/my_profile/my_profile_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 import 'package:team_project/ui/pages/product/update_page/product_update_page.dart';
 import 'package:team_project/ui/pages/product/write_page/product_write_page.dart';
@@ -39,6 +40,9 @@ class Move {
   // 채팅관련
   static String chattingListPage = "/chat/list";
   static String chattingRoomPage = "/chat/room";
+
+  //나의 정보
+  static String myProfilePage = "/carrot/profile";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -67,5 +71,8 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     // 채팅 관련
     Move.chattingListPage: (context) => ChattingListPage(),
     Move.chattingRoomPage: (context) => ChattingRoomPage(),
+
+    // 나의정보관련
+    Move.myProfilePage: (context) => MyProfilePage(),
   };
 }
