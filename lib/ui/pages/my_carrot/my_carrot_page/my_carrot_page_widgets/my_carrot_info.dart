@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class MyCarrotInfo extends StatelessWidget {
@@ -24,9 +25,14 @@ class MyCarrotInfo extends StatelessWidget {
         trailing: Container(
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(backgroundColor: Colors.grey[300]),
-            child: Text(
-              "프로필보기",
-              style: TextStyle(fontSize: fontMedium, color: Colors.black),
+            child: TextButton(
+              child: Text(
+                "프로필보기",
+                style: TextStyle(fontSize: fontMedium, color: Colors.black),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, Move.myProfilePage);
+              },
             ),
             onPressed: () {},
           ),
