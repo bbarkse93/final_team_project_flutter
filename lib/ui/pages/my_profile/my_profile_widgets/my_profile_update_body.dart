@@ -51,6 +51,7 @@ class MyProfileUpdateBody extends StatelessWidget {
                     Logger().d("난 사진 ${userChangeForm.userPicUrl.value}");
                     Logger().d("난 닉넴 ${userChangeForm.nickname.text}");
                     Logger().d("난 비번 ${userChangeForm.password.text}");
+                    Logger().d("난 비번 ${userChangeForm.passwordConfirm.text}");
                   },
                 ),
               );
