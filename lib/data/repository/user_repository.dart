@@ -49,7 +49,7 @@ class UserRepository {
 
   Future<ResponseDTO> fetchUpdate(int id, UserChangeDTO userChangeDTO) async {
     try {
-      Response<dynamic> response = await dio.put("/user/1",
+      Response<dynamic> response = await dio.put("/users/1",
           options: Options(headers: {"Authorization": jwt}),
           data: userChangeDTO.toJson());
 
