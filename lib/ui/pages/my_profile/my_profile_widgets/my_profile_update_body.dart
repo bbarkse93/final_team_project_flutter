@@ -54,7 +54,6 @@ class MyProfileUpdateBody extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("변경할 비밀번호가 일치하지않습니다")));
                     }
-                    // ref.read(sessionProvider)
                   },
                 ),
               );
