@@ -21,7 +21,6 @@ class ProductListBody extends ConsumerWidget {
       return Center(child: CircularProgressIndicator());
     } else {
       productList = model.productList;
-
       return ListView.separated(
         itemCount: productList.length,
         itemBuilder: (context, index) {

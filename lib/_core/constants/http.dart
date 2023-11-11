@@ -5,6 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 final dio = Dio(
   BaseOptions(
     baseUrl: "http://192.168.219.180:8080", // 팀장
+
     contentType: "application/json; charset=utf-8",
   ),
 );

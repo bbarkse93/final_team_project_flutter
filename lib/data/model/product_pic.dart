@@ -1,7 +1,3 @@
-import 'package:team_project/data/model/product.dart';
-import 'package:team_project/data/model/user.dart';
-import 'package:logger/logger.dart'; // Logger import 추가
-
 class ProductPic {
   int productPicId;
   String productPicUrl;
@@ -20,9 +16,7 @@ class ProductPic {
   // Map 형태로 받아서 Dart 객체로 변환
   ProductPic.fromJson(Map<String, dynamic> json)
       : productPicId = json["productPicId"],
-        productPicUrl = json["productPicUrl"] {
-    Logger().d("productPicUrl : $productPicUrl");
-  }
+        productPicUrl = json["productPicUrl"];
 // Logger().d("productPicUrl : ${productPicUrl}"); // Logger 이동
 // String getUpdated() {
 //   // 출력시 -> 값을 Oct 23 이렇게 만든다.

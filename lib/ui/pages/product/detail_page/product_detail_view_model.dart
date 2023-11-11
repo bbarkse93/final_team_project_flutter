@@ -5,6 +5,7 @@ import 'package:team_project/data/dto/product_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/repository/product_repository.dart';
+import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
@@ -12,14 +13,12 @@ import 'package:team_project/ui/pages/product/list_page/product_list_view_model.
 // 1. 창고 데이터
 class ProductDetailModel {
   Product product;
-
   ProductDetailModel(this.product);
 }
 
 // 2. 창고
 class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   ProductDetailViewModel(super._state, this.ref);
-
   final mContext = navigatorKey.currentContext;
   Ref ref;
 

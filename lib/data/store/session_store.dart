@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/data/dto/response_dto.dart';
@@ -30,8 +29,7 @@ class SessionStore extends SessionUser {
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.loginPage);
     } else {
-      ScaffoldMessenger.of(mContext!)
-          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -49,11 +47,11 @@ class SessionStore extends SessionUser {
   }
 
   Future<void> login(LoginReqDTO loginReqDTO) async {
-    Logger().d("창고 코드로 넘어왔어요!");
+    // Logger().d("창고 코드로 넘어왔어요!");
     // 1. 통신 코드
     ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
 
-    Logger().d("통신코드를 넘어왔어요!");
+    // Logger().d("통신코드를 넘어왔어요!");
 
     // 2. 비지니스 로직
     if (responseDTO.success == true) {
@@ -62,20 +60,19 @@ class SessionStore extends SessionUser {
       this.jwt = responseDTO.token;
       this.isLogin = true;
 
-      Logger().d("user!.id : ${user!.id}");
-      Logger().d("user!.location : ${user!.location}");
+      // Logger().d("user!.id : ${user!.id}");
+      // Logger().d("user!.location : ${user!.location}");
 
       // 2. 디바이스에 JWT 저장 (자동 로그인)
       await secureStorage.write(key: "jwt", value: responseDTO.token);
-      Logger().d("고지가 눈앞이에요!");
+      // Logger().d("고지가 눈앞이에요!");
 
       // 3. 페이지 이동
       Navigator.pushNamed(mContext!, Move.mainPage);
 
-      Logger().d("뭔가 문제가 있어요!");
+      // Logger().d("뭔가 문제가 있어요!");
     } else {
-      ScaffoldMessenger.of(mContext!)
-          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -90,7 +87,10 @@ class SessionStore extends SessionUser {
     Navigator.pushNamedAndRemoveUntil(mContext!, "/login", (route) => false);
   }
 
-  Future<void> notifyUpdate(User user) async {}
+  Future<void> notifyUpdate(UserChangeDTO userChangeDTO) async {
+    ResponseDTO responseDTO =
+        await UserRepository().fetchUpdate(1, userChangeDTO);
+  }
 }
 
 // 3. 창고 관리자

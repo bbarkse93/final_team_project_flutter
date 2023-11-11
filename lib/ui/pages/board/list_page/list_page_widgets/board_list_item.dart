@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/mock/board.dart';
@@ -57,49 +60,47 @@ class BoardListItem extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child: BoardListInfo(
-                  location: "${board.user!.location}",
-                  time: "",
-                  select: 3,
-                ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: BoardListInfo(
+                location: "${board.user!.location}",
+                time: "",
+                select: 3,
               ),
-              Container(
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Visibility(
-                        visible: mockBoard.fingerGood != 0,
-                        child: Row(
-                          children: [
-                            Icon(Icons.thumb_up_alt_outlined, size: 15),
-                            Text("${mockBoard.fingerGood}"),
-                          ],
-                        ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Visibility(
+                      visible: mockBoard.fingerGood != 0,
+                      child: Row(
+                        children: [
+                          Icon(Icons.thumb_up_alt_outlined, size: 15),
+                          Text("${mockBoard.fingerGood}"),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Visibility(
-                        visible: mockBoard.replyCount != 0,
-                        child: Row(
-                          children: [
-                            Icon(CupertinoIcons.chat_bubble_text, size: 15),
-                            Text("${mockBoard.replyCount}"),
-                          ],
-                        ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Visibility(
+                      visible: mockBoard.replyCount != 0,
+                      child: Row(
+                        children: [
+                          Icon(CupertinoIcons.chat_bubble_text, size: 15),
+                          Text("${mockBoard.replyCount}"),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         SizedBox(height: smallGap),
       ],

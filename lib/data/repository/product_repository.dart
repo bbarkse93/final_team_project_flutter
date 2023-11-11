@@ -89,7 +89,7 @@ class ProductRepository {
       Logger().d("${productUpdateDTO.price}");
       Logger().d("${productUpdateDTO.description}");
 
-      Response<dynamic> response = await dio.put("/products/update/${id}",
+      Response<dynamic> response = await dio.put("/products/${id}",
           options: Options(headers: {"Authorization": "${jwt}"}),
           data: productUpdateDTO.toJson());
 

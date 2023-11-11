@@ -20,8 +20,8 @@ class BoardDetailPics extends ConsumerWidget {
       height: MediaQuery.of(context).size.height - kToolbarHeight - 100,
       width: MediaQuery.of(context).size.width,
       child: PageView.builder(
-        itemCount: model.board.boardPics?.length,
         scrollDirection: Axis.horizontal,
+        itemCount: model.board.boardPics?.length,
         itemBuilder: (context, index) {
           return Container(
             padding: EdgeInsets.all(defaultPadding),

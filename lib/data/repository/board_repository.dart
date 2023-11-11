@@ -10,13 +10,9 @@ String jwt =
 
 class BoardRepository {
   Future<ResponseDTO> fetchBoardList() async {
-    Logger().d("여기1");
     try {
       // 1.통신
-      Logger().d(jwt);
-      final response = await dio.get("/boards",
-          options: Options(headers: {"Authorization": jwt}));
-      Logger().d("여기2");
+      final response = await dio.get("/boards", options: Options(headers: {"Authorization": jwt}));
 
       // 2. ResponseDTO 파싱
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
@@ -38,9 +34,8 @@ class BoardRepository {
   Future<ResponseDTO> fetchSave(BoardWriteDTO boardWriteDTO) async {
     try {
       Logger().d("fetchSave 계층이에요!");
-      Response<dynamic> response = await dio.post("/boards/write",
-          options: Options(headers: {"Authorization": "${jwt}"}),
-          data: boardWriteDTO.toJson());
+      Response<dynamic> response =
+          await dio.post("/boards/write", options: Options(headers: {"Authorization": "${jwt}"}), data: boardWriteDTO.toJson());
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("responseDTO : ${responseDTO}");
@@ -53,8 +48,7 @@ class BoardRepository {
 
   Future<ResponseDTO> fetchBoardDetail(int id) async {
     try {
-      Response response = await dio.get("/boards/${id}",
-          options: Options(headers: {"Authorization": jwt}));
+      Response response = await dio.get("/boards/${id}", options: Options(headers: {"Authorization": jwt}));
 
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       responseDTO.response = Board.fromJson(responseDTO.response);
