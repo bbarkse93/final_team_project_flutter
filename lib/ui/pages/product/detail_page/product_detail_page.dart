@@ -10,7 +10,8 @@ class ProductDetailPage extends ConsumerWidget {
   ProductDetailPage(this.product);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // int? clickedProductDetailId = ref.read(paramProvider).productDetailId;
+    // int? clickedProductDetailId =
+    //     ref.watch(productDetailProvider).productDetailId;
     //
     // ProductListModel? productListModel = ref.watch(productListProvider);
     //

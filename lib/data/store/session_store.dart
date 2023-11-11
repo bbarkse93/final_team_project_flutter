@@ -30,7 +30,21 @@ class SessionStore extends SessionUser {
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.loginPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
+    }
+  }
+
+  Future<void> delete(String jwt, int userId) async {
+    // 1. 통신 코드
+    ResponseDTO responseDTO = await UserRepository().fetchDelete(userId);
+
+    // 2. 비지니스 로직
+    if (responseDTO.success == true) {
+      Navigator.pushNamed(mContext!, Move.loginPage);
+    } else {
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -60,7 +74,8 @@ class SessionStore extends SessionUser {
 
       Logger().d("뭔가 문제가 있어요!");
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 

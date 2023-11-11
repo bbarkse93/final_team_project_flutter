@@ -34,7 +34,10 @@ class ProductListBody extends ConsumerWidget {
                 paramStore.product = productList[index];
 
                 // 2. 화면 이동
-                Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailPage(productList[index])));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => ProductDetailPage(productList[index])));
               },
               child: ProductListItem(productList[index]));
         },
