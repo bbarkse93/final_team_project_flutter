@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/board/detail_page/board_detail_view_model.dart';
 
@@ -20,7 +19,6 @@ class BoardDetailPics extends ConsumerWidget {
       height: MediaQuery.of(context).size.height - kToolbarHeight - 100,
       width: MediaQuery.of(context).size.width,
       child: PageView.builder(
-        itemCount: model.board.boardPics?.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Container(
@@ -29,7 +27,7 @@ class BoardDetailPics extends ConsumerWidget {
               child: Image.network(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                "${dio.options.baseUrl}/${model.board.boardPics?[index].boardPicUrl}",
+                "http://192.168.0.9:8080/${model.board.boardPics?[index].boardPicUrl}",
                 fit: BoxFit.cover,
               ),
             ),
