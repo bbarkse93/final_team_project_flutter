@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/data/model/product.dart';
+import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_appbar_button.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_view_model.dart';
-import 'package:team_project/ui/widgets/photos/carousel_image.dart';
 
 class DetailProductHeader extends ConsumerWidget {
   final Product product;
@@ -20,7 +20,8 @@ class DetailProductHeader extends ConsumerWidget {
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_new),
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => MainPage()));
         },
       ),
       actions: [

@@ -33,6 +33,19 @@ class SessionStore extends SessionUser {
     }
   }
 
+  Future<void> delete(String jwt, int userId) async {
+    // 1. 통신 코드
+    ResponseDTO responseDTO = await UserRepository().fetchDelete(userId);
+
+    // 2. 비지니스 로직
+    if (responseDTO.success == true) {
+      Navigator.pushNamed(mContext!, Move.loginPage);
+    } else {
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
+    }
+  }
+
   Future<void> login(LoginReqDTO loginReqDTO) async {
     // Logger().d("창고 코드로 넘어왔어요!");
     // 1. 통신 코드

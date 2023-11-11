@@ -7,6 +7,7 @@ import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/repository/product_repository.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
+import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 
 // 1. 창고 데이터
@@ -57,7 +58,12 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
       if (mounted) {
         Logger().d("여기는 나오아아아아아아");
         state = ProductDetailModel(responseDTO.response);
-        Navigator.pop(mContext!);
+        Navigator.pushAndRemoveUntil(
+          mContext!,
+          MaterialPageRoute(
+              builder: (_) => ProductDetailPage(responseDTO.response)),
+          (route) => false, // 제거할 때 사용하는 조건
+        );
       }
     }
   }
