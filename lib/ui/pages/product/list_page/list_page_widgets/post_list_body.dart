@@ -21,8 +21,9 @@ class ProductListBody extends ConsumerWidget {
       return Center(child: CircularProgressIndicator());
     } else {
       productList = model.productList;
+
       return ListView.separated(
-        itemCount: productList.length,
+        itemCount: productList.length - 1,
         itemBuilder: (context, index) {
           return InkWell(
               onTap: () {

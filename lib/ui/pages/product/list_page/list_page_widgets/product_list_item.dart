@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_item_detail.dart';
 
@@ -18,7 +19,7 @@ class ProductListItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.network(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZLiGudoUsUt6WTpM1XBrSyob4g1m2WWAyhQ&usqp=CAU",
+                "${dio.options.baseUrl}/${product.productPics?[0].productPicUrl}",
                 width: 115,
                 height: 115,
                 fit: BoxFit.cover,
