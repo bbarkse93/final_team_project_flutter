@@ -18,7 +18,6 @@ class BoardListItem extends StatelessWidget {
   String? boardImage = "";
   @override
   Widget build(BuildContext context) {
-    Logger().d(mockBoardList.length);
     return Column(
       children: [
         Row(

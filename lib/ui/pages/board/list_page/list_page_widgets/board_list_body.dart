@@ -29,7 +29,6 @@ class BoardListBody extends ConsumerWidget {
             child: ListView.separated(
               itemCount: boardList.length,
               itemBuilder: (context, index) {
-                Logger().d(boardList.length);
                 return InkWell(
                   onTap: () {
                     // 1. postId를 paramStore 에 저장
@@ -37,7 +36,8 @@ class BoardListBody extends ConsumerWidget {
                     paramStore.boardDetailId = boardList[index].id;
 
                     // 2. 화면 이동
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => BoardDetailPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => BoardDetailPage()));
                   },
                   child: BoardListItem(boardList[index]),
                 );
