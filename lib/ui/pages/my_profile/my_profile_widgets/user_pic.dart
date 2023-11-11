@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserPic extends StatefulWidget {
+  final ValueNotifier<String?> userPicUrl;
+  final Function(String?) onImageSelected;
   const UserPic({
     super.key,
+    required this.userPicUrl,
+    required this.onImageSelected,
   });
 
   @override
@@ -22,6 +26,7 @@ class _UserPicState extends State<UserPic> {
     if (image != null) {
       setState(() {
         _image = File(image.path);
+        widget.onImageSelected(image.path);
       });
     }
   }
