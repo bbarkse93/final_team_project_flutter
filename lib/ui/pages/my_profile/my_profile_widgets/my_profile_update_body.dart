@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/dto/user_request.dart';
+import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_change_form.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_nickname.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_password.dart';
@@ -13,7 +14,7 @@ import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_pic.dar
 class MyProfileUpdateBody extends StatelessWidget {
   MyProfileUpdateBody({super.key});
 
-  UserChangeForm userChangeForm = UserChangeForm();
+  final UserChangeForm userChangeForm = UserChangeForm();
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +49,16 @@ class MyProfileUpdateBody extends StatelessWidget {
                       userChangeForm.nickname.text,
                       userChangeForm.password.text,
                     );
-                    Logger().d("난 사진 ${userChangeForm.userPicUrl.value}");
-                    Logger().d("난 닉넴 ${userChangeForm.nickname.text}");
-                    Logger().d("난 비번 ${userChangeForm.password.text}");
-                    Logger().d("난 비번 ${userChangeForm.passwordConfirm.text}");
+                    if (userChangeForm.password.text !=
+                        userChangeForm.passwordConfirm.text) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("변경할 비밀번호가 일치하지 않습니다"),
+                        ),
+                      );
+                      return;
+                    }
+                    // ref.read(sessionProvider).notifyUpdate
                   },
                 ),
               );

@@ -34,7 +34,7 @@ class DetailProductHeader extends ConsumerWidget {
           Logger().d(product.productPics?.length);
           return Image.network(
             // "http://192.168.0.39:8080/./images/드라이기_1e05f7c3-c2ae-4d2a-b07b-713971223de1.png",
-            "http://172.20.10.3:8080/${model?.product.productPics?[index].productPicUrl}",
+            "http://192.168.0.9:8080/${model?.product.productPics?[index].productPicUrl}",
             fit: BoxFit.fill,
           );
         },
