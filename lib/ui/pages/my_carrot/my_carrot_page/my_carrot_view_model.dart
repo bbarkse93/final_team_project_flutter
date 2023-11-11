@@ -9,14 +9,11 @@ class MyCarrotModel {
   User user;
 
   MyCarrotModel(this.user);
-// int id;
-  // String username;
+
   // String nickname;
   // String userPicUrl;
-  // String location;
-  // String userCreatedAt;
   //
-  // MyCarrotModel(this.id, this.username, this.nickname, this.userPicUrl, this.location, this.userCreatedAt);
+  // MyCarrotModel(this.nickname, this.userPicUrl);
 }
 
 class MyCarrotViewModel extends StateNotifier<MyCarrotModel?> {
@@ -24,8 +21,11 @@ class MyCarrotViewModel extends StateNotifier<MyCarrotModel?> {
 
   Future<void> notifyInit(int id) async {
     Logger().d("여기가 실행 되나");
-    ResponseDTO responseDTO = await MyCarrotRepository().fetchUser(id);
+    ResponseDTO responseDTO = await MyCarrotRepository().findUser(id);
+
+    Logger().d("이게 문제네 ${responseDTO.response}");
     state = MyCarrotModel(responseDTO.response);
+    Logger().d("이게 문제네 ${state?.user.userPicUrl}");
   }
 }
 

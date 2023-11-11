@@ -6,10 +6,6 @@ import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/dto/user_request.dart';
 import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_change_form.dart';
-import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_nickname.dart';
-import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_password.dart';
-import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_password_confirm.dart';
-import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_pic.dart';
 
 class MyProfileUpdateBody extends StatelessWidget {
   MyProfileUpdateBody({super.key});
@@ -58,7 +54,9 @@ class MyProfileUpdateBody extends StatelessWidget {
                       );
                       return;
                     }
-                    // ref.read(sessionProvider).notifyUpdate
+                    SessionStore sessionUser = ref.read(sessionProvider);
+                    ref.watch(sessionProvider).notifyUpdate(userReqDTO);
+                    Navigator.pop(context);
                   },
                 ),
               );

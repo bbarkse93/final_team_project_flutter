@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:team_project/data/dto/reply_request.dart';
@@ -8,6 +9,7 @@ import 'package:team_project/data/repository/board_repository.dart';
 import 'package:team_project/data/repository/reply_repository.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
+import 'package:team_project/ui/pages/board/detail_page/board_detaill_page.dart';
 
 //창고 데이터
 class BoardDetailModel {
@@ -65,7 +67,9 @@ class BoardDetailViewModel extends StateNotifier<BoardDetailModel?> {
 }
 
 //창고 관리자b
-final boardDetailProvider = StateNotifierProvider.autoDispose<BoardDetailViewModel, BoardDetailModel?>((ref) {
+final boardDetailProvider =
+    StateNotifierProvider.autoDispose<BoardDetailViewModel, BoardDetailModel?>(
+        (ref) {
   int boardId = ref.read(paramProvider).boardDetailId!;
   return BoardDetailViewModel(null, ref)..notifyInit(boardId);
 });

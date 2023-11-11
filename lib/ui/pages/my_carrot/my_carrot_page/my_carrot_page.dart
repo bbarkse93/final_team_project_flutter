@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_activity.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_app_bar.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_info.dart';
@@ -13,12 +15,16 @@ class MyCarrotPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var model = ref.read(myCarrotProviderProvider);
+    SessionStore sessionUser = ref.watch(sessionProvider);
+
+    var model = ref.watch(myCarrotProviderProvider.notifier)..notifyInit(sessionUser.user!.id!);
+    Logger().d("어디갔니 내 사진 ${sessionUser.user?.userPicUrl}");
+    Logger().d("어디갔니 내 사진 ${model.state?.user.userPicUrl}");
     return Scaffold(
       appBar: MyCarrotAppBar(),
       body: ListView(
         children: [
-          MyCarrotInfo(nickname: "${model?.user.nickname}", imageUrl: "${dio.options.baseUrl}/${model?.user.userPicUrl}"),
+          MyCarrotInfo(nickname: "${model.state?.user.nickname}", imageUrl: "${dio.options.baseUrl}/${model.state?.user.userPicUrl}"),
           MyCarrotActivity(),
           Divider(thickness: 5),
           Container(
