@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/dto/user_request.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_change_form.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_nickname.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_password.dart';
@@ -9,7 +11,9 @@ import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_passwor
 import 'package:team_project/ui/pages/my_profile/my_profile_widgets/user_pic.dart';
 
 class MyProfileUpdateBody extends StatelessWidget {
-  const MyProfileUpdateBody({super.key});
+  MyProfileUpdateBody({super.key});
+
+  UserChangeForm userChangeForm = UserChangeForm();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class MyProfileUpdateBody extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: ListView(
         children: [
-          UserChangeForm(),
+          userChangeForm,
           Consumer(
             builder: (context, ref, child) {
               return Padding(
@@ -37,7 +41,18 @@ class MyProfileUpdateBody extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    userChangeForm.submit(ref);
+                    UserChangeDTO userReqDTO = UserChangeDTO(
+                      userChangeForm.userPicUrl.value,
+                      userChangeForm.nickname.text,
+                      userChangeForm.password.text,
+                    );
+                    Logger().d("난 사진 ${userChangeForm.userPicUrl.value}");
+                    Logger().d("난 닉넴 ${userChangeForm.nickname.text}");
+                    Logger().d("난 비번 ${userChangeForm.password.text}");
+                    Logger().d("난 비번 ${userChangeForm.passwordConfirm.text}");
+                  },
                 ),
               );
             },

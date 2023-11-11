@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class UserPasswordConfirm extends StatelessWidget {
+  final TextEditingController controller;
   const UserPasswordConfirm({
     super.key,
+    required this.controller,
   });
 
   @override
@@ -15,6 +17,7 @@ class UserPasswordConfirm extends StatelessWidget {
         Text("비밀번호 확인"),
         const SizedBox(height: smallGap),
         TextFormField(
+          controller: controller,
           obscureText: true,
           decoration: InputDecoration(
             hintText: "Enter Password",

@@ -32,3 +32,21 @@ class LoginReqDTO {
         "password": password,
       };
 }
+
+// 유저정보변경
+class UserChangeDTO {
+  final String? userPicUrl;
+  final String nickname;
+  final String password;
+
+  UserChangeDTO(
+    this.userPicUrl,
+    this.nickname,
+    this.password,
+  );
+  Map<String, dynamic> toJson() => {
+        "userPicUrl": userPicUrl,
+        "nickname": nickname,
+        "password": password,
+      };
+}
