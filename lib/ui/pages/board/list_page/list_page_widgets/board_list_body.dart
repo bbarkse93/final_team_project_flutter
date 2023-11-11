@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/data/model/board.dart';
 import 'package:team_project/data/store/param_store.dart';

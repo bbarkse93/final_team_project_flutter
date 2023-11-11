@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/_core/utils/validator_util.dart';
 import 'package:team_project/data/dto/user_request.dart';
@@ -44,7 +43,7 @@ class LoginFormField extends ConsumerWidget {
             CustomElevatedButton(
                 text: "로그인",
                 funPageRoute: () {
-                  Logger().d("로그인 버튼이 클릭됬습니다.");
+                  // Logger().d("로그인 버튼이 클릭됬습니다.");
                   if (_formKey.currentState!.validate()) {
                     LoginReqDTO loginReqDTO = LoginReqDTO(username: _username.text, password: _password.text);
                     ref.read(sessionProvider).login(loginReqDTO);
