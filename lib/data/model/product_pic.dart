@@ -1,6 +1,4 @@
-import 'package:team_project/data/model/product.dart';
-import 'package:team_project/data/model/user.dart';
-import 'package:logger/logger.dart'; // Logger import 추가
+import 'package:logger/logger.dart';
 
 class ProductPic {
   int productPicId;
