@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/mock/board.dart';
 import 'package:team_project/data/model/board.dart';
@@ -15,10 +13,25 @@ class BoardListItem extends StatelessWidget {
   final Board board;
   BoardListItem(this.board);
 
-  String? boardImage = "";
   @override
   Widget build(BuildContext context) {
-    Logger().d(mockBoardList.length);
+    Widget buildBoardImage() {
+      if (board.boardPics != null && board.boardPics!.isNotEmpty) {
+        return Image.network(
+          "${dio.options.baseUrl}/${board.boardPics![0].boardPicUrl}",
+          width: 80,
+          height: 80,
+          fit: BoxFit.cover,
+        );
+      } else {
+        return Container(
+          width: 80,
+          height: 80,
+          color: Colors.transparent,
+        );
+      }
+    }
+
     return Column(
       children: [
         Row(
@@ -38,70 +51,57 @@ class BoardListItem extends StatelessWidget {
                 ],
               ),
             ),
-            Column(
-              children: [
-                Visibility(
-                  visible: boardImage != null,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: boardImage != null
-                        ? Image.network(
-                            "https://picsum.photos/200/300",
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                          )
-                        : null, // 또는 다른 위젯을 여기에 배치
-                  ),
-                ),
-              ],
-            )
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: buildBoardImage(),
+            ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: BoardListInfo(
-                location: "${board.user!.location}",
-                time: "",
-                select: 3,
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: BoardListInfo(
+                  location: "${board.user!.location}",
+                  time: "",
+                  select: 3,
+                ),
               ),
-            ),
-            Container(
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Visibility(
-                      visible: mockBoard.fingerGood != 0,
-                      child: Row(
-                        children: [
-                          Icon(Icons.thumb_up_alt_outlined, size: 15),
-                          Text("${mockBoard.fingerGood}"),
-                        ],
+              Container(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Visibility(
+                        visible: mockBoard.fingerGood != 0,
+                        child: Row(
+                          children: [
+                            Icon(Icons.thumb_up_alt_outlined, size: 15),
+                            Text("${mockBoard.fingerGood}"),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Visibility(
-                      visible: mockBoard.replyCount != 0,
-                      child: Row(
-                        children: [
-                          Icon(CupertinoIcons.chat_bubble_text, size: 15),
-                          Text("${mockBoard.replyCount}")
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Visibility(
+                        visible: mockBoard.replyCount != 0,
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.chat_bubble_text, size: 15),
+                            Text("${mockBoard.replyCount}"),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         SizedBox(height: smallGap),
-        // Divider(thickness: 1, color: kHintColor),
       ],
     );
   }

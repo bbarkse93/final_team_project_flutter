@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_appbar_button.dart';
@@ -17,6 +18,7 @@ class DetailProductHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var model = ref.watch(productDetailProvider(product.id));
 
+    //Todo: 사진 나오기 전에 x 잠시 나오는 부분 수정 해야함
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       leading: IconButton(
@@ -36,8 +38,7 @@ class DetailProductHeader extends ConsumerWidget {
         itemBuilder: (context, index) {
           Logger().d(product.productPics?.length);
           return Image.network(
-            // "http://192.168.0.39:8080/./images/드라이기_1e05f7c3-c2ae-4d2a-b07b-713971223de1.png",
-            "http://172.20.10.3:8080/${model?.product.productPics?[index].productPicUrl}",
+            "${dio.options.baseUrl}/${model?.product.productPics?[index].productPicUrl}",
             fit: BoxFit.fill,
           );
         },

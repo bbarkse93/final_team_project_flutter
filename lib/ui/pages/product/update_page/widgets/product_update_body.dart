@@ -48,11 +48,14 @@ class ProductUpdateBody extends ConsumerWidget {
                         ProductUpdateDTO productUpdateDTO = ProductUpdateDTO(
                           productId: product.id,
                           productName: productUpdateForm.productName.text,
-                          price: int.tryParse(productUpdateForm.price.text) ?? 0,
+                          price:
+                              int.tryParse(productUpdateForm.price.text) ?? 0,
                           description: productUpdateForm.description.text,
                           photoList: productUpdateForm.photoList.value,
                         );
-                        await ref.watch(productDetailProvider(product.id).notifier).notifyUpdate(product.id, productUpdateDTO);
+                        await ref
+                            .watch(productDetailProvider(product.id).notifier)
+                            .notifyUpdate(product.id, productUpdateDTO);
                         Logger().d(productUpdateDTO.productName);
                         Logger().d(productUpdateDTO.price);
                         Logger().d(productUpdateDTO.description);

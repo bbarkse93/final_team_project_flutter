@@ -89,6 +89,8 @@ class SessionStore extends SessionUser {
 
     Navigator.pushNamedAndRemoveUntil(mContext!, "/login", (route) => false);
   }
+
+  Future<void> notifyUpdate(User user) async {}
 }
 
 // 3. 창고 관리자

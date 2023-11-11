@@ -21,25 +21,27 @@ class ProductListBody extends ConsumerWidget {
       return Center(child: CircularProgressIndicator());
     } else {
       productList = model.productList;
+
       return ListView.separated(
         itemCount: productList.length,
         itemBuilder: (context, index) {
+          // 1. postId를 paramStore 에 저장
+          ParamStore paramStore = ref.read(paramProvider);
+          paramStore.productDetailId = productList[index].id - 1;
+
+          // TODO tip - product 통쨰로 넣는다면
+          paramStore.product = productList[index];
           return InkWell(
               onTap: () {
-                // 1. postId를 paramStore 에 저장
-                ParamStore paramStore = ref.read(paramProvider);
-                paramStore.productDetailId = productList[index].id - 1;
-
-                // TODO tip - product 통쨰로 넣는다면 ?
-                paramStore.product = productList[index];
-
                 // 2. 화면 이동
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => ProductDetailPage(productList[index])));
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ProductDetailPage(productList[index]),
+                  ),
+                );
               },
-              child: ProductListItem(productList[index]));
+              child: ProductListItem());
         },
         separatorBuilder: (context, index) {
           return const Divider();

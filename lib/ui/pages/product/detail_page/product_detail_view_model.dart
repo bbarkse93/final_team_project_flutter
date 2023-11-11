@@ -5,10 +5,8 @@ import 'package:team_project/data/dto/product_request.dart';
 import 'package:team_project/data/dto/response_dto.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/repository/product_repository.dart';
-import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/main.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
-import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 
 // 1. 창고 데이터
@@ -61,7 +59,6 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
       if (mounted) {
         Logger().d("여기는 나오아아아아아아");
         state = ProductDetailModel(responseDTO.response);
-        // TODO -  타겟팅 설정 지역 -> Complete this Problem
         Navigator.pushAndRemoveUntil(
           mContext!,
           MaterialPageRoute(
