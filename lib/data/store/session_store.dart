@@ -30,7 +30,8 @@ class SessionStore extends SessionUser {
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.loginPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -60,7 +61,8 @@ class SessionStore extends SessionUser {
 
       Logger().d("뭔가 문제가 있어요!");
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -74,6 +76,8 @@ class SessionStore extends SessionUser {
 
     Navigator.pushNamedAndRemoveUntil(mContext!, "/login", (route) => false);
   }
+
+  Future<void> notifyUpdate(User user) async {}
 }
 
 // 3. 창고 관리자
