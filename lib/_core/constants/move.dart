@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
+import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/model/product.dart';
+import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/ui/pages/auth/join_page/join_page.dart';
 import 'package:team_project/ui/pages/auth/login_page/login_page.dart';
 import 'package:team_project/ui/pages/board/detail_page/board_detaill_page.dart';
@@ -30,7 +34,7 @@ class Move {
 
   // 상품 관련
   static String productListPage = "/product/list";
-  static String productDetailPage = "/product/detail";
+  static String productDetailPage = "/product/detail/";
   static String productWritePage = "/product/write";
   static String productUpdatePage = "/product/update";
 
@@ -61,8 +65,25 @@ Map<String, Widget Function(BuildContext)> getRouters() {
 
     // 상품 관련
     Move.productListPage: (context) => ProductListPage(),
-    // Move.productDetailPage: (context) => ProductDetailPage(),
-    Move.productWritePage: (context) => ProductWritePage(),
+    Move.productDetailPage: (context) {
+      final product = ParamStore().product;
+
+      if (product != null) {
+        return ProductDetailPage(product);
+      } else {
+        return Scaffold(
+          body: Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text(
+                "What is problem",
+                style: TextStyle(fontSize: fontLarge, color: Colors.white),
+              ),
+            ),
+          ),
+        );
+      }
+    },
     Move.productUpdatePage: (context) => ProductUpdatePage(),
 
     // 게시물 관련

@@ -62,8 +62,12 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
         Logger().d("여기는 나오아아아아아아");
         state = ProductDetailModel(responseDTO.response);
         // TODO -  타겟팅 설정 지역 -> Complete this Problem
-        Navigator.push(
-            mContext!, MaterialPageRoute(builder: (_) => ProductListPage()));
+        Navigator.pushAndRemoveUntil(
+          mContext!,
+          MaterialPageRoute(
+              builder: (_) => ProductDetailPage(responseDTO.response)),
+          (route) => false, // 제거할 때 사용하는 조건
+        );
       }
     }
   }

@@ -70,8 +70,10 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
         ParamStore paramStore = ref.read(paramProvider);
         paramStore.product = writeProduct;
 
-        Navigator.push(mContext!,
-            MaterialPageRoute(builder: (_) => ProductDetailPage(writeProduct)));
+        Navigator.pushAndRemoveUntil(
+            mContext!,
+            MaterialPageRoute(builder: (_) => ProductDetailPage(writeProduct)),
+            (route) => false);
       } else {
         Logger().d("Invalid response data format");
         // JSON 데이터가 아닌 다른 형식인 경우 에러 처리
