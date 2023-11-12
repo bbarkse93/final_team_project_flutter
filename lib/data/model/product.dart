@@ -41,7 +41,7 @@ class Product {
         productName = json["productName"],
         productDescription = json["productDescription"],
         productPrice = json["productPrice"],
-        productCreatedAt = json["createdAt"],
+        productCreatedAt = json["productCreatedAt"],
         user = User.fromJson(json["user"]),
         productPics = (json["productPics"] as List<dynamic>? ?? [])
             .map((item) => ProductPic.fromJson(item))

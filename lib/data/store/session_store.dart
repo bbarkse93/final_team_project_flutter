@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/data/dto/response_dto.dart';
@@ -29,7 +30,8 @@ class SessionStore extends SessionUser {
     if (responseDTO.success == true) {
       Navigator.pushNamed(mContext!, Move.loginPage);
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 
@@ -51,12 +53,14 @@ class SessionStore extends SessionUser {
     // 1. 통신 코드
     ResponseDTO responseDTO = await UserRepository().fetchLogin(loginReqDTO);
 
-    // Logger().d("통신코드를 넘어왔어요!");
+    Logger().d("${responseDTO.success}");
 
     // 2. 비지니스 로직
     if (responseDTO.success == true) {
       //   // 1. 세션값 갱신
-      this.user = responseDTO.response as User;
+
+      this.user = responseDTO.response;
+      Logger().d("${user!.id}");
       this.jwt = responseDTO.token;
       this.isLogin = true;
 
@@ -72,7 +76,8 @@ class SessionStore extends SessionUser {
 
       // Logger().d("뭔가 문제가 있어요!");
     } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text(responseDTO.error)));
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text(responseDTO.error)));
     }
   }
 

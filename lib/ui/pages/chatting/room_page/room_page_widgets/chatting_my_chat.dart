@@ -3,7 +3,7 @@ import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class ChattingMyChat extends StatelessWidget {
-  const ChattingMyChat({
+  ChattingMyChat({
     Key? key,
     required this.text,
     required this.time,
@@ -19,7 +19,7 @@ class ChattingMyChat extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(time, style: const TextStyle(fontSize: fontSmall)),
+          Text("${time}", style: const TextStyle(fontSize: fontSmall)),
           const SizedBox(width: 5),
           Flexible(
             child: Container(
@@ -30,7 +30,7 @@ class ChattingMyChat extends StatelessWidget {
               ),
               child: Text(
                 text,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),

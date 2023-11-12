@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/chatting/room_page/room_page_widgets/chatting_room_appbar_button.dart';
 
-class ChattingRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ChattingRoomAppBar({Key? key}) : super(key: key);
+class ChattingRoomAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  final chattingTargetNickName;
+
+  ChattingRoomAppBar(this.chattingTargetNickName, {Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -20,7 +23,7 @@ class ChattingRoomAppBar extends StatelessWidget implements PreferredSizeWidget 
       ),
       backgroundColor: Colors.transparent,
       title: Text(
-        "홍길동",
+        "${chattingTargetNickName}",
         style: TextStyle(fontSize: fontLarge),
       ),
       actions: [

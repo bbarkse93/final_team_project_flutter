@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/size.dart';
-import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/store/param_store.dart';
 import 'package:team_project/ui/pages/auth/join_page/join_page.dart';
 import 'package:team_project/ui/pages/auth/login_page/login_page.dart';
 import 'package:team_project/ui/pages/board/detail_page/board_detaill_page.dart';
 import 'package:team_project/ui/pages/board/list_page/board_list_page.dart';
 import 'package:team_project/ui/pages/board/write_page/board_write_page.dart';
-import 'package:team_project/ui/pages/chatting/list_page/list_page_widgets/chatting_list_page.dart';
+import 'package:team_project/ui/pages/chatting/list_page/chatting_list_page.dart';
 import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart';
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
@@ -18,7 +15,6 @@ import 'package:team_project/ui/pages/my_profile/my_profile_page.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 import 'package:team_project/ui/pages/product/update_page/product_update_page.dart';
-import 'package:team_project/ui/pages/product/write_page/product_write_page.dart';
 import 'package:team_project/ui/pages/splash/splash_page.dart';
 
 class Move {
@@ -93,7 +89,7 @@ Map<String, Widget Function(BuildContext)> getRouters() {
 
     // 채팅 관련
     Move.chattingListPage: (context) => ChattingListPage(),
-    Move.chattingRoomPage: (context) => ChattingRoomPage(),
+    // Move.chattingRoomPage: (context) => ChattingRoomPage(),
 
     // 나의정보관련
     Move.myProfilePage: (context) => MyProfilePage(),

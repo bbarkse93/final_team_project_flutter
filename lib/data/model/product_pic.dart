@@ -1,10 +1,10 @@
 class ProductPic {
-  int productPicId;
-  String productPicUrl;
+  int? productPicId;
+  String? productPicUrl;
 
   ProductPic({
-    required this.productPicId,
-    required this.productPicUrl,
+    this.productPicId,
+    this.productPicUrl,
   });
 
   // Dart 객체를 통신을 위한 Map 형태로 변환

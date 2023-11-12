@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 
 class ChattingOtherChat extends StatelessWidget {
@@ -18,9 +19,11 @@ class ChattingOtherChat extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: mediumGap),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/502155195124436993/7oj7J64O_400x400.jpeg"),
+            backgroundImage: NetworkImage(
+                "https://pbs.twimg.com/profile_images/502155195124436993/7oj7J64O_400x400.jpeg"),
           ),
           const SizedBox(width: 10),
           Flexible(
@@ -32,11 +35,14 @@ class ChattingOtherChat extends StatelessWidget {
                   child: Text(name),
                 ),
                 Container(
-                  child: Text(text),
+                  child: Text(
+                    text,
+                    style: TextStyle(color: Colors.black),
+                  ),
                   padding: const EdgeInsets.all(smallGap),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(mediumGap),
-                    color: Colors.white,
+                    color: Colors.grey[300],
                   ),
                 ),
               ],
@@ -45,9 +51,12 @@ class ChattingOtherChat extends StatelessWidget {
           const SizedBox(
             width: 5,
           ),
-          Text(
-            time,
-            style: const TextStyle(fontSize: fontSmall),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text(
+              time,
+              style: const TextStyle(fontSize: fontSmall),
+            ),
           ),
         ],
       ),
