@@ -30,10 +30,10 @@ class ChattingContent extends StatelessWidget {
                     child: const ChattingTimeLine(time: "2021년 1월 1일 금요일"),
                   ),
                   const ChattingOtherChat(name: "홍길동", text: "티바로우?", time: "오전 01:10"),
-                  const ChattingMyChat(
-                    text: "ㅇㅋ, 오늘 등신되는 날임 ㄱㄱ",
-                    time: "오전 01:15",
-                  ),
+                  // const ChattingMyChat(
+                  // text: "ㅇㅋ, 오늘 등신되는 날임 ㄱㄱ",
+                  // time: "오전 01:15",
+                  // ),
                   ...List.generate(chats.length, (index) => chats[index]),
                 ],
               ),

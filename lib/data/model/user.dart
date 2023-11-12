@@ -39,14 +39,13 @@ class User {
 
   // 2. Map 형태로 받아서 Dart 객체로 변환합니다.
   User.fromJson(Map<String, dynamic> json)
-      : id = json["id"],
+      : id = json["userId"],
         username = json["username"],
-        password = json["password"],
         email = json["email"],
         userPicUrl = json["userPicUrl"],
         location = json["location"],
         distinguish = json["distinguish"],
-        userCreatedAt = json["userCreatedAt"],
+        userCreatedAt = json["createdAt"],
         replyUserId = json["replyUserId"],
         nickname = json["nickname"];
 }

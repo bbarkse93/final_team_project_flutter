@@ -13,21 +13,20 @@ import 'package:team_project/ui/pages/product/list_page/product_list_view_model.
 // 1. 창고 데이터
 class ProductDetailModel {
   Product product;
+
   ProductDetailModel(this.product);
 }
 
 // 2. 창고
 class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   ProductDetailViewModel(super._state, this.ref);
+
   final mContext = navigatorKey.currentContext;
   Ref ref;
 
-  Future<void> notifyInit(int id) async {
-    print("1번");
+  Future<ProductDetailModel> notifyInit(int id) async {
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
-    print("함만..");
-
-    state = ProductDetailModel(responseDTO.response);
+    return ProductDetailModel(responseDTO.response);
   }
 
   Future<void> notifyUpdate(

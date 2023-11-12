@@ -70,6 +70,9 @@ class ProductListViewModel extends StateNotifier<ProductListModel?> {
         ParamStore paramStore = ref.read(paramProvider);
         paramStore.product = writeProduct;
 
+        // TODO - [10:40 추가함]
+        paramStore.needChatProduct = writeProduct;
+
         Navigator.pushAndRemoveUntil(
             mContext!,
             MaterialPageRoute(builder: (_) => ProductDetailPage(writeProduct)),

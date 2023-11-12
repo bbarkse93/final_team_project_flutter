@@ -44,7 +44,7 @@ class ProductRepository {
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       Logger().d("그만둬 ${responseDTO.response}");
       responseDTO.response = Product.fromJson(responseDTO.response);
-      Logger().d("그만둬 ${responseDTO.response.toString()}");
+      Logger().d("그만둬2 ${responseDTO.response}");
       return responseDTO;
     } catch (e) {
       return ResponseDTO(false, "게시글 한건 불러오기 실패", null);
