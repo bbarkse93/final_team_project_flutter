@@ -10,6 +10,7 @@ import 'package:team_project/ui/pages/chatting/list_page/chatting_list_page.dart
 import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart';
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_items_agree_page.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page.dart';
 import 'package:team_project/ui/pages/my_town/my_town_page.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_page.dart';
@@ -49,6 +50,7 @@ class Move {
 
   //나의 정보
   static String myProfilePage = "/carrot/profile";
+  static String myCarrotAgreePage = "/carrot/agree";
 }
 
 Map<String, Widget Function(BuildContext)> getRouters() {
@@ -101,5 +103,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
 
     // 나의정보관련
     Move.myProfilePage: (context) => MyProfilePage(),
+    Move.myCarrotAgreePage: (context) => MyCarrotItemsAgreePage(),
   };
 }

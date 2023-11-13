@@ -9,7 +9,11 @@ class ChattingListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text("채팅"), centerTitle: false),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text("채팅", style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: false,
+      ),
       body: RefreshIndicator(
           child: ChattingListBody(),
           onRefresh: () async {

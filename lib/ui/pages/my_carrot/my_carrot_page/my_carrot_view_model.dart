@@ -24,13 +24,14 @@ class MyCarrotViewModel extends StateNotifier<MyCarrotModel?> {
     Logger().d("여기가 실행 되나");
     ResponseDTO responseDTO = await MyCarrotRepository().findUser(id);
 
-    Logger().d("이게 문제네 ${responseDTO.response}");
+    Logger().d("이게 문제네1 ${responseDTO.response}");
     state = MyCarrotModel(responseDTO.response);
-    Logger().d("이게 문제네 ${state?.user.userPicUrl}");
+    Logger().d("이게 문제네2 ${state?.user.userPicUrl}");
   }
 }
 
-final myCarrotProviderProvider = StateNotifierProvider<MyCarrotViewModel, MyCarrotModel?>((ref) {
+final myCarrotProviderProvider =
+    StateNotifierProvider<MyCarrotViewModel, MyCarrotModel?>((ref) {
   final sessionUser = ref.read(sessionProvider);
   return MyCarrotViewModel(null)..notifyInit(sessionUser.user!.id!);
 });

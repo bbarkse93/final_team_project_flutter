@@ -25,10 +25,9 @@ class LocationSelectSearchList extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: Text(
-                      "${model?.text} 검색 결과",
+                      "${model?.text ?? "근처"} 검색 결과",
                       style: TextStyle(
                         fontSize: fontLarge,
                         fontWeight: FontWeight.bold,
@@ -45,8 +44,7 @@ class LocationSelectSearchList extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: InkWell(
                       child: Text(
                         "${model?.location?[index - 1] ?? " "}",
@@ -54,10 +52,13 @@ class LocationSelectSearchList extends ConsumerWidget {
                       ),
                       onTap: () {
                         text = model?.location?[index - 1] ?? " ";
-                        Logger().d(text);
-                        // ParamStore에 text값 담기
+                        List<String> splitText = text.split(" ");
+                        String lastText = splitText.last;
                         ParamStore textparam = ref.read(paramProvider);
-                        textparam.location = text;
+                        textparam.location = lastText;
+
+                        Logger().d("textparam location : ${textparam.location}");
+
                         Navigator.popAndPushNamed(context, Move.joinPage);
                       },
                     ),
