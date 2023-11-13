@@ -23,8 +23,8 @@ class DetailProductCore extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UserProfile(
-                  username: "${productInfo?.product.user?.nickname}",
-                  location: "${productInfo?.product.user?.location}",
+                  username: "${productInfo?.product.user?.nickname ?? "이름없음"}",
+                  location: "${productInfo?.product.user?.location ?? "지역선택안함"}",
                 ),
                 DetailProductInfo(product),
               ],
