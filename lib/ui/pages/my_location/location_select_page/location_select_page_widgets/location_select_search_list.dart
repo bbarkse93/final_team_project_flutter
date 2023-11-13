@@ -60,6 +60,9 @@ class LocationSelectSearchList extends ConsumerWidget {
                         ParamStore textparam = ref.read(paramProvider);
                         textparam.location = lastText;
 
+                        Logger()
+                            .d("textparam location : ${textparam.location}");
+
                         Navigator.popAndPushNamed(context, Move.joinPage);
                       },
                     ),

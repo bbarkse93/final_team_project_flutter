@@ -52,13 +52,12 @@ class _MyTownPageState extends State<MyTownPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.clear),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        automaticallyImplyLeading: false,
+        title: Text(
+          "내 동네 설정",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        title: Text("내 동네 설정"),
+        centerTitle: false,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding),

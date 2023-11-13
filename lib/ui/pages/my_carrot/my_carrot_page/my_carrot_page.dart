@@ -23,6 +23,7 @@ class MyCarrotPage extends ConsumerWidget {
       ..notifyInit(sessionUser.user!.id!);
     Logger().d("어디갔니 내 사진 ${sessionUser.user?.userPicUrl}");
     Logger().d("어디갔니 내 사진 ${model.state?.user.userPicUrl}");
+
     return Scaffold(
       appBar: MyCarrotAppBar(),
       body: ListView(
