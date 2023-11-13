@@ -46,15 +46,22 @@ class ChattingRoomBody extends ConsumerWidget {
 
                 Logger().d(" time : ${time}");
 
-                final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time.seconds * 1000, isUtc: false).toLocal();
-                final String formattedTime = DateFormat('a hh:mm').format(dateTime);
+                final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
+                        time.seconds * 1000,
+                        isUtc: false)
+                    .toLocal();
+                final String formattedTime =
+                    DateFormat('a hh:mm').format(dateTime);
 
                 return (Column(
                   children: [
                     if (chatList[index].writer == mySession.user!.id)
                       ChattingMyChat(text: message, time: formattedTime)
                     else
-                      ChattingOtherChat(name: "${chatRoom.sellerNickname}", text: message, time: formattedTime),
+                      ChattingOtherChat(
+                          name: "${chatRoom.sellerNickname}",
+                          text: message,
+                          time: formattedTime),
                   ],
                 ));
               },
@@ -83,12 +90,18 @@ class ChattingRoomBody extends ConsumerWidget {
                     Logger().d("mySession.user!.id! : ${mySession.user!.id!}");
                     _message.clear();
                     ParamStore param = ref.read(paramProvider);
-                    param.chat = Chat(message: sendMessage, writer: mySession.user!.id!, time: Timestamp.now());
+                    param.chat = Chat(
+                        message: sendMessage,
+                        writer: mySession.user!.id!,
+                        time: Timestamp.now());
 
                     Logger().d("${param.chat!.message}");
 
-                    final chatProviderInstance = chatProvider(param.chatRoom!.productId!); // 주어진 productId에 대한 chatProvider의 특정 인스턴스를 가져옵니다.
-                    ref.read(chatProviderInstance.notifier).notifyAdd(param.chat!, param.chatRoom!.productId!);
+                    final chatProviderInstance = chatProvider(param.chatRoom!
+                        .productId!); // 주어진 productId에 대한 chatProvider의 특정 인스턴스를 가져옵니다.
+                    ref
+                        .read(chatProviderInstance.notifier)
+                        .notifyAdd(param.chat!, param.chatRoom!.productId!);
                   },
                   child: Text('Send'),
                 )),
