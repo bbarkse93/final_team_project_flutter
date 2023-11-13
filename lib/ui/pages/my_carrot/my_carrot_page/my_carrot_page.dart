@@ -9,6 +9,7 @@ import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_wi
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_info.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_items.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_items_agree.dart';
+import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page_widgets/my_carrot_items_logout.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_view_model.dart';
 
 class MyCarrotPage extends ConsumerWidget {
@@ -57,7 +58,8 @@ class MyCarrotPage extends ConsumerWidget {
                   MyCarrotItems(icon: Icons.assignment, title: "공지사항"),
                   MyCarrotItemsAgree(
                       icon: Icons.info_outline, title: "약관 및 정책"),
-                  MyCarrotItems(icon: Icons.logout_outlined, title: "로그아웃"),
+                  MyCarrotItemsLogout(
+                      icon: Icons.logout_outlined, title: "로그아웃"),
                   MyCarrotItems(icon: Icons.person_off, title: "회원탈퇴")
                 ],
               ),
