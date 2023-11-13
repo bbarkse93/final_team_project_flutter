@@ -30,6 +30,16 @@ Function validatePassword() {
   };
 }
 
+Function validatePasswordConfirm(String basicPassword) {
+  return (String? value) {
+    if (value != basicPassword) {
+      return "입력하신 비밀번호 값이 일치하지 않습니다.";
+    } else {
+      return null;
+    }
+  };
+}
+
 Function validateEmail() {
   return (String? value) {
     if (value!.isEmpty) {

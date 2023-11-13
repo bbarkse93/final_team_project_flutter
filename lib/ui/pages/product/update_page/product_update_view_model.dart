@@ -27,6 +27,6 @@ class ProductUpdateViewModel extends StateNotifier<ProductUpdateModel?> {
 
 // 3. 창고 관리자
 final productUpdateProvider = StateNotifierProvider.autoDispose<ProductUpdateViewModel, ProductUpdateModel?>((ref) {
-  int productId = ref.read(paramProvider).productDetailId!;
+  int productId = ref.read(paramProvider).product!.id;
   return ProductUpdateViewModel(null, ref)..notifyInit(productId);
 });

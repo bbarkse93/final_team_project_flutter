@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/board/detail_page/board_detail_view_model.dart';
 
@@ -18,21 +19,22 @@ class BoardDetailPics extends ConsumerWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height - kToolbarHeight - 100,
       width: MediaQuery.of(context).size.width,
-      child: PageView(
+      child: PageView.builder(
         scrollDirection: Axis.horizontal,
-        children: [
-          Container(
+        itemCount: model.board.boardPics?.length,
+        itemBuilder: (context, index) {
+          return Container(
             padding: EdgeInsets.all(defaultPadding),
             child: Center(
               child: Image.network(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+                "${dio.options.baseUrl}/${model.board.boardPics?[index].boardPicUrl}",
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

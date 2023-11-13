@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/ui/pages/board/list_page/board_list_page.dart';
-import 'package:team_project/ui/pages/chatting/list_page/list_page_widgets/chatting_list_page.dart';
+import 'package:team_project/ui/pages/chatting/list_page/chatting_list_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page.dart';
+import 'package:team_project/ui/pages/my_town/my_town_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _MainPageState extends State<MainPage> {
           // 이쪽에 각각의 페이지를 추가하면됌 - 바텀네비게이션바의 아이콘과 동일한 페이지
           ProductListPage(),
           BoardListPage(),
-          LocationSelectPage(),
+          MyTownPage(),
           ChattingListPage(),
           MyCarrotPage(),
         ],

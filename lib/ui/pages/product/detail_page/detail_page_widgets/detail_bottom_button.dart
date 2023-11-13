@@ -1,7 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/color.dart';
 import 'package:team_project/_core/constants/size.dart';
+import 'package:team_project/data/model/product.dart';
+import 'package:team_project/data/store/param_store.dart';
+import 'package:team_project/data/store/session_store.dart';
+import 'package:team_project/ui/pages/chatting/list_page/chatting_list_page.dart';
+import 'package:team_project/ui/pages/chatting/list_page/chatting_list_view_model.dart';
 
 class DetailBottomButton extends StatefulWidget {
   const DetailBottomButton({super.key});
@@ -22,27 +29,52 @@ class _DetailBottomButtonState extends State<DetailBottomButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 4, top: 14, bottom: 14, right: 16),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          IconButton(
-            icon: Icon(
-                isHearted ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-                color: isHearted ? Colors.red : null),
-            onPressed: () {
-              toggleHeart();
-            },
-          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
                 color: kCarrotColor,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: TextButton(
-                child: Text("채팅 하기",
-                    style: TextStyle(fontSize: fontLarge, color: Colors.white)),
-                onPressed: () {},
+              child: Consumer(
+                builder: (context, ref, child) {
+                  return (TextButton(
+                    child: Text("채팅 하기",
+                        style: TextStyle(
+                            fontSize: fontLarge, color: Colors.white)),
+                    onPressed: () {
+                      // 현재 로그인 한 유저의 정보
+                      SessionUser sessionUser = ref.read(sessionProvider);
+
+                      // 추가되는 채팅방의 데이터베이스 이름을 설정하기위한 리버팟 - Product - productName
+                      ParamStore paramStore = ref.read(paramProvider);
+
+                      Product? product = paramStore.needChatProduct;
+
+                      if (product != null && product.user != null) {
+                        Logger().d("${product!.user!.id}");
+                        Logger().d("${product.user!.nickname}");
+                        Logger().d("${product.user!.location}");
+                        Logger().d("${product.user!.username}");
+                        Logger().d("${product.user!.email}");
+                        Logger().d("${product.user!.userPicUrl}");
+                      }
+
+                      if (product != null)
+                        // 상품 -> 채팅하기 클릭 시 로직
+                        ref
+                            .watch(chatListProvider.notifier)
+                            .notifyAdd(sessionUser, product);
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => ChattingListPage()));
+                    },
+                  ));
+                },
               ),
             ),
           ),

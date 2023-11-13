@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/store/param_store.dart';
-import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
 
 class UpdateDescriptionTextFormField extends ConsumerWidget {
   final controllerName;
@@ -15,12 +14,8 @@ class UpdateDescriptionTextFormField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 무적의 리버팟코드
-    ProductListModel? productListModel = ref.watch(productListProvider);
     ParamStore paramStore = ref.read(paramProvider);
-    List<Product> productList = productListModel!.productList;
-    int productId = paramStore.productDetailId!;
-    Product product = productList[productId];
+    Product product = paramStore.product!;
 
     return TextFormField(
       controller: controllerName,

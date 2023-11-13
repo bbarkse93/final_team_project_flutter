@@ -52,6 +52,9 @@ dependencies:
   carousel_slider: ^4.2.1 # 사진 페이지 쪼고만한 동끌벵이 생겨서 옆으로 넘기면 넘어가는거 지원
   geolocator: ^10.1.0 #GPS
   google_maps_flutter: ^2.5.0
+  cloud_firestore: ^4.11.0
+  firebase_core: ^2.19.0
+
 
 
 
@@ -98,7 +101,7 @@ flutter:
   fonts:
      - family: carrot
        fonts:
-         - asset: assets/fonts/mayo.ttf
+         - asset: assets/fonts/SKYBORI.ttf
 
 
 

@@ -51,7 +51,7 @@ class _MyTownPageState extends State<MyTownPage> {
             left: 0,
             right: 0,
             child: Container(
-              height: 500,
+              height: 450,
               width: double.infinity,
               child: GoogleMap(
                 onMapCreated: _onMapCreated,
@@ -63,7 +63,7 @@ class _MyTownPageState extends State<MyTownPage> {
             ),
           ),
           Positioned(
-            top: 495,
+            top: 445,
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15), color: Colors.white),
