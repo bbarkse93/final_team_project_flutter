@@ -24,11 +24,14 @@ class _ChattingListItemState extends State<ChattingListItem> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
+        // 채팅방의 마지막 대화를 화면에 그려주기 위해 이 데이터가 필요함
+        // ========================================================
         ChatModel? model = ref.watch(chatProvider(widget.chatRoom.productId!));
         List<Chat> chatList = [];
         if (model != null) {
           chatList = model.chatList;
         }
+        // ========================================================
 
         return GestureDetector(
           onTap: () {
@@ -54,7 +57,7 @@ class _ChattingListItemState extends State<ChattingListItem> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ChattingUserInfo(text: "${widget.chatRoom.sellerNickname}"),
+                            ChattingUserInfo(text: "${widget.chatRoom.productName}"),
                             SizedBox(height: 10),
                             if (chatList.isNotEmpty) ChattingLastMessage(text: "${chatList[0].message}"),
                           ],

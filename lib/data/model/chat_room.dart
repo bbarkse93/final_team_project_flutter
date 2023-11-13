@@ -1,4 +1,5 @@
 import 'package:logger/logger.dart';
+import 'package:team_project/data/model/product.dart';
 
 class ChatRoom {
   // 채팅방 아이디
@@ -6,6 +7,8 @@ class ChatRoom {
 
   // 상품아이디
   int? productId;
+  String? productName;
+  Product? product;
 
   // 판매자 아이디
   int? sellerId;
@@ -24,18 +27,22 @@ class ChatRoom {
   ChatRoom({
     this.id,
     this.productId,
+    this.productName,
     this.sellerId,
     this.buyerId,
     this.sellerNickname,
     this.sellerUserPicUrl,
     this.buyerNickName,
     this.buyerUserPicUrl,
+    this.product,
   });
 
   ChatRoom.fromJson(Map<String, dynamic> json)
       : productId = json["ChatRoom"]["productId"],
+        product = json["ChatRoom"]["product"],
         sellerId = json["ChatRoom"]["sellerId"],
         buyerId = json["ChatRoom"]["buyerId"],
+        productName = json["ChatRoom"]["productName"],
         sellerNickname = json["ChatRoom"]["sellerNickname"],
         sellerUserPicUrl = json["ChatRoom"]["sellerUserPicUrl"],
         buyerNickName = json["ChatRoom"]["buyerNickName"],

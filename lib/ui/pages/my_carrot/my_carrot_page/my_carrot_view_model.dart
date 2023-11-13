@@ -20,6 +20,7 @@ class MyCarrotViewModel extends StateNotifier<MyCarrotModel?> {
   MyCarrotViewModel(super.state);
 
   Future<void> notifyInit(int id) async {
+    Logger().d("id : ${id}");
     Logger().d("여기가 실행 되나");
     ResponseDTO responseDTO = await MyCarrotRepository().findUser(id);
 
