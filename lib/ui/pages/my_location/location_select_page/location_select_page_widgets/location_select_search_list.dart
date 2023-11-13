@@ -4,7 +4,6 @@ import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/store/param_store.dart';
-import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_view_model.dart';
 
 class LocationSelectSearchList extends ConsumerWidget {
@@ -26,10 +25,9 @@ class LocationSelectSearchList extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: Text(
-                      "${model?.text} 검색 결과",
+                      "${model?.text ?? "근처"} 검색 결과",
                       style: TextStyle(
                         fontSize: fontLarge,
                         fontWeight: FontWeight.bold,
@@ -46,8 +44,7 @@ class LocationSelectSearchList extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: InkWell(
                       child: Text(
                         "${model?.location?[index - 1] ?? " "}",
@@ -60,8 +57,7 @@ class LocationSelectSearchList extends ConsumerWidget {
                         ParamStore textparam = ref.read(paramProvider);
                         textparam.location = lastText;
 
-                        Logger()
-                            .d("textparam location : ${textparam.location}");
+                        Logger().d("textparam location : ${textparam.location}");
 
                         Navigator.popAndPushNamed(context, Move.joinPage);
                       },

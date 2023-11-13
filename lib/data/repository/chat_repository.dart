@@ -12,8 +12,7 @@ class ChatRepository {
     Logger().d("이거먼저 실행되구 그다음 세이브로 넘어가지 ? ");
     final db = FirebaseFirestore.instance;
 
-    Stream<QuerySnapshot<Map<String, dynamic>>> stream =
-        db.collection("chat1").snapshots();
+    Stream<QuerySnapshot<Map<String, dynamic>>> stream = db.collection("chat1").snapshots();
 
     return stream.map((snapshot) {
       return snapshot.docs.map((e) {
@@ -30,26 +29,21 @@ class ChatRepository {
     final db = FirebaseFirestore.instance;
 
     // 문서를 생성
-    final DocumentReference docRef =
-        db.collection('chat1').doc("chat${product.id}${product.id}");
+    final DocumentReference docRef = db.collection('chat1').doc("chat${product.id}${product.id}");
 
     //로고 테스팅
     Logger().d("ChatRepository 영역 / product.id- ${product.id}");
     Logger().d("ChatRepository 영역 / product.user!.id - ${product.user!.id}");
-    Logger().d(
-        "ChatRepository 영역 / product.user!.nickname - ${product.user!.nickname}");
-    Logger().d(
-        "ChatRepository 영역 / product.user!.userPicUrl - ${product.user!.userPicUrl}");
-    Logger().d(
-        "ChatRepository 영역 / sessionUser.user!.userPicUrl - ${sessionUser.user!.userPicUrl}");
-    Logger()
-        .d("ChatRepository 영역 / sessionUser.user!.id- ${sessionUser.user!.id}");
-    Logger().d(
-        "ChatRepository 영역 / sessionUser.user!.nickname - ${sessionUser.user!.nickname}");
+    Logger().d("ChatRepository 영역 / product.user!.nickname - ${product.user!.nickname}");
+    Logger().d("ChatRepository 영역 / product.user!.userPicUrl - ${product.user!.userPicUrl}");
+    Logger().d("ChatRepository 영역 / sessionUser.user!.userPicUrl - ${sessionUser.user!.userPicUrl}");
+    Logger().d("ChatRepository 영역 / sessionUser.user!.id- ${sessionUser.user!.id}");
+    Logger().d("ChatRepository 영역 / sessionUser.user!.nickname - ${sessionUser.user!.nickname}");
 
     docRef.set({
       'ChatRoom': {
         'productId': product.id,
+        'productName': product.productName,
         'sellerId': product.user!.id,
         'sellerNickname': product.user!.nickname,
         'sellerUserPicUrl': product.user!.userPicUrl,
@@ -72,8 +66,7 @@ class ChatRepository {
 
     return stream.map((snapshot) {
       Logger().d("snapshot.data() 이거는 뜨나 ?: ${snapshot.data()}");
-      final chatRoom =
-          ChatRoom.fromJson(snapshot.data() as Map<String, dynamic>);
+      final chatRoom = ChatRoom.fromJson(snapshot.data() as Map<String, dynamic>);
       Logger().d("${chatRoom.toString()}");
       Logger().d("chatRoom.buyerUserPicUrl : ${chatRoom.buyerUserPicUrl}");
       return [chatRoom];
