@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:team_project/_core/constants/move.dart';
 import 'package:team_project/_core/constants/size.dart';
 import 'package:team_project/data/store/param_store.dart';
+import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_view_model.dart';
 
 class LocationSelectSearchList extends ConsumerWidget {
@@ -54,10 +55,14 @@ class LocationSelectSearchList extends ConsumerWidget {
                       ),
                       onTap: () {
                         text = model?.location?[index - 1] ?? " ";
-                        Logger().d(text);
-                        // ParamStore에 text값 담기
+                        List<String> splitText = text.split(" ");
+                        String lastText = splitText.last;
                         ParamStore textparam = ref.read(paramProvider);
-                        textparam.location = text;
+                        textparam.location = lastText;
+
+                        Logger()
+                            .d("textparam location : ${textparam.location}");
+
                         Navigator.popAndPushNamed(context, Move.joinPage);
                       },
                     ),

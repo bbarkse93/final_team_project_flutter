@@ -8,18 +8,11 @@ class MyCarrotAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios_new,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
+      automaticallyImplyLeading: false,
+      centerTitle: false,
       title: Text(
         "나의 당근",
-        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
         Padding(

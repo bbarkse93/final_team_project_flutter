@@ -15,7 +15,6 @@ class MyCarrotInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var model = ref.read(myCarrotProviderProvider);
     return Container(
       child: ListTile(
         leading: CircleAvatar(
