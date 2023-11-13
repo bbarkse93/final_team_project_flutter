@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:team_project/_core/constants/http.dart';
 import 'package:team_project/data/model/product.dart';
 import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/product/detail_page/detail_page_widgets/detail_product_info.dart';
@@ -23,9 +24,11 @@ class DetailProductCore extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UserProfile(
+                  userPicUrl:
+                      "${dio.options.baseUrl}/${productInfo?.product.user?.userPicUrl}",
                   username: "${productInfo?.product.user?.nickname ?? "이름없음"}",
-                  location: "${productInfo?.product.user?.location ?? "지역선택안함"}",
-
+                  location:
+                      "${productInfo?.product.user?.location ?? "지역선택안함"}",
                 ),
                 DetailProductInfo(product),
               ],
