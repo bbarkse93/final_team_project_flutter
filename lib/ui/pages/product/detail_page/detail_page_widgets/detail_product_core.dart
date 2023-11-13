@@ -13,6 +13,7 @@ class DetailProductCore extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var productInfo = ref.watch(productDetailProvider(product.id));
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
