@@ -11,6 +11,7 @@ import 'package:team_project/ui/pages/chatting/room_page/chatting_room_page.dart
 import 'package:team_project/ui/pages/main_page.dart';
 import 'package:team_project/ui/pages/my_carrot/my_carrot_page/my_carrot_page.dart';
 import 'package:team_project/ui/pages/my_location/location_select_page/location_select_page.dart';
+import 'package:team_project/ui/pages/my_town/my_town_page.dart';
 import 'package:team_project/ui/pages/my_profile/my_profile_page.dart';
 import 'package:team_project/ui/pages/product/detail_page/product_detail_page.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_page.dart';
@@ -25,7 +26,6 @@ class Move {
   static String splashPage = "/splash";
   static String loginPage = "/login";
   static String joinPage = "/join";
-  static String locationSelectPage = "/location/select";
   static String myCarrotPage = "/mycarrot";
 
   // 상품 관련
@@ -43,6 +43,10 @@ class Move {
   static String chattingListPage = "/chat/list";
   static String chattingRoomPage = "/chat/room";
 
+  // 지도 관련
+  static String locationSelectPage = "/location/select";
+  static String myTownPage = "/mytown";
+
   //나의 정보
   static String myProfilePage = "/carrot/profile";
 }
@@ -56,7 +60,6 @@ Map<String, Widget Function(BuildContext)> getRouters() {
     Move.splashPage: (context) => const SplashPage(),
     Move.loginPage: (context) => const LoginPage(),
     Move.joinPage: (context) => const JoinPage(),
-    Move.locationSelectPage: (context) => const LocationSelectPage(),
     Move.myCarrotPage: (context) => const MyCarrotPage(),
 
     // 상품 관련
@@ -89,6 +92,11 @@ Map<String, Widget Function(BuildContext)> getRouters() {
 
     // 채팅 관련
     Move.chattingListPage: (context) => ChattingListPage(),
+    // Move.chattingRoomPage: (context) => ChattingRoomPage(),
+
+    // 지도 관련
+    Move.locationSelectPage: (context) => const LocationSelectPage(),
+    Move.myTownPage: (context) => MyTownPage(),
     // Move.chattingRoomPage: (context) => ChattingRoomPage(),
 
     // 나의정보관련

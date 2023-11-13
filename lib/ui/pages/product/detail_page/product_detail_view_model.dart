@@ -24,9 +24,9 @@ class ProductDetailViewModel extends StateNotifier<ProductDetailModel?> {
   final mContext = navigatorKey.currentContext;
   Ref ref;
 
-  Future<ProductDetailModel> notifyInit(int id) async {
+  Future<void> notifyInit(int id) async {
     ResponseDTO responseDTO = await ProductRepository().fetchProductDetail(id);
-    return ProductDetailModel(responseDTO.response);
+    state = ProductDetailModel(responseDTO.response);
   }
 
   Future<void> notifyUpdate(

@@ -21,7 +21,8 @@ class _ChoiceButtonState extends State<ChoiceButton> {
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
               backgroundColor: isSellected ? Colors.black : Colors.white,
-              textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textStyle:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               side: BorderSide(color: Colors.black, width: 1.5),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -50,7 +51,8 @@ class _ChoiceButtonState extends State<ChoiceButton> {
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
               backgroundColor: isSellected2 ? Colors.black : Colors.white,
-              textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textStyle:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               side: BorderSide(color: Colors.black, width: 1.5),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
