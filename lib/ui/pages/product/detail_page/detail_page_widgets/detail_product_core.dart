@@ -24,7 +24,8 @@ class DetailProductCore extends ConsumerWidget {
               children: [
                 UserProfile(
                   username: "${productInfo?.product.user?.nickname ?? "이름없음"}",
-                  location: "${product.user?.location ?? "지역선택안함"}",
+                  location: "${productInfo?.product.user?.location ?? "지역선택안함"}",
+
                 ),
                 DetailProductInfo(product),
               ],
