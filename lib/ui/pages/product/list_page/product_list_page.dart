@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:team_project/data/store/session_store.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/post_list_body.dart';
 import 'package:team_project/ui/pages/product/list_page/list_page_widgets/product_list_appbar.dart';
 import 'package:team_project/ui/pages/product/list_page/product_list_view_model.dart';
@@ -15,11 +16,12 @@ class ProductListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var model = ref.read(sessionProvider);
     return Scaffold(
       // 스낵바, 드로어, 앱바 등을 관리하며, 이러한 요소들을 프로그래밍 방식으로 제어하려면 ScaffoldKey가 필요
       //Scaffold는 앱의 기본 레이아웃 구조를 나타내는 위젯
       key: scaffoldKey,
-      appBar: ProductListAppBar("부전"),
+      appBar: ProductListAppBar("${model.user!.location}"),
       floatingActionButton: CustomFloationButton(),
 
       body: RefreshIndicator(

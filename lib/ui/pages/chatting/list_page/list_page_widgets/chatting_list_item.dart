@@ -57,9 +57,12 @@ class _ChattingListItemState extends State<ChattingListItem> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ChattingUserInfo(text: "${widget.chatRoom.productName}"),
+                            ChattingUserInfo(
+                                text: "${widget.chatRoom.productName}"),
                             SizedBox(height: 10),
-                            if (chatList.isNotEmpty) ChattingLastMessage(text: "${chatList[0].message}"),
+                            if (chatList.isNotEmpty)
+                              ChattingLastMessage(
+                                  text: "${chatList[0].message}"),
                           ],
                         ),
                       ),
@@ -72,7 +75,8 @@ class _ChattingListItemState extends State<ChattingListItem> {
                             shape: BoxShape.circle,
                           ),
                           child: Center(
-                            child: Text("!", style: TextStyle(color: Colors.white)),
+                            child: Text("!",
+                                style: TextStyle(color: Colors.white)),
                           ),
                         ),
                     ],

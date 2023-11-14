@@ -34,64 +34,94 @@ class ChattingRoomBody extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: chatList.length,
-              reverse: true,
-              itemBuilder: (context, index) {
-                final message = chatList[index].message;
-                final time = chatList[index].time;
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ListView.builder(
+                itemCount: chatList.length,
+                reverse: true,
+                itemBuilder: (context, index) {
+                  final message = chatList[index].message;
+                  final time = chatList[index].time;
 
-                Logger().d("time: ${time}");
+                  Logger().d("time: ${time}");
 
-                final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time.seconds * 1000, isUtc: false).toLocal();
-                final String formattedTime = DateFormat('a hh:mm').format(dateTime);
+                  final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
+                          time.seconds * 1000,
+                          isUtc: false)
+                      .toLocal();
+                  final String formattedTime =
+                      DateFormat('a hh:mm').format(dateTime);
 
-                return Column(
-                  children: [
-                    if (chatList[index].writer == mySession.user!.id)
-                      ChattingMyChat(text: message, time: formattedTime)
-                    else if (chatList[index].writer != chatRoom.sellerId)
-                      ChattingOtherChat(name: "${chatRoom.buyerNickName}", text: message, time: formattedTime)
-                    else if (chatList[index].writer != chatRoom.buyerId)
-                      ChattingOtherChat(name: "${chatRoom.sellerNickname}", text: message, time: formattedTime),
-                  ],
-                );
-              },
+                  return Column(
+                    children: [
+                      if (chatList[index].writer == mySession.user!.id)
+                        ChattingMyChat(text: message, time: formattedTime)
+                      else if (chatList[index].writer != chatRoom.sellerId)
+                        ChattingOtherChat(
+                            name: "${chatRoom.buyerNickName}",
+                            text: message,
+                            time: formattedTime)
+                      else if (chatList[index].writer != chatRoom.buyerId)
+                        ChattingOtherChat(
+                            name: "${chatRoom.sellerNickname}",
+                            text: message,
+                            time: formattedTime),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
           Container(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    style: TextStyle(color: Colors.black),
-                    controller: _message,
-                    onChanged: (value) {
-                      sendMessage = value;
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 40,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black),
+                        controller: _message,
+                        onChanged: (value) {
+                          sendMessage = value;
+                        },
+                        decoration: InputDecoration(
+                          hintText: "메시지를 입력하세요",
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: kCarrotColor,
+                    ),
+                    onPressed: () {
+                      Logger().d("Chat button - Executing here!");
+                      Logger().d("sendMessage: ${sendMessage}");
+                      Logger().d("mySession.user!.id!: ${mySession.user!.id!}");
+                      _message.clear();
+                      ParamStore param = ref.read(paramProvider);
+                      param.chat = Chat(
+                          message: sendMessage,
+                          writer: mySession.user!.id!,
+                          time: Timestamp.now());
+
+                      Logger().d("${param.chat!.message}");
+
+                      final chatProviderInstance =
+                          chatProvider(param.chatRoom!.productId!);
+                      ref
+                          .read(chatProviderInstance.notifier)
+                          .notifyAdd(param.chat!, param.chatRoom!.productId!);
                     },
+                    child: Text('Send'),
                   ),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kCarrotColor,
-                  ),
-                  onPressed: () {
-                    Logger().d("Chat button - Executing here!");
-                    Logger().d("sendMessage: ${sendMessage}");
-                    Logger().d("mySession.user!.id!: ${mySession.user!.id!}");
-                    _message.clear();
-                    ParamStore param = ref.read(paramProvider);
-                    param.chat = Chat(message: sendMessage, writer: mySession.user!.id!, time: Timestamp.now());
-
-                    Logger().d("${param.chat!.message}");
-
-                    final chatProviderInstance = chatProvider(param.chatRoom!.productId!);
-                    ref.read(chatProviderInstance.notifier).notifyAdd(param.chat!, param.chatRoom!.productId!);
-                  },
-                  child: Text('Send'),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
