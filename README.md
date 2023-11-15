@@ -25,6 +25,7 @@ https://github.com/bbarkse93/final_team_project_spring/assets/135561378/69e91098
   - **Backend**
     ![js](https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
    ![js](https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![js](https://img.shields.io/badge/jsonwebtokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
  ![js](https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
  
   - **Frontend**
