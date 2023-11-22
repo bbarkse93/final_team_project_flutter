@@ -44,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCvSjPRkALpZvhZD-9u9TaRV23wJyMlImA',
+    apiKey: 'API키',
     appId: '1:270638990483:web:c16183cbb357b5fb677966',
     messagingSenderId: '270638990483',
     projectId: 'practicefirestore-eb262',
@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDY4xjwQHpn-3RMQaRTfBsW3vfwB2zim8c',
+    apiKey: 'API키',
     appId: '1:270638990483:android:1c9ab13f8151ca4d677966',
     messagingSenderId: '270638990483',
     projectId: 'practicefirestore-eb262',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDhGa93_i8hCeoF0x_TrR_t586QuJgvcco',
+    apiKey: 'API키',
     appId: '1:270638990483:ios:5598651b5ef25b07677966',
     messagingSenderId: '270638990483',
     projectId: 'practicefirestore-eb262',
@@ -70,7 +70,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDhGa93_i8hCeoF0x_TrR_t586QuJgvcco',
+    apiKey: 'API키',
     appId: '1:270638990483:ios:2ae127c441bcc48e677966',
     messagingSenderId: '270638990483',
     projectId: 'practicefirestore-eb262',
